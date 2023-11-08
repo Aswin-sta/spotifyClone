@@ -29,6 +29,9 @@
   font-size: 100px;
   font-weight: 900px;
 }
+.profileWrapper .text h1:hover {
+  cursor: pointer;
+}
 .editDots {
   margin-top: 40px;
   margin-bottom: 20px;
@@ -43,4 +46,56 @@
   color: white;
   cursor: pointer;
   font-weight: 900;
+}
+.profileEdit {
+  width: 60%;
+  background-color: red;
+}
+.profileEdit h2 {
+  padding-bottom: 15px;
+}
+.profiledetails {
+  display: flex;
+}
+.profiledetails .image {
+  height: 150px;
+  width: 150px;
+  margin-left: 5%;
+  margin-bottom: 3%;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px 5px #2c2828;
+}
+.profiledetails .image img {
+  height: 150px;
+  width: 150px;
+}
+.nameandsubmit {
+  display: block;
+  padding: 10px;
+}
+.profileEdit p {
+  font-size: 12px;
+  text-align: justify;
+  padding-top: 10px;
+}
+.nameandsubmit .form {
+  padding-left: 60%;
+  padding-top: 10%;
+}
+.nameandsubmit .form input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.nameandsubmit .save {
+  padding-left: 130%;
+  padding-top: 10px;
+}
+.nameandsubmit .save button {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+}
+.nameandsubmit .form #name {
+  padding-right: 10px;
 }
