@@ -9,11 +9,9 @@ const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const redirectUri = "http://127.0.0.1:5500/home.html";
 const scope = "user-read-private user-read-email";
 
-async function getData(apiEndpoint, accessToken) {
-  console.log(accessToken);
-
+async function getData(apiEndpoint) {
   const apiHeaders = {
-    Authorization: `Bearer ${accessToken}`,
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   };
   console.log(apiHeaders);
 
@@ -34,5 +32,31 @@ async function getData(apiEndpoint, accessToken) {
     console.error("Error:", error);
   }
 }
-const accestoken = localStorage.getItem("accessToken");
-getData(apiEndpoint, accestoken);
+refreshAccessToken(localStorage.getItem("refreshToken"));
+getData(apiEndpoint);
+
+async function refreshAccessToken(refreshToken) {
+  const tokenUrl = "https://accounts.spotify.com/api/token";
+  const data = new URLSearchParams();
+  data.append("grant_type", "refresh_token");
+  data.append("refresh_token", refreshToken);
+  const authBase64 = btoa(`${clientId}:${clientSecret}`);
+  const response = await fetch(tokenUrl, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: `Basic ${authBase64}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+  if (response.ok) {
+    const tokenData = await response.json();
+    return {
+      accessToken: tokenData.access_token,
+      // Note: The refresh token might be the same or a new one
+      refreshToken: tokenData.refresh_token || refreshToken,
+    };
+  } else {
+    throw new Error("Failed to refresh access token");
+  }
+}
