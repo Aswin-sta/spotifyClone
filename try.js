@@ -29,10 +29,8 @@
 
 // // const data1 = await getToken();
 // // console.log(data1.access_token);
-// Define your Spotify Developer App credentials
 
-async function getProfileData() {
-  const accessToken = await getToken();
+async function getProfileData(accessToken) {
   console.log(accessToken);
 
   // Replace with the specific Spotify API endpoint you want to access
@@ -60,18 +58,16 @@ async function getProfileData() {
     console.error("Error:", error);
   }
 }
-
+// getProfileData();
+// Define your Spotify Developer App credentials
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const redirectUri = "http://127.0.0.1:5500/index.html";
 const scope = "user-read-private user-read-email"; // Add the scopes you need
 
-// Function to build the Spotify authorization URL
-function buildAuthorizationUrl() {
-  const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
-  window.location.href = authorizationUrl;
-}
-
+// // Authorization URL
+// const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
+// window.location.href = authorizationUrl;
 // Function to extract the authorization code from the URL
 function getAuthorizationCode() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -79,7 +75,7 @@ function getAuthorizationCode() {
 }
 
 // Function to exchange authorization code for access and refresh tokens
-async function exchangeCodeForTokens(authorizationCode) {
+function exchangeCodeForTokens(authorizationCode) {
   const tokenUrl = "https://accounts.spotify.com/api/token";
   const data = new URLSearchParams();
   data.append("grant_type", "authorization_code");
@@ -88,50 +84,43 @@ async function exchangeCodeForTokens(authorizationCode) {
 
   const authBase64 = btoa(`${clientId}:${clientSecret}`);
 
-  const response = await fetch(tokenUrl, {
+  return fetch(tokenUrl, {
     method: "POST",
     body: data,
     headers: {
       Authorization: `Basic ${authBase64}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
-  });
-
-  if (response.ok) {
-    const tokenData = await response.json();
-    return {
-      accessToken: tokenData.access_token,
-      refreshToken: tokenData.refresh_token,
-    };
-  } else {
-    throw new Error("Failed to make authorized request");
-  }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const accessToken = data.access_token;
+      const refreshToken = data.refresh_token;
+      // You can now use the access and refresh tokens as needed.
+      return { accessToken, refreshToken };
+    })
+    .catch((error) => {
+      console.error("Error exchanging code for tokens:", error);
+    });
 }
 
-// Function to obtain and return the access token
-async function getToken() {
-  // Build the authorization URL and retrieve the authorization code
-  //
+// Entry point of your application
+async function main() {
   const authorizationCode = getAuthorizationCode();
+
   if (authorizationCode) {
     // You have the authorization code, proceed to exchange it for tokens
-    const tokens = await exchangeCodeForTokens(authorizationCode);
-    console.log("Access Token:", tokens.accessToken);
-    console.log("Refresh Token:", tokens.refreshToken);
-    return tokens.accessToken;
+    exchangeCodeForTokens(authorizationCode).then((tokens) => {
+      // Use the access and refresh tokens as needed
+      console.log("Access Token:", tokens.accessToken);
+      console.log("Refresh Token:", tokens.refreshToken);
+      getProfileData(tokens.accessToken);
+    });
   } else {
     // The user may have denied access or there was an error.
     console.error("Authorization code not found.");
   }
 }
 
-// Entry point of your application
-async function main() {
-  buildAuthorizationUrl();
-  const res = await getToken();
-  console.log(res);
-  // getProfileData(res);
-  // Continue with your application logic
-}
-
+// Call the main function to start the process
 main();
