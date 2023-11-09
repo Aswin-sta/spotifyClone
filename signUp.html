@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up-Spotify</title>
+    <link rel="stylesheet" href="./assets/css/signUp.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="header">
+        <img src="./assets/imgs/logo2.png" alt="logo" class="logo" />
+      </div>
+      <div class="body">
+        <form class="body-form">
+          <!-- <div class="-signup-progress-bar"></div> -->
+          <h1>Sign up to start</h1>
+          <h1>listening</h1>
+          <label for="userEmail" class="label">Email address</label><br />
+          <input
+            type="email"
+            placeholder="name@domain.com"
+            id="userEmail"
+            class="input"
+          /><br />
+          <label class="label">Create password</label><br />
+          <input
+            type="password"
+            placeholder="password"
+            id="userPassword"
+            class="input"
+          /><br /><br />
+          <label for="" class="label">Tell us about yourself</label><br /><br />
+          <label for="" class="label">Name</label><br />
+          <input
+            type="text"
+            placeholder="User-name"
+            id="userName"
+            class="input"
+          /><br /><br />
+          <label for="" class="label">Date of birth</label><br />
+          <input
+            type="date"
+            placeholder="User-dob"
+            id="userDob"
+            class="input"
+          /><br />
+          <label for="" class="label">Gender</label><br />
+
+          <input type="radio" id="gender-male" name="gender" value="male" />
+          <label for="gender-male" id="radio-label">Men</label>
+          <input type="radio" id="gender-female" name="gender" value="female" />
+          <label for="gender-female" id="radio-label">Women</label><br />
+          <input
+            type="radio"
+            id="gender-non-binary"
+            name="gender"
+            value="non-binary"
+          />
+          <label for="gender-non-binary" id="radio-label">Non-binary</label>
+          <input
+            type="radio"
+            id="gender-default"
+            name="gender"
+            value="default"
+          />
+          <label for="gender-default" id="radio-label">Prefer not to say</label
+          ><br />
+
+          <input type="button" value="Submit" />
+          <p style="color: darkgray; font-size: x-small" class="p">
+            Already have an account?<a href="">Log in here.</a>
+          </p>
+          <br />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
