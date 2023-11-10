@@ -54,7 +54,7 @@ await refreshAccessToken(localStorage.getItem("refresh_token"));
 const newReleasesPromise = getData(newRelease);
 
 newReleasesPromise.then((data) => {
-  console.log(data);
+  // console.log(data);
   const newAlbums = [...data.albums.items];
   newAlbums.forEach((albums) => {
     let newReleaseContainer = document.querySelector(".newReleases");
@@ -204,3 +204,5 @@ const getPageFromUrl = () => {
 };
 
 loadPage();
+
+export { refreshAccessToken };
