@@ -120,14 +120,17 @@
   overflow-y: scroll;
   margin: 0.5%;
   background-color: #191414;
+  position: relative;
 }
 
 nav {
-  display: flex;
-  position: sticky;
   justify-content: space-between;
+  position: fixed;
+  width: 77%;
+  display: flex;
   top: 0;
-  padding: 2% 3% 0% 3%;
+  padding: 2% 5%;
+  box-sizing: border-box;
 }
 #heroSection nav div {
   display: flex;
@@ -139,7 +142,7 @@ nav {
   background-color: #2c2828;
   border-radius: 50%;
   padding-block: 8%;
-  padding-inline: 5%;
+  padding-inline: 8%;
   margin-right: 20px;
 }
 
@@ -154,7 +157,7 @@ nav {
   height: 20px;
 }
 
-.musicWrapper {
+.homeWrapper {
   margin-top: 3%;
   padding: 2% 3%;
 }
@@ -165,7 +168,141 @@ nav {
   height: 12%;
   background-color: black;
 }
-.musicWrapper {
+
+/* album-song-list */
+.album-song-list {
+  position: absolute;
+  width: 100%;
+  /* top: 0; */
+}
+
+.banner {
+  display: flex;
+  background-color: #2c2828;
+  height: 300px;
+}
+
+.banner-img img {
+  width: 230px;
+  height: 250px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.banner-header {
+  margin-left: 20px;
+  /* background-color: aliceblue; */
+  height: 150px;
+  margin-top: 90px;
+}
+
+.banner-header h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 80px;
+  font-stretch: extra-expanded;
+}
+
+.banner-header p {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.banner-header-spotify-icon {
+  position: relative;
+}
+
+.banner-header-spotify-icon img {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  /* margin-right: 15px; */
+  bottom: -20%;
+}
+
+.interaction-buttons {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.interaction-buttons img {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.spotify-play-button:hover {
+  height: 52px;
+  width: 52px;
+}
+
+.interaction-buttons .spotify-save-to-library {
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}
+
+.interaction-buttons .spotify-save-to-library:hover {
+  height: 33px;
+  width: 33px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%)
+    hue-rotate(0deg);
+}
+
+.interaction-buttons .spotify-more-options {
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}
+
+.interaction-buttons .spotify-more-options:hover {
+  height: 33px;
+  width: 33px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%)
+    hue-rotate(0deg);
+}
+
+.song-list-title {
+  display: flex;
+  position: relative;
+  margin-left: 20px;
+}
+
+.song-list-title p {
+  margin-right: 25px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.title-spotify-duration {
+  height: 30px;
+  width: 4%;
+  margin-left: 3%;
+  position: absolute;
+  bottom: 25%;
+  right: 5%;
+}
+
+.title-hash {
+  width: 4%;
+  text-align: right;
+}
+
+.title-title,
+.title-album,
+.title-data {
+  width: 30.66%;
+}
+
+hr {
+  width: 95%;
+  margin-left: 20px;
+  background-color: #413d3d;
+}
+.homeWrapper {
   margin-top: 0%;
   padding: 0% 3%;
 }
@@ -233,4 +370,138 @@ nav {
   margin-block: 2%;
   color: #615c5c;
   font-size: 0.8em;
+}
+
+/* album-song-list */
+.album-song-list {
+  width: 100%;
+  /* top: 0; */
+}
+
+.banner {
+  display: flex;
+  padding-top: 5%;
+  background-color: #2c2828;
+  height: 300px;
+}
+
+.banner-img img {
+  width: 230px;
+  height: 250px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.banner-header {
+  margin-left: 20px;
+  /* background-color: aliceblue; */
+  height: 150px;
+  margin-top: 90px;
+}
+
+.banner-header h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 80px;
+  font-stretch: extra-expanded;
+}
+
+.banner-header p {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.banner-header-spotify-icon {
+  position: relative;
+}
+
+.banner-header-spotify-icon img {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  /* margin-right: 15px; */
+  bottom: -20%;
+}
+
+.interaction-buttons {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.interaction-buttons img {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.spotify-play-button:hover {
+  height: 52px;
+  width: 52px;
+}
+
+.interaction-buttons .spotify-save-to-library {
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}
+
+.interaction-buttons .spotify-save-to-library:hover {
+  height: 33px;
+  width: 33px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%)
+    hue-rotate(0deg);
+}
+
+.interaction-buttons .spotify-more-options {
+  height: 30px;
+  width: 30px;
+  margin-top: 20px;
+}
+
+.interaction-buttons .spotify-more-options:hover {
+  height: 33px;
+  width: 33px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%)
+    hue-rotate(0deg);
+}
+
+.song-list-title {
+  display: flex;
+  position: relative;
+  margin-left: 20px;
+}
+
+.song-list-title p {
+  margin-right: 25px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.title-spotify-duration {
+  height: 30px;
+  width: 4%;
+  margin-left: 3%;
+  position: absolute;
+  bottom: 25%;
+  right: 5%;
+}
+
+.title-hash {
+  width: 4%;
+  text-align: right;
+}
+
+.title-title,
+.title-album,
+.title-data {
+  width: 30.66%;
+}
+
+hr {
+  width: 95%;
+  margin-left: 20px;
+  background-color: #413d3d;
 }
