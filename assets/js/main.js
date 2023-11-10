@@ -49,7 +49,7 @@ await refreshAccessToken(localStorage.getItem("refresh_token"));
 const newReleasesPromise = getData(apiEndpoint);
 
 newReleasesPromise.then((data) => {
-  console.log(data);
+  // console.log(data);
   const newAlbums = [...data.albums.items];
   newAlbums.forEach((albums) => {
     let newReleaseContainer = document.querySelector(".spotifyOriginals");
@@ -85,3 +85,5 @@ const navigate = (destination) => {
   xhr.open("GET", `http://127.0.0.1:5500/${destination}.html`, true);
   xhr.send();
 };
+
+export { refreshAccessToken };
