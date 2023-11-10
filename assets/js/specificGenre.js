@@ -46,30 +46,44 @@ async function refreshAccessToken(refreshToken) {
 
 await refreshAccessToken(localStorage.getItem('refresh_token'));
 
-const newReleasesPromise = getData(apiEndpoint);
+const specificGenre = getData(apiEndpoint);
 
-newReleasesPromise.then(data => {
+// const gradientBox = document.getElementById('section-spotify-playlists');
+// gradientBox.style.background =
+//   'linear-gradient(to bottom, #ff00ff 30%, #000000 40%)';
+let specificGenreContainer = document.querySelector('.spotify-playlists');
+const listDiv = document.createElement('div');
+listDiv.classList.add('list');
+specificGenre.then(data => {
   console.log(data);
-  const newAlbums = [...data.albums.items];
-  newAlbums.forEach(albums => {
-    let newReleaseContainer = document.querySelector('.spotifyOriginals');
-    let itemTile = document.createElement('div');
-    itemTile.classList.add('itemTile');
+  const genre = [...data.albums.items];
+  genreTitle.classList.add('genreTitle');
+  genreTitle.textContent = genre[0].album_type;
 
-    let albumImage = document.createElement('img');
-    albumImage.classList.add('albumImage');
-    albumImage.src = albums.images[0].url; // Assuming you want to use the first image
-    let albumTitle = document.createElement('h4');
-    albumTitle.classList.add('songTitle');
-    albumTitle.textContent = albums.name;
+  genre.forEach(tracks => {
+    const dynamicDiv = document.createElement('div');
+    dynamicDiv.classList.add('item');
+    const genreTitle = document.getElementById('genreTitle');
 
-    let artistTitle = document.createElement('p');
-    artistTitle.classList.add('albumTitle');
-    // Assuming you want to display the first artist's name
-    artistTitle.textContent = albums.artists[0].name;
+    let imgElement = document.createElement('img');
+    imgElement.src = tracks.images[0].url; // Assuming you want to use the first image
 
-    itemTile.append(albumImage, albumTitle, artistTitle);
-    newReleaseContainer.append(itemTile);
+    const playDiv = document.createElement('div');
+    playDiv.classList.add('play');
+    const playSpan = document.createElement('span');
+    playSpan.classList.add('fa', 'fa-play');
+
+    let trackTitle = document.createElement('h4');
+    trackTitle.classList.add('songTitle');
+    trackTitle.textContent = tracks.name;
+
+    let tarckInfo = document.createElement('p');
+    tarckInfo.textContent = tracks.artists[0].name;
+
+    playDiv.appendChild(playSpan);
+    dynamicDiv.append(imgElement, playDiv, trackTitle, tarckInfo);
+    listDiv.appendChild(dynamicDiv);
+    specificGenreContainer.append(listDiv);
   });
 });
 
