@@ -1,0 +1,154 @@
+/* search-page */
+.searchDisplay{
+    display: block;
+    gap: 20px;
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: #292929;
+}
+.search-block{
+    border: none;
+    background-color: rgb(102, 102, 190);
+    display: inline-flex;
+    width: 200px;
+    position: relative;
+    height: 250px;
+    margin-inline: 30px;
+    margin-block: 50px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+.searchDisplay h1{
+    color: white;
+}
+.search-block h2{
+    padding-left: 20px;
+    padding-top: 20px;
+    font-weight: bolder;
+    font-size: 25px;
+  }
+.search-block img {
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    bottom: -10%;
+    right:-20%;
+    transform: rotate(10deg);
+  }
+.search-block:hover img{
+    transform: scale(1.05);
+}
+/* search-bar */
+.search{
+    background-color: #121212;
+  }
+.search input[type="text"] {
+    padding-block: 20px;
+    padding-right: 100px;
+    border: none;
+    border-radius: 50px;
+    background-color: #242424;;
+    color: #b3b3b3;
+    width: 300px;
+    text-align: center;
+    outline: none;
+    color: #fff;
+  }
+.search input[type="text"]::placeholder {
+    color: #b3b3b3;
+    opacity: 1;
+    font-weight: 400;
+    font-size: 18px;
+    padding-inline: 50px;
+  }
+.search-input{
+    background: #fff url('/assets/imgs/search-icon..png') no-repeat 10px center;
+}
+
+/* Media player*/
+.spotify-player {
+    background-color: #000000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 10%;
+}
+.cover-image{
+    display: flex;
+}
+.cover-image img {
+    max-width: 75px;
+    max-height: 75px;
+    margin-right: 20px;
+}
+.cover-image li{
+    list-style: none;
+    color: white;
+    padding-bottom: 10px;
+  }
+.cover-image ul{
+    padding-block: 15%;
+}
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 30%;
+    bottom: 1%;
+    
+}
+.control-button {
+    background-color: black;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding-block: 30px;
+    padding-inline: 10px;
+    margin: 0 10px;
+    
+}
+.control-button button{
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform 0.7s ease-in-out;
+}
+.progress-bar {
+    background-color: #555;
+    height: 10px;
+    width: 600px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+  
+.progress {
+    background-color: #ffffff;
+    height: 100%;
+    width: 30%; 
+    border-radius: 5px;
+    
+}
+.control-button i{
+    font-size: 25px;
+}
+#play-pause{
+    background-color: #fff; 
+    color: black; 
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+#play-pause i{
+    font-size: 25px;
+    color: #000000;
+}
+#play-pause:hover{
+    transform: scale(1.05);
+}
+
