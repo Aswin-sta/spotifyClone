@@ -26,6 +26,7 @@ async function refreshAccessToken(refreshToken) {
   });
   if (response.ok) {
     const tokenData = await response.json();
+    console.log(tokenData.access_token);
     localStorage.setItem("access_token", tokenData.access_token);
     localStorage.setItem(
       "refresh_token",
@@ -41,7 +42,7 @@ async function refreshAccessToken(refreshToken) {
   }
 }
 
-refreshAccessToken(localStorage.getItem("refresh_token"));
+await refreshAccessToken(localStorage.getItem("refresh_token"));
 
 async function getData(apiEndpoint) {
   const apiHeaders = {
