@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/profile.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
     <script type="module" src="./assets/js/main.js"></script>
   </head>
   <body>
@@ -40,29 +43,19 @@
       <div id="heroSection">
         <nav>
           <div>
-            <a id="left--arrow">
-              <img src="./assets/imgs/leftarrrow.png" />
-            </a>
-            <a id="right--arrow">
-              <img src="./assets/imgs/rightarrow.png" />
-            </a>
+            <button id="left--arrow">
+              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
+            </button>
+            <button id="right--arrow">
+              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
+            </button>
           </div>
           <a id="login" href="#"><img src="./assets/imgs/user.png" /></a>
         </nav>
-        <div class="musicWrapper">
-          <div class="row spotifyOriginals">
+        <section class="homeWrapper">
+          <div class="row">
             <h2>Spotify Originals</h2>
-            <div class="itemWrapper">
-              <div class="itemTile">
-                <img
-                  class="albumImage"
-                  src="./assets/imgs/album.png"
-                  alt="album image"
-                />
-                <h4 class="songTitle">name</h4>
-                <p class="albumTitle">album</p>
-              </div>
-            </div>
+            <div class="itemWrapper spotifyOriginals"></div>
           </div>
           <div class="row trySomethingElse">
             <h2>Try Something Else</h2>
@@ -106,7 +99,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
         <div class="bottomBar">
           <div class="footertop">
             <div class="companyWrapper">
