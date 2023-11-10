@@ -3,7 +3,6 @@ const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const redirectUri = "http://127.0.0.1:5500/home.html";
 const scope = "user-read-private user-read-email"; // Add the scopes you need
 
-// Authorization URL
 const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
 window.location.href = authorizationUrl;
 
@@ -34,6 +33,8 @@ function exchangeCodeForTokens(authorizationCode) {
     .then((data) => {
       const accessToken = data.access_token;
       const refreshToken = data.refresh_token;
+      localStorage.setItem("access_token", accessToken);
+      localStorage.setItem("refresh_token", refreshToken);
       // You can now use the access and refresh tokens as needed.
       return { accessToken, refreshToken };
     })
@@ -43,7 +44,7 @@ function exchangeCodeForTokens(authorizationCode) {
 }
 
 // Entry point of your application
-async function getToken() {
+async function main() {
   const authorizationCode = getAuthorizationCode();
 
   if (authorizationCode) {
@@ -52,13 +53,14 @@ async function getToken() {
       // Use the access and refresh tokens as needed
       console.log("Access Token:", tokens.accessToken);
       console.log("Refresh Token:", tokens.refreshToken);
-      localStorage.setItem("refreshToken", tokens.refreshToken);
-      localStorage.setItem("accessToken", tokens.accessToken);
-      //   getProfileData(tokens.accessToken);
+
+      window.location.href = redirectUri;
     });
   } else {
     // The user may have denied access or there was an error.
     console.error("Authorization code not found.");
   }
 }
-getToken();
+
+// Call the main function to start the process
+main();
