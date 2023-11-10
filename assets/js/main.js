@@ -42,6 +42,7 @@ async function refreshAccessToken(refreshToken) {
 }
 
 refreshAccessToken(localStorage.getItem("refresh_token"));
+
 async function getData(apiEndpoint) {
   const apiHeaders = {
     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -57,7 +58,7 @@ async function getData(apiEndpoint) {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      // You can process the data from the Spotify API here
+      return data;
     } else {
       throw new Error("Failed to make authorized request");
     }
@@ -65,4 +66,5 @@ async function getData(apiEndpoint) {
     console.error("Error:", error);
   }
 }
+
 getData(apiEndpoint);
