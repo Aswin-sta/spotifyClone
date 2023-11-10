@@ -1,3 +1,5 @@
+import { getData } from "./get.js";
+
 // Replace with the specific Spotify API endpoint you want to access
 const apiEndpoint = "https://api.spotify.com/v1/browse/new-releases";
 // const apiEndpoint = "https://api.spotify.com/v1/browse/featured-playlists";
@@ -26,6 +28,7 @@ async function refreshAccessToken(refreshToken) {
   });
   if (response.ok) {
     const tokenData = await response.json();
+    console.log(tokenData.access_token);
     localStorage.setItem("access_token", tokenData.access_token);
     localStorage.setItem(
       "refresh_token",
@@ -41,28 +44,44 @@ async function refreshAccessToken(refreshToken) {
   }
 }
 
-refreshAccessToken(localStorage.getItem("refresh_token"));
-async function getData(apiEndpoint) {
-  const apiHeaders = {
-    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-  };
-  console.log(apiHeaders);
+await refreshAccessToken(localStorage.getItem("refresh_token"));
 
-  try {
-    const response = await fetch(apiEndpoint, {
-      method: "GET",
-      headers: apiHeaders,
-    });
+const newReleasesPromise = getData(apiEndpoint);
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      // You can process the data from the Spotify API here
-    } else {
-      throw new Error("Failed to make authorized request");
+newReleasesPromise.then((data) => {
+  console.log(data);
+  const newAlbums = [...data.albums.items];
+  newAlbums.forEach((albums) => {
+    let newReleaseContainer = document.querySelector(".spotifyOriginals");
+    let itemTile = document.createElement("div");
+    itemTile.classList.add("itemTile");
+
+    let albumImage = document.createElement("img");
+    albumImage.classList.add("albumImage");
+    albumImage.src = albums.images[0].url; // Assuming you want to use the first image
+    let albumTitle = document.createElement("h4");
+    albumTitle.classList.add("songTitle");
+    albumTitle.textContent = albums.name;
+
+    let artistTitle = document.createElement("p");
+    artistTitle.classList.add("albumTitle");
+    // Assuming you want to display the first artist's name
+    artistTitle.textContent = albums.artists[0].name;
+
+    itemTile.append(albumImage, albumTitle, artistTitle);
+    newReleaseContainer.append(itemTile);
+  });
+});
+
+const navigate = (destination) => {
+  console.log("click");
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      document.querySelector(".homeWrapper").innerHTML = xhr.responseText;
     }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-getData(apiEndpoint);
+  };
+  xhr.open("GET", `http://127.0.0.1:5500/${destination}.html`, true);
+  xhr.send();
+};
