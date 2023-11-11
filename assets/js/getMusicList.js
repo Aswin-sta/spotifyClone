@@ -46,6 +46,7 @@ newReleasesPromise.then((data) => {
     const trackNo = document.createElement("p");
     trackNo.className = "title-hash";
     trackNo.textContent = `${Number(i + 1)}`;
+
     const trackName = document.createElement("p");
     trackName.className = "title-title-name";
     trackName.textContent = musicDataList[i].track.name;
@@ -64,8 +65,11 @@ newReleasesPromise.then((data) => {
     );
     songListTrack.append(trackNo);
     songListTrack.append(trackName);
+
     // songListTrack.append(trackAlbum);
     // songListTrack.append(trackDateAdded);
+
+    console.log(songListTrack);
     songListTrack.append(trackDuration);
     albumSongList.append(songListTrack);
   }
