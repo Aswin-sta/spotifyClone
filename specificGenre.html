@@ -3,16 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/specificGenre.css" />
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/profile.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/specificGenre.css" />
+
+    <script type="module" src="./assets/js/specificGenre.js"></script>
   </head>
   <body>
-    <section class="section-spotify-playlists">
-      <div class="specificGenreWrapper">
-        <h1 class="" id="genreTitle"></h1>
-        <div class="spotify-playlists"></div>
+    <div class="wrapper">
+      <div id="sideBar">
+        <div class="sideDivTile--top">
+          <ul>
+            <li>
+              <a><img src="./assets/imgs/home.svg" />Home</a>
+            </li>
+            <li>
+              <a><img src="./assets/imgs/search.svg" />Search</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sideDivTile">
+          <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
+          <a></a>
+          <a></a>
+          <div>
+            <h3>Create your first playlist</h3>
+            <p>it's easy, we'll help you</p>
+            <button>Create Playlist</button>
+          </div>
+          <div>
+            <h3>Lets's find some podcast to follow</h3>
+            <p>We'll leep you updated on new episodes</p>
+            <button>Browse podcast</button>
+          </div>
+        </div>
       </div>
-    </section>
+      <div id="heroSection">
+        <nav>
+          <div>
+            <button id="left--arrow">
+              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
+            </button>
+            <button id="right--arrow">
+              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
+            </button>
+          </div>
+          <a id="login" href="#"><img src="./assets/imgs/user.png" /></a>
+        </nav>
+        <div class="titleDiv">
+            <h1 style="margin-top: 15%; margin-left: 5%; margin-bottom: 5%; font-size: 68px;">Tamil</h1>
+        </div>
+        <section class="section-spotify-playlists">
+          <div class="specificGenreWrapper">
+            <h1 class="" id="genreTitle"></h1>
+            <div class="spotify-playlists"></div>
+          </div>
+        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="player">
+      <h6>PREVIEW OF SPOTIFY</h6>
+      <!-- <button>Sign Up</button> -->
+      <p>
+        Sign up to get unlimited songs and podcasts with occasinal ads. No
+        credit card needed
+      </p>
+    </div>
   </body>
-  <script type="module" src="assets/js/specificGenre.js"></script>
 </html>

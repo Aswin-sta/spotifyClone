@@ -48,30 +48,28 @@ await refreshAccessToken(localStorage.getItem('refresh_token'));
 
 const specificGenre = getData(apiEndpoint);
 
-// const gradientBox = document.getElementById('section-spotify-playlists');
-// gradientBox.style.background =
-//   'linear-gradient(to bottom, #ff00ff 30%, #000000 40%)';
+//to display
 let specificGenreContainer = document.querySelector('.spotify-playlists');
 const listDiv = document.createElement('div');
+// document.getElementById('genreTitle').textContent = 'Tamil';
 listDiv.classList.add('list');
 specificGenre.then(data => {
   console.log(data);
   const genre = [...data.albums.items];
-  genreTitle.classList.add('genreTitle');
-  genreTitle.textContent = genre[0].album_type;
+  //   genreTitle.classList.add('genreTitle');
+  //   genreTitle.textContent = genre[0].album_type;
 
   genre.forEach(tracks => {
     const dynamicDiv = document.createElement('div');
     dynamicDiv.classList.add('item');
-    const genreTitle = document.getElementById('genreTitle');
 
     let imgElement = document.createElement('img');
     imgElement.src = tracks.images[0].url; // Assuming you want to use the first image
 
-    const playDiv = document.createElement('div');
-    playDiv.classList.add('play');
-    const playSpan = document.createElement('span');
-    playSpan.classList.add('fa', 'fa-play');
+    // const playDiv = document.createElement('div');
+    // playDiv.classList.add('play');
+    // const playSpan = document.createElement('span');
+    // playSpan.classList.add('fa', 'fa-play');
 
     let trackTitle = document.createElement('h4');
     trackTitle.classList.add('songTitle');
@@ -80,8 +78,8 @@ specificGenre.then(data => {
     let tarckInfo = document.createElement('p');
     tarckInfo.textContent = tracks.artists[0].name;
 
-    playDiv.appendChild(playSpan);
-    dynamicDiv.append(imgElement, playDiv, trackTitle, tarckInfo);
+    // playDiv.appendChild(playSpan);
+    dynamicDiv.append(imgElement, trackTitle, tarckInfo);
     listDiv.appendChild(dynamicDiv);
     specificGenreContainer.append(listDiv);
   });
