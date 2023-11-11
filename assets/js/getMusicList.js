@@ -4,9 +4,9 @@ import { refreshAccessToken } from "./main.js";
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
 
-const newReleasesPromise = getData(
-  "https://api.spotify.com/v1/playlists/37i9dQZF1DXdpQPPZq3F7n"
-);
+const id = new URLSearchParams(window.location.search).get("id");
+
+const newReleasesPromise = getData(id);
 
 function timeConvertion(duration_ms) {
   const totalSeconds = Math.floor(duration_ms / 1000);
@@ -49,7 +49,7 @@ newReleasesPromise.then((data) => {
 
     const trackName = document.createElement("p");
     trackName.className = "title-title-name";
-    trackName.textContent = musicDataList[i].track.name;
+    trackName.textContent = musicDataList[i].name;
     // const trackAlbum = document.createElement("p");
     // trackAlbum.className = "title-album";
     // trackAlbum.textContent = musicDataList[i].track.name;
@@ -60,9 +60,7 @@ newReleasesPromise.then((data) => {
     // );
     const trackDuration = document.createElement("p");
     trackDuration.className = "title-spotify-duration";
-    trackDuration.textContent = timeConvertion(
-      musicDataList[i].track.duration_ms
-    );
+    trackDuration.textContent = timeConvertion(musicDataList[i].duration_ms);
     songListTrack.append(trackNo);
     songListTrack.append(trackName);
 

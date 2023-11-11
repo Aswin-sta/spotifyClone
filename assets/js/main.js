@@ -74,9 +74,6 @@ newReleasesPromise.then((data) => {
     artistTitle.textContent = albums.artists[0].name;
 
     itemTile.append(albumImage, albumTitle, artistTitle);
-    itemTile.onclick = () => {
-      loadPage("musiclist", albums.id);
-    };
     newReleaseContainer.append(itemTile);
   });
 });
@@ -84,7 +81,7 @@ newReleasesPromise.then((data) => {
 const romanticPromise = getData(romantic);
 
 romanticPromise.then((data) => {
-  // console.log(data);
+  console.log(data);
   const newRomantic = [...data.playlists.items];
   newRomantic.forEach((playlists) => {
     // console.log(playlists);
@@ -110,7 +107,7 @@ romanticPromise.then((data) => {
 
 const episodes = getData(indiantop);
 episodes.then((data) => {
-  // console.log(data);
+  console.log(data);
   const topSongs = [...data.tracks];
   topSongs.forEach((playlists) => {
     // console.log(playlists);
@@ -125,6 +122,9 @@ episodes.then((data) => {
     albumTitle.classList.add("songTitle");
     albumTitle.textContent = playlists.album.name;
     itemTile.append(albumImage, albumTitle);
+    itemTile.onclick = () => {
+      window.location.href = `musiclist.html?id=${playlists.album.href}`;
+    };
     top10Container.append(itemTile);
   });
 });
