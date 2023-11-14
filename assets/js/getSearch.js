@@ -24,7 +24,7 @@ searchCateogoryPromise.then((data) => {
         searchSection.appendChild(searchContainer);
 
         searchContainer.onclick = () =>{
-            window.location.href=""
+            window.location.href=`specificGenre.html?url=${elements.href}`
         }
     
         const randomColor = getRandomColor();
