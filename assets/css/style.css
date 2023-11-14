@@ -273,14 +273,6 @@ nav {
 }
 
 
-
-  margin-top: 2%;
-  font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .title-title-name {
   /* background-color: #332c2c; */
   margin-left: 23px;
@@ -301,5 +293,90 @@ nav {
 
 .song-list-track p {
   color: #c5c5c5;
+}
+/* player */
+.spotify-player {
+  background-color: #000000;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 10%;
+}
+.cover-image{
+  display: flex;
+}
+.cover-image img {
+  max-width: 75px;
+  max-height: 75px;
+  margin-right: 20px;
+}
+.cover-image li{
+  list-style: none;
+  color: white;
+  padding-bottom: 10px;
+}
+.cover-image ul{
+  padding-block: 15%;
+}
+.player-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 30%;
+  bottom: 1%;
+  
+}
+.control-button {
+  background-color: black;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding-block: 30px;
+  padding-inline: 10px;
+  margin: 0 10px;
+  
+}
+.control-button button{
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+  transition: transform 0.7s ease-in-out;
+}
+.progress-bar {
+  background-color: #555;
+  height: 10px;
+  width: 600px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.progress {
+  background-color: #ffffff;
+  height: 100%;
+  width: 30%; 
+  border-radius: 5px;
+  
+}
+.control-button i{
+  font-size: 25px;
+}
+#play-pause{
+  background-color: #fff; 
+  color: black; 
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+#play-pause i{
+  font-size: 25px;
+  color: #000000;
+}
+#play-pause:hover{
+  transform: scale(1.05);
 }
 
