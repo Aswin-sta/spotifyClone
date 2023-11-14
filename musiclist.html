@@ -5,55 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/profile.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="stylesheet" href="./assets/css/musiclist.css" />
+    <script type="module" src="./assets/js/getMusicList.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
   </head>
   <body>
-    <section class="album-song-list">
-      <div class="banner">
-        <div class="banner-img">
-          <img src="./assets/imgs/leo-static.webp" alt="" />
+    <div class="wrapper">
+      <div id="sideBar">
+        <div class="sideDivTile--top">
+          <ul>
+            <li>
+              <a><img src="./assets/imgs/home.svg" />Home</a>
+            </li>
+            <li>
+              <a><img src="./assets/imgs/search.svg" />Search</a>
+            </li>
+          </ul>
         </div>
-        <div class="banner-header">
-          <p>Playlist</p>
-          <h1>Latest Tamil</h1>
-          <p>New Music from Kollywood. Cover : Leo</p>
-          <p>
-            <span class="banner-header-spotify-icon"
-              ><img src="./assets/imgs/Spotify_icon_svg.svg" alt="icon" /></span
-            ><b>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spotify . </b
-            >637,045 likes . 70 songs, about 3 hr 45 min
-          </p>
+        <div class="sideDivTile">
+          <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
+          <a></a>
+          <a></a>
+          <div>
+            <h3>Create your first playlist</h3>
+            <p>it's easy, we'll help you</p>
+            <button>Create Playlist</button>
+          </div>
+          <div>
+            <h3>Lets's find some podcast to follow</h3>
+            <p>We'll leep you updated on new episodes</p>
+            <button>Browse podcast</button>
+          </div>
         </div>
       </div>
-      <div class="interaction-buttons">
-        <img
-          src="./assets/imgs/spotify-play-button.png"
-          alt=""
-          class="spotify-play-button"
-        />
-        <img
-          src="./assets/imgs/spotify-save-to-library.png"
-          alt=""
-          class="spotify-save-to-library"
-        />
-        <img
-          src="./assets/imgs/spotify-more-options.png"
-          alt=""
-          class="spotify-more-options"
-        />
+      <div id="heroSection">
+        <nav>
+          <div>
+            <button id="left--arrow">
+              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
+            </button>
+            <button id="right--arrow">
+              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
+            </button>
+          </div>
+          <a id="login" href="#"><img src="./assets/imgs/user.png" /></a>
+        </nav>
+        <section class="album-song-list">
+          <div class="banner">
+            <div class="banner-img">
+              <img src="./assets/imgs/leo-static.webp" alt="" />
+            </div>
+            <div class="banner-header">
+              <p>Playlist</p>
+              <h1>Latest Tamil</h1>
+              <p class="banner-header-desc">
+                New Music from Kollywood. Cover : Leo
+              </p>
+              <p>
+                <span class="banner-header-spotify-icon"
+                  ><img
+                    src="./assets/imgs/Spotify_icon_svg.svg"
+                    alt="icon" /></span
+                ><b>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spotify
+                </b>
+              </p>
+            </div>
+          </div>
+          <div class="interaction-buttons">
+            <img
+              src="./assets/imgs/spotify-play-button.png"
+              alt=""
+              class="spotify-play-button"
+            />
+            <img
+              src="./assets/imgs/spotify-save-to-library.png"
+              alt=""
+              class="spotify-save-to-library"
+            />
+            <img
+              src="./assets/imgs/spotify-more-options.png"
+              alt=""
+              class="spotify-more-options"
+            />
+          </div>
+          <div class="song-list-title">
+            <p class="title-hash">#</p>
+            <p class="title-title">Title</p>
+            <!-- <p class="title-album">Album</p>
+            <p class="title-date">Date added</p> -->
+            <img
+              src="./assets/imgs/spotify-duration.svg"
+              alt=""
+              class="title-spotify-duration-icon"
+            />
+          </div>
+          <hr />
+        </section>
+        <div class="bottomBar">
+          <div class="footertop">
+            <div class="companyWrapper">
+              <p class="header">Company</p>
+              <p>
+                <a href="https://www.spotify.com/in-en/about-us/contact/"
+                  >About</a
+                >
+              </p>
+              <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
+              <p><a href="https://newsroom.spotify.com/">For the Record</a></p>
+            </div>
+            <div class="communitiesWrapper">
+              <p class="header">Communities</p>
+              <p><a href="https://artists.spotify.com/home">For Artists</a></p>
+              <p><a href="https://developer.spotify.com/">Developers</a></p>
+              <p><a href="https://ads.spotify.com/en-IN/">Advertising</a></p>
+              <p>
+                <a href="https://investors.spotify.com/home/default.aspx"
+                  >Investors</a
+                >
+              </p>
+              <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
+            </div>
+            <div class="useWrapper">
+              <p class="header">Useful links</p>
+              <p><a href="https://support.spotify.com/in-en/">Support</a></p>
+              <p>
+                <a href="https://www.spotify.com/in-en/download/windows/"
+                  >Free Mobile App</a
+                >
+              </p>
+            </div>
+            <div class="socialWrapper">
+              <button><img src="./assets/imgs/instagram.png" /></button>
+              <button><img src="./assets/imgs/twitter.png" /></button>
+              <button><img src="./assets/imgs/facebook.png" /></button>
+            </div>
+          </div>
+          <hr />
+          <div class="footerbottom">
+            <div class="navbar">
+              <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
+              <p>
+                <a href="https://www.spotify.com/in-en/privacy"
+                  >Privacy Center</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                  >Privacy Policy</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                  >Cookies</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                  >About Ads</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/accessibility"
+                  >Accessibility</a
+                >
+              </p>
+            </div>
+            <div class="copyright">
+              <p>© 2023 Spotify AB</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="song-list-title">
-        <p class="title-hash">#</p>
-        <p class="title-title">Title</p>
-        <p class="title-album">Album</p>
-        <p class="title-date">Date added</p>
-        <img
-          src="./assets/imgs/spotify-duration.svg"
-          alt=""
-          class="title-spotify-duration"
-        />
-      </div>
-      <hr />
-    </section>
+    </div>
+    <div class="player">
+      <h6>PREVIEW OF SPOTIFY</h6>
+      <!-- <button>Sign Up</button> -->
+      <p>
+        Sign up to get unlimited songs and podcasts with occasinal ads. No
+        credit card needed
+      </p>
+    </div>
   </body>
 </html>

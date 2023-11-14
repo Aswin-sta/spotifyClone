@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/profile.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
+    <script type="module" src="./assets/js/profile.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -40,14 +41,16 @@
       <div id="heroSection">
         <nav>
           <div>
-            <a id="left--arrow">
-              <img src="./assets/imgs/leftarrrow.png" />
-            </a>
-            <a id="right--arrow">
-              <img src="./assets/imgs/rightarrow.png" />
-            </a>
+            <button id="left--arrow">
+              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
+            </button>
+            <button id="right--arrow">
+              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
+            </button>
           </div>
-          <a id="login">login</a>
+          <a id="login" href="profile.html"
+            ><img src="./assets/imgs/user.png"
+          /></a>
         </nav>
 
         <section class="Profile Page">
@@ -61,7 +64,7 @@
             </div>
             <div class="text">
               <p>Profile</p>
-              <h1 id="username" title="Edit Profile">QWERTY</h1>
+              <h1 id="username" title="Edit Profile"></h1>
             </div>
           </div>
           <div class="editDots">
