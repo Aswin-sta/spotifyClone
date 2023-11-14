@@ -184,6 +184,12 @@ nav {
 
 /* album-song-list */
 
+
+.homeWrapper {
+  margin-top: 5%;
+  padding: 0% 3%;
+}
+
 .player {
   position: fixed;
   width: 100%;
@@ -263,6 +269,11 @@ nav {
   color: #817b7b;
   box-sizing: border-box;
   font-size: 0.8em;
+
+}
+
+
+
   margin-top: 2%;
   font-weight: bold;
   overflow: hidden;
@@ -291,3 +302,4 @@ nav {
 .song-list-track p {
   color: #c5c5c5;
 }
+

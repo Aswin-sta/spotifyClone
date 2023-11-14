@@ -1,5 +1,8 @@
 import { getData } from "./get.js";
 
+
+const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
+const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const newRelease = "https://api.spotify.com/v1/browse/new-releases";
 const featured = "https://api.spotify.com/v1/browse/featured-playlists";
 const romantic =
@@ -14,8 +17,7 @@ const indiantop =
 
 const anirudh =
   "https://api.spotify.com/v1/artists/4zCH9qm4R2DADamUHMCa6O/albums";
-const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
-const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
+
 
 async function refreshAccessToken(refreshToken) {
   const tokenUrl = "https://accounts.spotify.com/api/token";
@@ -54,7 +56,7 @@ await refreshAccessToken(localStorage.getItem("refresh_token"));
 const newReleasesPromise = getData(newRelease);
 
 newReleasesPromise.then((data) => {
-  // console.log(data);
+  console.log(data);
   const newAlbums = [...data.albums.items];
   newAlbums.forEach((albums) => {
     let newReleaseContainer = document.querySelector(".newReleases");
@@ -84,7 +86,8 @@ newReleasesPromise.then((data) => {
 const romanticPromise = getData(romantic);
 
 romanticPromise.then((data) => {
-  // console.log(data);
+  console.log(data);
+
   const newRomantic = [...data.playlists.items];
   newRomantic.forEach((playlists) => {
     // console.log(playlists);
@@ -110,7 +113,9 @@ romanticPromise.then((data) => {
 
 const episodes = getData(indiantop);
 episodes.then((data) => {
-  // console.log(data);
+
+  console.log(data);
+
   const topSongs = [...data.tracks];
   topSongs.forEach((playlists) => {
     // console.log(playlists);
@@ -125,6 +130,10 @@ episodes.then((data) => {
     albumTitle.classList.add("songTitle");
     albumTitle.textContent = playlists.album.name;
     itemTile.append(albumImage, albumTitle);
+    itemTile.onclick = () => {
+      window.location.href = `musiclist.html?id=${playlists.album.href}`;
+    };
+
     top10Container.append(itemTile);
   });
 });
@@ -149,60 +158,7 @@ anirudhAlbums.then((data, index) => {
   });
 });
 
-// const navigate = (destination) => {
-//   console.log("click");
-//   const newUrl = `?page=${destination}`;
-//   history.pushState({ page: destination, data }, "", newUrl);
-//   var xhr = new XMLHttpRequest();
-//   xhr.onreadystatechange = function () {
-//     if (xhr.readyState == 4 && xhr.status == 200) {
-//       document.querySelector(".homeWrapper").innerHTML = xhr.responseText;
-//     }
-//   };
-//   xhr.open("GET", `http://127.0.0.1:5500/${destination}.html`, true);
-//   xhr.send();
-// };
-// window.onpopstate = function (event) {
-//   if (event.state) {
-//     const { page, data } = event.state;
-//     loadPage(page, data);
-//   }
-// };
-// Function to load a page inside a div
 
-const loadPage = (destination, data) => {
-  // If the destination is provided manually, use it; otherwise, extract it from the URL
-  const page = destination || getPageFromUrl();
 
-  // Get existing parameters and remove them
-  const urlParams = new URLSearchParams(window.location.search);
-  urlParams.delete("page");
-  urlParams.delete("id");
-
-  // Add new parameters
-  urlParams.set("page", page);
-  urlParams.set("id", data);
-
-  // Update URL parameters
-  const newUrl = `?${urlParams.toString()}`;
-  history.pushState({ page }, "", newUrl);
-  // Load the page content dynamically
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      document.querySelector(".homeWrapper").innerHTML = xhr.responseText;
-    }
-  };
-  xhr.open("GET", `http://127.0.0.1:5500/${page}.html`, true);
-  xhr.send();
-};
-
-// Function to extract the page parameter from the URL
-const getPageFromUrl = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("page"); // Default to "home" if page parameter is not present
-};
-
-loadPage();
 
 export { refreshAccessToken };
