@@ -1,5 +1,6 @@
 import { getData } from "./get.js";
 
+
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const newRelease = "https://api.spotify.com/v1/browse/new-releases";
@@ -16,6 +17,7 @@ const indiantop =
 
 const anirudh =
   "https://api.spotify.com/v1/artists/4zCH9qm4R2DADamUHMCa6O/albums";
+
 
 async function refreshAccessToken(refreshToken) {
   const tokenUrl = "https://accounts.spotify.com/api/token";
@@ -74,6 +76,9 @@ newReleasesPromise.then((data) => {
     artistTitle.textContent = albums.artists[0].name;
 
     itemTile.append(albumImage, albumTitle, artistTitle);
+    itemTile.onclick = () => {
+      loadPage("musiclist", albums.id);
+    };
     newReleaseContainer.append(itemTile);
   });
 });
@@ -82,6 +87,7 @@ const romanticPromise = getData(romantic);
 
 romanticPromise.then((data) => {
   console.log(data);
+
   const newRomantic = [...data.playlists.items];
   newRomantic.forEach((playlists) => {
     // console.log(playlists);
@@ -107,7 +113,9 @@ romanticPromise.then((data) => {
 
 const episodes = getData(indiantop);
 episodes.then((data) => {
+
   console.log(data);
+
   const topSongs = [...data.tracks];
   topSongs.forEach((playlists) => {
     // console.log(playlists);
@@ -125,6 +133,7 @@ episodes.then((data) => {
     itemTile.onclick = () => {
       window.location.href = `musiclist.html?id=${playlists.album.href}`;
     };
+
     top10Container.append(itemTile);
   });
 });
@@ -148,5 +157,8 @@ anirudhAlbums.then((data, index) => {
     anirudhContainer.append(itemTile);
   });
 });
+
+
+
 
 export { refreshAccessToken };

@@ -137,16 +137,16 @@ nav {
 }
 
 #heroSection nav div button {
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
   border: none;
-  background-color: #191414;
+  background-color: #0f0909;
   border-radius: 50%;
   box-sizing: border-box;
   margin-right: 20px;
   background-size: 60%;
-  background-position-x: 7px;
-  background-position-y: 7px;
+  background-position-x: 8px;
+  background-position-y: 8px;
   background-repeat: no-repeat;
 }
 
@@ -160,7 +160,8 @@ nav {
 #login {
   border-radius: 50%;
   padding: 0.8% 1%;
-  background-color: #191414;
+  border: hidden;
+  background-color: #0f0909;
 }
 
 #login img {
@@ -169,8 +170,8 @@ nav {
 }
 
 .homeWrapper {
-  margin-top: 10%;
-  padding: 0% 3%;
+  padding-top: 7%;
+  /* padding: 0%; */
 }
 
 .player {
@@ -183,10 +184,12 @@ nav {
 
 /* album-song-list */
 
+
 .homeWrapper {
   margin-top: 5%;
   padding: 0% 3%;
 }
+
 .player {
   position: fixed;
   width: 100%;
@@ -221,6 +224,7 @@ nav {
 .row {
   display: block;
   overflow: hidden;
+  padding-inline: 3%;
 }
 .row h2 {
   margin-block: 2%;
@@ -231,19 +235,20 @@ nav {
   overflow-y: scroll;
 }
 .itemTile {
-  max-width: 150px;
-  min-width: 200px;
+  min-width: 180px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   padding: 1.5%;
   box-sizing: border-box;
   background-color: #221818;
   padding-bottom: 1%;
+  box-sizing: border-box;
   border-radius: 10px;
   margin-right: 2%;
 }
 
-.itemTile .albumImage {
+.albumImage {
   max-width: 100%;
   min-width: 100%;
   height: 70%;
@@ -253,7 +258,7 @@ nav {
 
 .songTitle {
   max-width: 15ch;
-  margin-top: 5%;
+  margin-top: 10%;
   color: white;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -261,9 +266,40 @@ nav {
 }
 
 .albumTitle {
-  color: #615c5c;
+  color: #817b7b;
   box-sizing: border-box;
   font-size: 0.8em;
+
 }
 
-/* album-song-list -------Libin*/
+
+
+  margin-top: 2%;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title-title-name {
+  /* background-color: #332c2c; */
+  margin-left: 23px;
+}
+
+.title-spotify-duration {
+  height: 30px;
+  width: 4%;
+  position: absolute;
+  bottom: 25%;
+  right: 4%;
+  top: 5%;
+}
+
+.song-list-track {
+  margin-top: 20px;
+}
+
+.song-list-track p {
+  color: #c5c5c5;
+}
+
