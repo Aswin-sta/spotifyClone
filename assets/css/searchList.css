@@ -1,0 +1,40 @@
+  #searchList {
+    width: 90%;
+    margin: 20px auto;
+    background-color:#191414;
+    padding: 20px;
+    gap: 20px;
+    padding-top: 100px;
+    cursor: pointer;
+  }
+  #searchList h1{
+    padding-bottom: 30px;
+  }
+  .song {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .song img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .song-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .song:hover{
+    background-color: #383737;
+  }
+
+  h3, p, span {
+    margin: 0;
+  }
+  

@@ -5,7 +5,6 @@ const searchCateogoryPromise =  getData(
   "https://api.spotify.com/v1/browse/categories?country=IN"
 );
 
-
 searchCateogoryPromise.then((data) => {
     const categoryData=[...data.categories.items]
     console.log(categoryData);
@@ -39,3 +38,9 @@ function getRandomColor() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
+const searchBar = document.querySelector('.search-input');
+searchBar.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        window.location.href = `searchList.html?q=${searchBar.value}`;
+    }
+});
