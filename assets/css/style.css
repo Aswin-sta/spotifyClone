@@ -131,6 +131,7 @@ nav {
   top: 0;
   padding: 2% 5%;
   box-sizing: border-box;
+  z-index: 999;
 }
 #heroSection nav div {
   display: flex;
@@ -183,7 +184,6 @@ nav {
 }
 
 /* album-song-list */
-
 
 .homeWrapper {
   margin-top: 5%;
@@ -269,7 +269,6 @@ nav {
   color: #817b7b;
   box-sizing: border-box;
   font-size: 0.8em;
-
 }
 .title-title-name {
   /* background-color: #332c2c; */
@@ -300,7 +299,7 @@ nav {
   align-items: center;
   height: 10%;
 }
-.cover-image{
+.cover-image {
   display: flex;
 }
 .cover-image img {
@@ -308,12 +307,12 @@ nav {
   max-height: 75px;
   margin-right: 20px;
 }
-.cover-image li{
+.cover-image li {
   list-style: none;
   color: white;
   padding-bottom: 10px;
 }
-.cover-image ul{
+.cover-image ul {
   padding-block: 15%;
 }
 .player-controls {
@@ -323,7 +322,6 @@ nav {
   position: absolute;
   left: 30%;
   bottom: 1%;
-  
 }
 .control-button {
   background-color: black;
@@ -334,9 +332,8 @@ nav {
   padding-block: 30px;
   padding-inline: 10px;
   margin: 0 10px;
-  
 }
-.control-button button{
+.control-button button {
   border: none;
   cursor: pointer;
   appearance: none;
@@ -354,27 +351,25 @@ nav {
 .progress {
   background-color: #ffffff;
   height: 100%;
-  width: 30%; 
+  width: 30%;
   border-radius: 5px;
-  
 }
-.control-button i{
+.control-button i {
   font-size: 25px;
 }
-#play-pause{
-  background-color: #fff; 
-  color: black; 
+#play-pause {
+  background-color: #fff;
+  color: black;
   border: none;
   cursor: pointer;
   padding: 10px 15px;
   margin: 0 10px;
   border-radius: 50%;
 }
-#play-pause i{
+#play-pause i {
   font-size: 25px;
   color: #000000;
 }
-#play-pause:hover{
+#play-pause:hover {
   transform: scale(1.05);
 }
-
