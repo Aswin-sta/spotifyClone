@@ -1,6 +1,4 @@
-import { getData } from "./get.js";
-
-import { refreshAccessToken } from "./main.js";
+import { getData, refreshAccessToken } from "./get.js";
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
 
