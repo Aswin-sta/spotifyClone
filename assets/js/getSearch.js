@@ -23,7 +23,7 @@ searchCateogoryPromise.then(data => {
     searchSection.appendChild(searchContainer);
 
     searchContainer.onclick = () => {
-      window.location.href = `specificGenre.html?url=${elements.href}`;
+      window.location.href = `specificGenre.html?id=${elements.id}`;
     };
 
     const randomColor = getRandomColor();
