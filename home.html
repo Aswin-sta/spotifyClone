@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/profile.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
@@ -16,7 +12,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/home.js"></script>
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="wrapper">
@@ -27,7 +27,9 @@
               <a><img src="./assets/imgs/home.svg" />Home</a>
             </li>
             <li>
-              <a><img src="./assets/imgs/search.svg" />Search</a>
+              <a href="searchpage.html"
+                ><img src="./assets/imgs/search.svg" />Search</a
+              >
             </li>
           </ul>
         </div>
@@ -157,18 +159,18 @@
       </div>
     </div>
     <div class="spotify-player">
-      <div class="cover-image">
-        <img src="assets/imgs/album.png" alt="Album Cover" />
-        <ul>
-          <li><h3>In The End</h3></li>
-          <li><p>Linkin Park</p></li>
-        </ul>
-      </div>
-      <div class="cover-image" id="albumDetails">
-        <!-- Content will be dynamically added here -->
+      <div id="player-song-info">
+        <img id="player-album-art" src="./assets/imgs/album.png" />
+        <p id="player-song-title">
+          Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          <br />
+          <span id="player-song-album"
+            >ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span
+          >
+        </p>
       </div>
       <div class="player-controls">
-        <div class="control-buttons">
+        <div class="control-button-wrapper">
           <button class="control-button" id="shuffle" onclick="toggleShuffle()">
             <i class="fas fa-random"></i>
           </button>

@@ -1,7 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Varela Round", sans-serif;
+  /* font-family: "Satoshi", sans-serif; */
+  /* font-family: "Excon", sans-serif; */
+  font-family: "Outfit", sans-serif;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -27,7 +29,7 @@
 }
 .wrapper {
   width: 100%;
-  height: 85vh;
+  height: 87vh;
   display: flex;
   background-color: black;
   color: white;
@@ -41,7 +43,7 @@
 #sideBar .sideDivTile--top {
   border-radius: 7px;
   padding-block: 0.5%;
-  background-color: #191414;
+  background-color: #121212;
   color: white;
   height: 25%;
   margin: 2%;
@@ -60,6 +62,8 @@
   display: flex;
   align-items: center;
   padding-block: auto;
+  color: white;
+  text-decoration: none;
 }
 #sideBar .sideDivTile--top li img {
   margin-inline: 6%;
@@ -68,7 +72,7 @@
 #sideBar .sideDivTile {
   border-radius: 7px;
   padding-block: 0.5%;
-  background-color: #191414;
+  background-color: #121212;
   color: white;
   height: 83%;
   overflow-y: scroll;
@@ -88,7 +92,7 @@
 #sideBar .sideDivTile div {
   padding: 0.5% 5%;
   border-radius: 10px;
-  background-color: #332c2c;
+  background-color: #212121;
   color: white;
   margin: 8% 3%;
 }
@@ -119,7 +123,7 @@
   border-radius: 7px;
   overflow-y: scroll;
   margin: 0.5%;
-  background-color: #191414;
+  background-color: #121212;
   position: relative;
 }
 
@@ -187,7 +191,7 @@ nav {
 
 .homeWrapper {
   margin-top: 5%;
-  padding: 0% 3%;
+  padding: 0% 0.5%;
 }
 
 .player {
@@ -215,7 +219,7 @@ nav {
   position: absolute;
   right: 10%;
   padding: 1% 2%;
-  color: #191414;
+  color: #121212;
   border: none;
   font-weight: bolder;
   border-radius: 45px;
@@ -224,7 +228,7 @@ nav {
 .row {
   display: block;
   overflow: hidden;
-  padding-inline: 3%;
+  padding-inline: 1%;
 }
 .row h2 {
   margin-block: 2%;
@@ -235,13 +239,15 @@ nav {
   overflow-y: scroll;
 }
 .itemTile {
-  min-width: 180px;
-  min-height: 250px;
+  min-width: 185px;
+  min-height: 230px;
+  /* min-width: 28vh;
+  min-height: 28vh; */
   display: flex;
   flex-direction: column;
   padding: 1.5%;
   box-sizing: border-box;
-  background-color: #221818;
+  background-color: #212121;
   padding-bottom: 1%;
   box-sizing: border-box;
   border-radius: 10px;
@@ -251,7 +257,7 @@ nav {
 .albumImage {
   max-width: 100%;
   min-width: 100%;
-  height: 70%;
+  height: 160px;
   padding-inline: auto;
   border-radius: 10px;
 }
@@ -267,11 +273,13 @@ nav {
 
 .albumTitle {
   color: #817b7b;
+  padding-top: 2px;
   box-sizing: border-box;
   font-size: 0.8em;
+  font-weight: bold;
 }
 .title-title-name {
-  /* background-color: #332c2c; */
+  /* background-color: #212121; */
   margin-left: 23px;
 }
 
@@ -294,58 +302,72 @@ nav {
 /* player */
 .spotify-player {
   background-color: #000000;
-  padding: 20px;
+  display: flex;
+  padding: 0.5% 1%;
+  height: 13vh;
+  box-sizing: border-box;
+}
+
+#player-song-info {
   display: flex;
   align-items: center;
-  height: 10%;
+  min-width: 25%;
+  max-width: 25%;
 }
-.cover-image {
-  display: flex;
+
+#player-album-art {
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  margin-right: 15px;
 }
-.cover-image img {
-  max-width: 75px;
-  max-height: 75px;
-  margin-right: 20px;
-}
-.cover-image li {
-  list-style: none;
+
+#player-song-title {
   color: white;
-  padding-bottom: 10px;
+  margin-block: auto;
+  margin-block: 0;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.cover-image ul {
-  padding-block: 15%;
+
+#player-song-album {
+  color: rgb(150, 145, 145);
+  font-size: smaller;
+  margin-block: 0;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .player-controls {
+  display: inline-block;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-inline: 2%;
+  width: 50vw;
+}
+
+.control-button-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  left: 30%;
-  bottom: 1%;
+  justify-content: center;
+  margin-block: 6px 18px;
 }
 .control-button {
-  background-color: black;
-  color: #fff;
+  background-color: #000000;
+  color: white;
   border: none;
-  cursor: pointer;
-  font-size: 14px;
-  padding-block: 30px;
-  padding-inline: 10px;
-  margin: 0 10px;
-}
-.control-button button {
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  background-color: inherit;
-  transition: transform 0.7s ease-in-out;
+  font-weight: 100;
+  font-size: larger;
+  margin-inline: 2%;
 }
 .progress-bar {
   background-color: #555;
-  height: 10px;
-  width: 600px;
+  height: 2px;
+  width: 70%;
   border-radius: 5px;
-  margin: 0 10px;
+  margin: 0 auto;
 }
 
 .progress {
@@ -354,22 +376,11 @@ nav {
   width: 30%;
   border-radius: 5px;
 }
-.control-button i {
-  font-size: 25px;
-}
+
 #play-pause {
-  background-color: #fff;
-  color: black;
-  border: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  margin: 0 10px;
-  border-radius: 50%;
-}
-#play-pause i {
-  font-size: 25px;
+  background-color: white;
   color: #000000;
-}
-#play-pause:hover {
-  transform: scale(1.05);
+  font-size: medium;
+  padding: 0.5% 1.2% 0.5% 1.5%;
+  border-radius: 50%;
 }
