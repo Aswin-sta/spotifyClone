@@ -1,0 +1,73 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 100vw;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  padding: 20px;
+}
+
+.playlist-card {
+  width: 250px;
+  height: 320px;
+  margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #221818;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.playlist-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background-color: rgb(70, 67, 67);
+}
+
+.playlist-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.img_element {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  padding: 10px;
+  align-self: center;
+}
+
+.playlist-title {
+  font-size: 1.5em;
+  margin: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #fff;
+}
+
+.description {
+  font-size: 1em;
+  padding: 10px;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+
+.playlist-card:hover h3,
+.playlist-card:hover p {
+  text-decoration: none;
+}
