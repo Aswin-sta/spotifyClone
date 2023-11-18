@@ -1,37 +1,56 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Varela Round", sans-serif;
+  /* font-family: "Satoshi", sans-serif; */
+  /* font-family: "Excon", sans-serif; */
+  font-family: "Outfit", sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .wrapper {
   width: 100%;
-  height: 85vh;
+  height: 87vh;
   display: flex;
   background-color: black;
   color: white;
 }
 
 #sideBar {
-  width: 25%;
+  width: 23%;
+  height: 88%;
+  position: relative;
 }
 #sideBar .sideDivTile--top {
   border-radius: 7px;
   padding-block: 0.5%;
-  background-color: #191414;
+  background-color: #121212;
   color: white;
+  height: 25%;
   margin: 2%;
 }
 
-#sideBar .sideDivTile {
-  border-radius: 7px;
-  padding-block: 0.5%;
-  background-color: #191414;
-  color: white;
-  height: 74.5%;
-  margin: 2%;
-}
 #sideBar .sideDivTile--top li {
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 700;
   margin-inline: 0.5% 2%;
   margin-block: 5% 7%;
@@ -43,12 +62,23 @@
   display: flex;
   align-items: center;
   padding-block: auto;
+  color: white;
+  text-decoration: none;
 }
 #sideBar .sideDivTile--top li img {
   margin-inline: 6%;
   width: 8%;
 }
-
+#sideBar .sideDivTile {
+  border-radius: 7px;
+  padding-block: 0.5%;
+  background-color: #121212;
+  color: white;
+  height: 83%;
+  overflow-y: scroll;
+  margin-top: 25%;
+  margin: 2%;
+}
 #sideBar .sideDivTile h4 {
   margin: 5% 7%;
   display: flex;
@@ -62,7 +92,7 @@
 #sideBar .sideDivTile div {
   padding: 0.5% 5%;
   border-radius: 10px;
-  background-color: #332c2c;
+  background-color: #212121;
   color: white;
   margin: 8% 3%;
 }
@@ -89,47 +119,268 @@
 }
 
 #heroSection {
-  width: 75%;
+  width: 77%;
   border-radius: 7px;
   overflow-y: scroll;
   margin: 0.5%;
-  background-color: #191414;
+  background-color: #121212;
+  position: relative;
 }
 
 nav {
-  display: flex;
   justify-content: space-between;
-  padding: 2% 3%;
   position: fixed;
+  width: 77%;
+  display: flex;
+  top: 0;
+  padding: 2% 5%;
+  box-sizing: border-box;
+  z-index: 999;
 }
 #heroSection nav div {
   display: flex;
 }
-#heroSection nav div a {
-  background-color: #2c2828;
+
+#heroSection nav div button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background-color: #0f0909;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 20px;
+  background-size: 60%;
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
 }
 
-#heroSection nav div a img {
-  width: 10px;
-  height: 10px;
+#left--arrow {
+  background-image: url(../imgs/leftarrrow.png);
+}
+#right--arrow {
+  background-image: url(../imgs/rightarrow.png);
 }
 
 #login {
-  margin-right: 5%;
-  border-radius: 20%;
-  padding: 1%;
-  padding-top: auto;
-  background-color: #2c2828;
+  border-radius: 50%;
+  padding: 0.8% 1%;
+  border: hidden;
+  background-color: #0f0909;
 }
 
-.musicWrapper {
-  margin-top: 3%;
-  padding: 2% 3%;
+#login img {
+  width: 20px;
+  height: 20px;
 }
+
+.homeWrapper {
+  padding-top: 7%;
+  /* padding: 0%; */
+}
+
 .player {
   position: fixed;
   width: 100%;
   bottom: 0;
-  height: 15%;
+  height: 12%;
   background-color: black;
+}
+
+/* album-song-list */
+
+.homeWrapper {
+  margin-top: 5%;
+  padding: 0% 0.5%;
+}
+
+.player {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  color: white;
+  height: 15%;
+  background: linear-gradient(
+    90deg,
+    rgba(112, 9, 121, 1) 0%,
+    rgba(134, 57, 140, 1) 27%,
+    rgba(24, 147, 172, 1) 100%
+  );
+}
+.player h6 {
+  margin: 1% 2%;
+}
+.player p {
+  margin: 1% 2%;
+  font-size: 0.8em;
+}
+
+.player button {
+  position: absolute;
+  right: 10%;
+  padding: 1% 2%;
+  color: #121212;
+  border: none;
+  font-weight: bolder;
+  border-radius: 45px;
+}
+
+.row {
+  display: block;
+  overflow: hidden;
+  padding-inline: 1%;
+}
+.row h2 {
+  margin-block: 2%;
+}
+
+.itemWrapper {
+  display: flex;
+  overflow-y: scroll;
+}
+.itemTile {
+  min-width: 185px;
+  min-height: 230px;
+  /* min-width: 28vh;
+  min-height: 28vh; */
+  display: flex;
+  flex-direction: column;
+  padding: 1.5%;
+  box-sizing: border-box;
+  background-color: #212121;
+  padding-bottom: 1%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-right: 2%;
+}
+
+.albumImage {
+  max-width: 100%;
+  min-width: 100%;
+  height: 160px;
+  padding-inline: auto;
+  border-radius: 10px;
+}
+
+.songTitle {
+  max-width: 15ch;
+  margin-top: 10%;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.albumTitle {
+  color: #817b7b;
+  padding-top: 2px;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.title-title-name {
+  /* background-color: #212121; */
+  margin-left: 23px;
+}
+
+.title-spotify-duration {
+  height: 30px;
+  width: 4%;
+  position: absolute;
+  bottom: 25%;
+  right: 4%;
+  top: 5%;
+}
+
+.song-list-track {
+  margin-top: 20px;
+}
+
+.song-list-track p {
+  color: #c5c5c5;
+}
+/* player */
+.spotify-player {
+  background-color: #000000;
+  display: flex;
+  padding: 0.5% 1%;
+  height: 13vh;
+  box-sizing: border-box;
+}
+
+#player-song-info {
+  display: flex;
+  align-items: center;
+  min-width: 25%;
+  max-width: 25%;
+}
+
+#player-album-art {
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  margin-right: 15px;
+}
+
+#player-song-title {
+  color: white;
+  margin-block: auto;
+  margin-block: 0;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#player-song-album {
+  color: rgb(150, 145, 145);
+  font-size: smaller;
+  margin-block: 0;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.player-controls {
+  display: inline-block;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-inline: 2%;
+  width: 50vw;
+}
+
+.control-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-block: 6px 18px;
+}
+.control-button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  font-weight: 100;
+  font-size: larger;
+  margin-inline: 2%;
+}
+.progress-bar {
+  background-color: #555;
+  height: 2px;
+  width: 70%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.progress {
+  background-color: #ffffff;
+  height: 100%;
+  width: 30%;
+  border-radius: 5px;
+}
+
+#play-pause {
+  background-color: white;
+  color: #000000;
+  font-size: medium;
+  padding: 0.5% 1.2% 0.5% 1.5%;
+  border-radius: 50%;
 }

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/searchList.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/searchpage.css">
+    <script type="module" src="./assets/js/searchList.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="sideBar">
+        <div class="sideDivTile--top">
+          <ul>
+            <li>
+              <a><img src="./assets/imgs/home.svg" />Home</a>
+            </li>
+            <li>
+              <a><img src="./assets/imgs/search.svg" />Search</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sideDivTile">
+          <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
+          <a></a>
+          <a></a>
+          <div>
+            <h3>Create your first playlist</h3>
+            <p>it's easy, we'll help you</p>
+            <button>Create Playlist</button>
+          </div>
+          <div>
+            <h3>Lets's find some podcast to follow</h3>
+            <p>We'll leep you updated on new episodes</p>
+            <button>Browse podcast</button>
+          </div>
+        </div>
+      </div>
+      <div id="heroSection">
+        <nav>
+          <div>
+            <button id="left--arrow">
+              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
+            </button>
+            <button id="right--arrow">
+              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
+            </button>
+            <div class="search">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="What do you want to listen to?"
+              />
+            </div>
+          </div>
+          <button id="login" href="#">
+            <img src="./assets/imgs/user.png" />
+          </button>
+        </nav>
+        <div id="searchList">
+          <h1>Songs</h1>
+        </div>
+        <div class="bottomBar">
+          <div class="footertop">
+            <div class="companyWrapper">
+              <p class="header">Company</p>
+              <p>
+                <a href="https://www.spotify.com/in-en/about-us/contact/"
+                  >About</a
+                >
+              </p>
+              <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
+              <p><a href="https://newsroom.spotify.com/">For the Record</a></p>
+            </div>
+            <div class="communitiesWrapper">
+              <p class="header">Communities</p>
+              <p><a href="https://artists.spotify.com/home">For Artists</a></p>
+              <p><a href="https://developer.spotify.com/">Developers</a></p>
+              <p><a href="https://ads.spotify.com/en-IN/">Advertising</a></p>
+              <p>
+                <a href="https://investors.spotify.com/home/default.aspx"
+                  >Investors</a
+                >
+              </p>
+              <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
+            </div>
+            <div class="useWrapper">
+              <p class="header">Useful links</p>
+              <p><a href="https://support.spotify.com/in-en/">Support</a></p>
+              <p>
+                <a href="https://www.spotify.com/in-en/download/windows/"
+                  >Free Mobile App</a
+                >
+              </p>
+            </div>
+            <div class="socialWrapper">
+              <button><img src="./assets/imgs/instagram.png" /></button>
+              <button><img src="./assets/imgs/twitter.png" /></button>
+              <button><img src="./assets/imgs/facebook.png" /></button>
+            </div>
+          </div>
+          <hr />
+          <div class="footerbottom">
+            <div class="navbar">
+              <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
+              <p>
+                <a href="https://www.spotify.com/in-en/privacy"
+                  >Privacy Center</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                  >Privacy Policy</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                  >Cookies</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                  >About Ads</a
+                >
+              </p>
+              <p>
+                <a href="https://www.spotify.com/in-en/accessibility"
+                  >Accessibility</a
+                >
+              </p>
+            </div>
+            <div class="copyright">
+              <p>© 2023 Spotify AB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="spotify-player">
+      <div id="player-song-info">
+        <img id="player-album-art" src="./assets/imgs/album.png" />
+        <p id="player-song-title">
+          Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          <br />
+          <span id="player-song-album"
+            >ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span
+          >
+        </p>
+      </div>
+      <div class="player-controls">
+        <div class="control-button-wrapper">
+          <button class="control-button" id="shuffle" onclick="toggleShuffle()">
+            <i class="fas fa-random"></i>
+          </button>
+          <button
+            class="control-button"
+            id="skip-backward"
+            onclick="skipBackward()"
+          >
+            <i class="fas fa-step-backward"></i>
+          </button>
+          <button
+            class="control-button"
+            id="play-pause"
+            onclick="togglePlayPause()"
+          >
+            <i class="fas fa-play"></i>
+          </button>
+          <button
+            class="control-button"
+            id="skip-forward"
+            onclick="skipForward()"
+          >
+            <i class="fas fa-step-forward"></i>
+          </button>
+          <button class="control-button" id="repeat" onclick="toggleRepeat()">
+            <i class="fas fa-retweet"></i>
+          </button>
+        </div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="assets/js/getSearch.js"></script>
+</html>
+
+  </body>
+</html>

@@ -1,0 +1,76 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  color: #fff;
+}
+
+.playlist-card {
+  width: 250px;
+  height: 300px;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #221818;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.playlist-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background-color: rgb(70, 67, 67);
+}
+
+.playlist-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.img_element {
+  width: 90%;
+  height: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.playlist-title,
+.description {
+  font-size: 1.5em;
+  margin: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #fff;
+}
+
+.playlist-title {
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.description {
+  font-size: 1em;
+  padding: 10px;
+  color: #888;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}

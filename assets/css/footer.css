@@ -1,0 +1,77 @@
+.bottomBar {
+  margin-top: 10%;
+  bottom: 0;
+}
+.footertop {
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+.footertop .header {
+  color: white;
+  font-weight: 600;
+}
+.footertop p {
+  padding-bottom: 10px;
+}
+.footertop a {
+  text-decoration: none;
+  color: gray;
+}
+.footertop a:hover {
+  text-decoration: underline;
+  color: white;
+}
+.footertop .companyWrapper {
+  margin-right: 15%;
+}
+.footertop .communitiesWrapper {
+  margin-right: 15%;
+}
+.footertop .useWrapper {
+  margin-right: 10%;
+}
+.footertop .socialWrapper {
+  display: flex;
+}
+.footertop .socialWrapper button {
+  height: 30px;
+  width: 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+}
+.footertop .socialWrapper img {
+  height: 30px;
+  width: 30px;
+}
+.bottomBar hr {
+  width: 95%;
+  margin-left: 20px;
+  border: 1px solid gray;
+}
+.footerbottom {
+  display: flex;
+  margin-bottom: 10%;
+}
+.footerbottom .navbar {
+  display: flex;
+  margin: 30px 0px 0px 40px;
+}
+.footerbottom .navbar p {
+  padding-right: 20px;
+  font-size: 13px;
+}
+.footerbottom .navbar a {
+  text-decoration: none;
+  color: gray;
+}
+.footerbottom .navbar a:hover {
+  color: white;
+}
+.footerbottom .copyright {
+  margin: 30px 0px 0px 22%;
+}
+.footerbottom .copyright p {
+  font-size: 14px;
+}
