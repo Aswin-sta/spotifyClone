@@ -144,18 +144,18 @@
       </div>
     </div>
     <div class="spotify-player">
-      <div class="cover-image">
-        <img src="assets/imgs/album.png" alt="Album Cover" />
-        <ul>
-          <li><h3>In The End</h3></li>
-          <li><p>Linkin Park</p></li>
-        </ul>
-      </div>
-      <div class="cover-image" id="albumDetails">
-        <!-- Content will be dynamically added here -->
+      <div id="player-song-info">
+        <img id="player-album-art" src="./assets/imgs/album.png" />
+        <p id="player-song-title">
+          Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          <br />
+          <span id="player-song-album"
+            >ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span
+          >
+        </p>
       </div>
       <div class="player-controls">
-        <div class="control-buttons">
+        <div class="control-button-wrapper">
           <button class="control-button" id="shuffle" onclick="toggleShuffle()">
             <i class="fas fa-random"></i>
           </button>
