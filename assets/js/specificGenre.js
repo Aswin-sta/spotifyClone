@@ -1,5 +1,4 @@
-import { getData } from './get.js';
-import { refreshAccessToken } from './main.js';
+import { getData, refreshAccessToken } from './get.js';
 
 await refreshAccessToken(localStorage.getItem('refresh_token'));
 
@@ -9,32 +8,16 @@ const url = `https://api.spotify.com/v1/browse/categories/${id}`;
 console.log(url);
 const genreData = await getData(url);
 const playlistData = await getData(url + '/playlists');
+console.log(playlistData);
 
 const genreTitle = document.querySelector('#genre-title');
 genreTitle.innerHTML = genreData.name;
 
 const mainContainer = document.getElementById('main-container');
-const container = document.createElement('div');
-container.className = 'playlist-container';
-// const playlistsData = [...playlistData.playlists.items];
-// console.log(playlistsData);
 
 playlistData.playlists.items.forEach(playlist => {
-  console.log(playlist);
-  const playlistLink = document.createElement('a');
-  const playlistUrl = `musiclist.html?id=${playlist.id}`;
-
-  playlistLink.setAttribute('href', playlistUrl);
-
   const playlist_card = document.createElement('div');
   playlist_card.className = 'playlist-card';
-
-  const interdata = getData(playlist.href);
-  console.log(interdata);
-
-  const image_card_maindiv = document.createElement('div');
-  const image_div = document.createElement('div');
-  image_div.className = 'image_div';
 
   const img_element = document.createElement('img');
   img_element.classList.add('img_element');
@@ -48,8 +31,10 @@ playlistData.playlists.items.forEach(playlist => {
   description.classList.add('description');
   description.innerHTML = playlist.description;
 
-  image_card_maindiv.append(image_div, img_element, description);
   playlist_card.append(img_element, playlist_title, description);
-  playlistLink.appendChild(playlist_card);
-  mainContainer.appendChild(playlistLink);
+  mainContainer.appendChild(playlist_card);
+
+  playlist_card.onclick = () => {
+    window.location.href = `musiclist.html?id=${playlist.id}`;
+  };
 });
