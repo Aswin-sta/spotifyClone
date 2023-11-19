@@ -19,9 +19,22 @@ playlistData.playlists.items.forEach(playlist => {
   const playlist_card = document.createElement('div');
   playlist_card.className = 'playlist-card';
 
+  const img_container = document.createElement('div');
+  img_container.classList.add('img-container');
+
   const img_element = document.createElement('img');
   img_element.classList.add('img_element');
   img_element.src = playlist.images[0].url;
+
+  const playDiv = document.createElement('div');
+  playDiv.classList.add('play');
+  const playSpan = document.createElement('span');
+  playSpan.classList.add('fa', 'fa-play');
+
+  playDiv.appendChild(playSpan);
+
+  img_container.appendChild(img_element);
+  img_container.appendChild(playDiv);
 
   const playlist_title = document.createElement('h3');
   playlist_title.className = 'playlist-title';
@@ -31,7 +44,7 @@ playlistData.playlists.items.forEach(playlist => {
   description.classList.add('description');
   description.innerHTML = playlist.description;
 
-  playlist_card.append(img_element, playlist_title, description);
+  playlist_card.append(img_container, playlist_title, description);
   mainContainer.appendChild(playlist_card);
 
   playlist_card.onclick = () => {
