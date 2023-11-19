@@ -24,7 +24,7 @@
         <div class="sideDivTile--top">
           <ul>
             <li>
-              <a><img src="./assets/imgs/home.svg" />Home</a>
+              <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
             </li>
             <li>
               <a href="searchpage.html"
@@ -181,13 +181,15 @@
           >
             <i class="fas fa-step-backward"></i>
           </button>
-          <button
-            class="control-button"
-            id="play-pause"
-            onclick="togglePlayPause()"
-          >
-            <i class="fas fa-play"></i>
-          </button>
+          <div id="play-pause-div">
+            <button
+              class="control-button"
+              id="play-pause"
+              onclick="togglePlayPause()"
+            >
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           <button
             class="control-button"
             id="skip-forward"
