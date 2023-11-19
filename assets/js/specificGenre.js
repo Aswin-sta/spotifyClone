@@ -24,7 +24,7 @@ playlistData.playlists.items.forEach(playlist => {
   img_element.src = playlist.images[0].url;
 
   const playlist_title = document.createElement('h3');
-  playlist_title.className = 'playlist_title';
+  playlist_title.className = 'playlist-title';
   playlist_title.innerHTML = playlist.name;
 
   const description = document.createElement('p');
