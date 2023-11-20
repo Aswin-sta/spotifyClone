@@ -41,10 +41,12 @@
   position: relative;
 }
 #sideBar .sideDivTile--top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 7px;
   padding-block: 0.5%;
   background-color: #121212;
-  color: white;
   height: 25%;
   margin: 2%;
 }
@@ -62,7 +64,7 @@
   display: flex;
   align-items: center;
   padding-block: auto;
-  color: white;
+  color: rgb(163, 156, 156);
   text-decoration: none;
 }
 #sideBar .sideDivTile--top li img {
@@ -73,7 +75,7 @@
   border-radius: 7px;
   padding-block: 0.5%;
   background-color: #121212;
-  color: white;
+  color: rgb(163, 156, 156);
   height: 83%;
   overflow-y: scroll;
   margin-top: 25%;
@@ -90,7 +92,7 @@
   width: 9%;
 }
 #sideBar .sideDivTile div {
-  padding: 0.5% 5%;
+  padding: 2% 5%;
   border-radius: 10px;
   background-color: #212121;
   color: white;
@@ -241,8 +243,6 @@ nav {
 .itemTile {
   min-width: 185px;
   min-height: 230px;
-  /* min-width: 28vh;
-  min-height: 28vh; */
   display: flex;
   flex-direction: column;
   padding: 1.5%;
@@ -254,12 +254,37 @@ nav {
   margin-right: 2%;
 }
 
-.albumImage {
+.spotify-play-button {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  opacity: 0; /* Start with 0 opacity */
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  transform: translateY(15px);
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add opacity to the transition */
+}
+.itemTile:hover .spotify-play-button {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.albumImageWrapper {
   max-width: 100%;
   min-width: 100%;
+  overflow: hidden;
   height: 160px;
-  padding-inline: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
   border-radius: 10px;
+}
+
+.albumImage {
+  width: 100%; /* Ensure the image takes up the full width of its container */
+  height: 100%; /* Maintain the aspect ratio */
+  display: block;
 }
 
 .songTitle {
@@ -277,7 +302,12 @@ nav {
   box-sizing: border-box;
   font-size: 0.8em;
   font-weight: bold;
+  max-height: 3.5em;
+  overflow: hidden;
+  margin-bottom: 1px;
+  line-height: 1.5em;
 }
+
 .title-title-name {
   /* background-color: #212121; */
   margin-left: 23px;
@@ -352,19 +382,33 @@ nav {
 .control-button-wrapper {
   display: flex;
   justify-content: center;
-  margin-block: 6px 18px;
+  margin-block: 0px 18px;
 }
 .control-button {
   background-color: #000000;
-  color: white;
+  color: grey;
   border: none;
   font-weight: 100;
   font-size: larger;
   margin-inline: 2%;
 }
+
+.control-button {
+  color: grey;
+}
+
+.control-button :hover {
+  color: white;
+}
+
+.control-button .fa-play {
+  color: black;
+  background-color: white;
+}
+
 .progress-bar {
   background-color: #555;
-  height: 2px;
+  height: 3px;
   width: 70%;
   border-radius: 5px;
   margin: 0 auto;
@@ -380,7 +424,17 @@ nav {
 #play-pause {
   background-color: white;
   color: #000000;
-  font-size: medium;
-  padding: 0.5% 1.2% 0.5% 1.5%;
+  font-size: 16px;
+  padding-left: 35%;
+  padding-right: auto;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
   border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+}
+
+#play-pause-div:hover {
+  transform: scale(1.1);
 }
