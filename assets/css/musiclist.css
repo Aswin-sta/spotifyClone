@@ -17,11 +17,12 @@
   height: 300px;
 }
 
-.banner-img img {
+.banner-img-img {
   width: 230px;
   height: 250px;
   margin-top: 30px;
   margin-left: 20px;
+  border-radius: 50px;
 }
 
 .banner-header {
@@ -171,4 +172,18 @@ hr {
 
 .song-list-track p {
   color: #c5c5c5;
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
 }

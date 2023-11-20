@@ -20,10 +20,13 @@ function timeConvertion(duration_ms) {
 }
 
 newReleasesPromise.then((data) => {
-  console.log(data);
   //bannerImage
-  const bannerImage = document.querySelector(".banner-img img");
+  const bannerImage = document.createElement("img");
+  bannerImage.className = "banner-img-img skeleton";
+  const bannerImageSection = document.querySelector(".banner-img");
+  bannerImageSection.append(bannerImage);
   bannerImage.src = data.images[0].url;
+
   //banner Title
   const bannerTitle = document.querySelector(".banner-header h1");
   bannerTitle.textContent = data.name;
@@ -35,36 +38,41 @@ newReleasesPromise.then((data) => {
 
   const albumSongList = document.querySelector(".album-song-list");
   if (type == "album") {
-    for (let i = 0; i < data.tracks.items.length; i++) {
+    musicDataList.forEach((track, index) => {
       const songListTrack = document.createElement("div");
       songListTrack.className = "song-list-track";
-      songListTrack.id = `Track-${Number(i + 1)}`;
+      songListTrack.id = `Track-${Number(index + 1)}`;
+
       const trackNo = document.createElement("p");
       trackNo.className = "title-hash";
-      trackNo.textContent = `${Number(i + 1)}`;
+      trackNo.textContent = `${Number(index + 1)}`;
+
       const trackName = document.createElement("p");
       trackName.className = "title-title-name";
-      trackName.textContent = musicDataList[i].name;
+      trackName.textContent = track.name;
 
       const trackDuration = document.createElement("p");
       trackDuration.className = "title-spotify-duration";
-      trackDuration.textContent = timeConvertion(musicDataList[i].duration_ms);
+      trackDuration.textContent = timeConvertion(track.duration_ms);
+
       songListTrack.append(trackNo);
       songListTrack.append(trackName);
-
       songListTrack.append(trackDuration);
+
       albumSongList.append(songListTrack);
-    }
+    });
   } else if (type == "playlist") {
-    for (let i = 0; i < data.tracks.items.length; i++) {
-      const playList = musicDataList[i].track;
+    musicDataList.forEach((_, index) => {
+      const playList = musicDataList[index].track;
 
       const songListTrack = document.createElement("div");
       songListTrack.className = "song-list-track";
-      songListTrack.id = `Track-${Number(i + 1)}`;
+      songListTrack.id = `Track-${Number(index + 1)}`;
+
       const trackNo = document.createElement("p");
       trackNo.className = "title-hash";
-      trackNo.textContent = `${Number(i + 1)}`;
+      trackNo.textContent = `${Number(index + 1)}`;
+
       const trackName = document.createElement("p");
       trackName.className = "title-title-name";
       trackName.textContent = playList.name;
@@ -72,11 +80,12 @@ newReleasesPromise.then((data) => {
       const trackDuration = document.createElement("p");
       trackDuration.className = "title-spotify-duration";
       trackDuration.textContent = timeConvertion(playList.duration_ms);
+
       songListTrack.append(trackNo);
       songListTrack.append(trackName);
-
       songListTrack.append(trackDuration);
+
       albumSongList.append(songListTrack);
-    }
+    });
   }
 });
