@@ -2,7 +2,9 @@ import { getData, refreshAccessToken } from './get.js';
 
 await refreshAccessToken(localStorage.getItem('refresh_token'));
 
+// const id = new URLSearchParams(window.location.search).get('id');
 const id = new URLSearchParams(window.location.search).get('id');
+const url = `https://api.spotify.com/v1/browse/categories/tracks${id}`;
 
 const newReleasesPromise = getData(id);
 
