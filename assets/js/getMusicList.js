@@ -53,6 +53,9 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackName);
 
       songListTrack.append(trackDuration);
+      songListTrack.onclick = () => {
+        changeSource(musicDataList[i].preview_url);
+      };
       albumSongList.append(songListTrack);
     }
   } else if (type == "playlist") {
@@ -76,7 +79,41 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackName);
 
       songListTrack.append(trackDuration);
+      songListTrack.onclick = () => {
+        changeSource(playList.preview_url);
+      };
       albumSongList.append(songListTrack);
     }
   }
 });
+
+const musicPlayer = document.getElementById("musicPlayer");
+const playPauseButton = document.getElementById("play-pause");
+const playPauseDiv = document.getElementById("play-pause-div");
+const progress = document.getElementById("progress");
+playPauseDiv.addEventListener("click", togglePlayPause);
+
+function togglePlayPause() {
+  if (musicPlayer.paused) {
+    musicPlayer.play();
+    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+  } else {
+    musicPlayer.pause();
+    playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+  }
+}
+
+function changeSource(newSource) {
+  const audioSource = document.getElementById("audioSource");
+  audioSource.src = newSource;
+  musicPlayer.load(); // Reload the audio element to apply the new source
+  musicPlayer.play(); // Start playing the new source
+  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+}
+
+musicPlayer.addEventListener("timeupdate", updateProgress);
+
+function updateProgress() {
+  const percent = (musicPlayer.currentTime / musicPlayer.duration) * 100;
+  progress.style.width = percent + "%";
+}
