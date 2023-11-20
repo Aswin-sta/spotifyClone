@@ -5,7 +5,6 @@ const topTracksPromise = getData("https://api.spotify.com/v1/me/top/tracks");
 console.log(topTracksPromise);
 
 topTracksPromise.then((data) => {
-  console.log(data);
   data.items.forEach((track, songNumber) => {
     console.log(track);
     createSongElement(track, songNumber);
