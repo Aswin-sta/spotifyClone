@@ -1,4 +1,5 @@
 import { getData, refreshAccessToken } from "./get.js";
+import { changeSource } from "./player.js";
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
 
@@ -54,7 +55,12 @@ newReleasesPromise.then((data) => {
 
       songListTrack.append(trackDuration);
       songListTrack.onclick = () => {
-        changeSource(musicDataList[i].preview_url);
+        changeSource(
+          musicDataList[i].preview_url,
+          musicDataList[i].name,
+          data.name,
+          data.images[0].url
+        );
       };
       albumSongList.append(songListTrack);
     }
@@ -80,40 +86,14 @@ newReleasesPromise.then((data) => {
 
       songListTrack.append(trackDuration);
       songListTrack.onclick = () => {
-        changeSource(playList.preview_url);
+        changeSource(
+          playList.preview_url,
+          playList.name,
+          data.name,
+          data.images[0].url
+        );
       };
       albumSongList.append(songListTrack);
     }
   }
 });
-
-const musicPlayer = document.getElementById("musicPlayer");
-const playPauseButton = document.getElementById("play-pause");
-const playPauseDiv = document.getElementById("play-pause-div");
-const progress = document.getElementById("progress");
-playPauseDiv.addEventListener("click", togglePlayPause);
-
-function togglePlayPause() {
-  if (musicPlayer.paused) {
-    musicPlayer.play();
-    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-  } else {
-    musicPlayer.pause();
-    playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
-  }
-}
-
-function changeSource(newSource) {
-  const audioSource = document.getElementById("audioSource");
-  audioSource.src = newSource;
-  musicPlayer.load(); // Reload the audio element to apply the new source
-  musicPlayer.play(); // Start playing the new source
-  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-}
-
-musicPlayer.addEventListener("timeupdate", updateProgress);
-
-function updateProgress() {
-  const percent = (musicPlayer.currentTime / musicPlayer.duration) * 100;
-  progress.style.width = percent + "%";
-}
