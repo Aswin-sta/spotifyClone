@@ -10,10 +10,11 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
-  padding: 10px;
+  align-items: flex-start;
+  justify-content: start;
+  margin-left: 10px;
+  margin-right: 10px;
   color: #fff;
 }
 
