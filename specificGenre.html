@@ -17,6 +17,8 @@
       href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
       rel="stylesheet"
     />
+
+    <script type="module" src="assets/js/specificGenre.js" defer></script>
   </head>
   <body>
     <div class="wrapper">
@@ -175,13 +177,15 @@
           >
             <i class="fas fa-step-backward"></i>
           </button>
-          <button
-            class="control-button"
-            id="play-pause"
-            onclick="togglePlayPause()"
-          >
-            <i class="fas fa-play"></i>
-          </button>
+          <div id="play-pause-div">
+            <button
+              class="control-button"
+              id="play-pause"
+              onclick="togglePlayPause()"
+            >
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
           <button
             class="control-button"
             id="skip-forward"
@@ -199,5 +203,4 @@
       </div>
     </div>
   </body>
-  <script type="module" src="assets/js/specificGenre.js"></script>
 </html>
