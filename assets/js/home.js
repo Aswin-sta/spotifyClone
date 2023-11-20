@@ -28,7 +28,8 @@ newReleasesPromise.then((data) => {
     let newReleaseContainer = document.querySelector(".newReleases");
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
-
+    let albumImageWrapper = document.createElement("div");
+    albumImageWrapper.classList.add("albumImageWrapper");
     let albumImage = document.createElement("img");
     albumImage.classList.add("albumImage");
     albumImage.src = albums.images[0].url; // Assuming you want to use the first image
@@ -41,9 +42,14 @@ newReleasesPromise.then((data) => {
     // Assuming you want to display the first artist's name
     artistTitle.textContent = albums.artists[0].name;
 
-    itemTile.append(albumImage, albumTitle, artistTitle);
+    const playButton = document.createElement("img");
+    playButton.src = "./assets/imgs/spotify-play-button.png";
+    playButton.alt = "Play";
+    playButton.classList.add("spotify-play-button");
+    albumImageWrapper.append(albumImage, playButton);
+    itemTile.append(albumImageWrapper, albumTitle, artistTitle);
     itemTile.onclick = () => {
-      loadPage("musiclist", albums.id);
+      window.location.href = `musiclist.html?id=${albums.href}`;
     };
     newReleaseContainer.append(itemTile);
   });
@@ -61,6 +67,8 @@ romanticPromise.then((data) => {
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
 
+    let albumImageWrapper = document.createElement("div");
+    albumImageWrapper.classList.add("albumImageWrapper");
     let albumImage = document.createElement("img");
     albumImage.classList.add("albumImage");
     albumImage.src = playlists.images[0].url; // Assuming you want to use the first image
@@ -72,7 +80,16 @@ romanticPromise.then((data) => {
     // Assuming you want to display the first artist's name
     artistTitle.textContent = playlists.description;
 
-    itemTile.append(albumImage, albumTitle, artistTitle);
+    const playButton = document.createElement("img");
+    playButton.src = "./assets/imgs/spotify-play-button.png";
+    playButton.alt = "Play";
+    playButton.classList.add("spotify-play-button");
+    albumImageWrapper.append(albumImage, playButton);
+    itemTile.append(albumImageWrapper, albumTitle, artistTitle);
+
+    itemTile.onclick = () => {
+      window.location.href = `musiclist.html?id=${newRomantic.href}`;
+    };
     newReleaseContainer.append(itemTile);
   });
 });
@@ -88,17 +105,23 @@ episodes.then((data) => {
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
 
+    let albumImageWrapper = document.createElement("div");
+    albumImageWrapper.classList.add("albumImageWrapper");
     let albumImage = document.createElement("img");
     albumImage.classList.add("albumImage");
     albumImage.src = playlists.album.images[0].url; // Assuming you want to use the first image
     let albumTitle = document.createElement("h4");
     albumTitle.classList.add("songTitle");
     albumTitle.textContent = playlists.album.name;
-    itemTile.append(albumImage, albumTitle);
+    const playButton = document.createElement("img");
+    playButton.src = "./assets/imgs/spotify-play-button.png";
+    playButton.alt = "Play";
+    playButton.classList.add("spotify-play-button");
+    albumImageWrapper.append(albumImage, playButton);
+    itemTile.append(albumImageWrapper, albumTitle);
     itemTile.onclick = () => {
       window.location.href = `musiclist.html?id=${playlists.album.href}`;
     };
-
     top10Container.append(itemTile);
   });
 });
@@ -112,13 +135,23 @@ anirudhAlbums.then((data, index) => {
     let anirudhContainer = document.querySelector(".anirudhMania");
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
+    let albumImageWrapper = document.createElement("div");
+    albumImageWrapper.classList.add("albumImageWrapper");
     let albumImage = document.createElement("img");
     albumImage.classList.add("albumImage");
     albumImage.src = playlists.images[0].url;
     let albumTitle = document.createElement("h4");
     albumTitle.classList.add("songTitle");
     albumTitle.textContent = playlists.name;
-    itemTile.append(albumImage, albumTitle);
+    const playButton = document.createElement("img");
+    playButton.src = "./assets/imgs/spotify-play-button.png";
+    playButton.alt = "Play";
+    playButton.classList.add("spotify-play-button");
+    albumImageWrapper.append(albumImage, playButton);
+    itemTile.append(albumImageWrapper, albumTitle);
+    itemTile.onclick = () => {
+      window.location.href = `musiclist.html?id=${anirudhAlbums.href}`;
+    };
     anirudhContainer.append(itemTile);
   });
 });
