@@ -1,0 +1,48 @@
+@import url(./main.css);
+nav {
+  justify-content: space-between;
+  position: fixed;
+  width: 77%;
+  display: flex;
+  top: 0;
+  padding: 2% 5%;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 999;
+}
+#heroSection nav div {
+  display: flex;
+}
+
+#heroSection nav div button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background-color: #0f0909;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 20px;
+  background-size: 60%;
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+#left--arrow {
+  background-image: url(../imgs/leftarrrow.png);
+}
+#right--arrow {
+  background-image: url(../imgs/rightarrow.png);
+}
+
+#login {
+  border-radius: 50%;
+  padding: 0.8% 1%;
+  border: hidden;
+  background-color: #0f0909;
+}
+
+#login img {
+  width: 20px;
+  height: 20px;
+}

@@ -1,5 +1,4 @@
-/* search-page */
-
+@import url(./main.css);
 .searchDisplay {
   display: block;
   gap: 20px;
