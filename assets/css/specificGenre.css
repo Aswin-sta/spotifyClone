@@ -74,7 +74,7 @@
 .img-container {
   position: relative;
 }
-
+/* 
 .play {
   position: absolute;
   bottom: 30px;
@@ -87,8 +87,20 @@
   color: black;
   font-size: x-large;
   padding: 20px;
+} */
+
+.spotify-play-button {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  opacity: 0; /* Start with 0 opacity */
+  position: absolute;
+  right: 8%;
+  bottom: 15%;
+  transform: translateY(15px);
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add opacity to the transition */
 }
 
-.playlist-card:hover .play {
+.playlist-card:hover .spotify-play-button {
   opacity: 1;
 }

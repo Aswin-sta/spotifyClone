@@ -26,15 +26,13 @@ playlistData.playlists.items.forEach(playlist => {
   img_element.classList.add('img_element');
   img_element.src = playlist.images[0].url;
 
-  const playDiv = document.createElement('div');
-  playDiv.classList.add('play');
-  const playSpan = document.createElement('span');
-  playSpan.classList.add('fa', 'fa-play');
-
-  playDiv.appendChild(playSpan);
+  const playButton = document.createElement('img');
+  playButton.src = './assets/imgs/spotify-play-button.png';
+  playButton.alt = 'Play';
+  playButton.classList.add('spotify-play-button');
 
   img_container.appendChild(img_element);
-  img_container.appendChild(playDiv);
+  img_container.appendChild(playButton);
 
   const playlist_title = document.createElement('h3');
   playlist_title.className = 'playlist-title';
