@@ -1,8 +1,5 @@
-:root {
-  --spotify-grey: #121212;
-  --spotify-light-grey: #161616;
-  --spotify-light-grey-hover: #212121;
-}
+
+@import url(./main.css);
 
 .body {
   font-family: 'Arial', sans-serif;
