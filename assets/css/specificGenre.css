@@ -1,3 +1,9 @@
+:root {
+  --spotify-grey: #121212;
+  --spotify-light-grey: #161616;
+  --spotify-light-grey-hover: #212121;
+}
+
 .body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -11,20 +17,20 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
   color: #fff;
 }
 
 .playlist-card {
-  width: 180px;
+  width: 190px;
   height: 250px;
   align-items: center;
   padding-bottom: 25px;
   justify-content: start;
   position: relative;
-  margin: 10px;
+  margin: 5px;
   border-radius: 10px;
-  background-color: #212121;
+  background-color: var(--spotify-light-grey);
   text-decoration: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -32,7 +38,7 @@
 
 .playlist-card:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  background-color: rgb(70, 67, 67);
+  background-color: var(--spotify-light-grey-hover);
 }
 
 .playlist-card a {
