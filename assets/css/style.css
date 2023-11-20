@@ -136,6 +136,7 @@ nav {
   display: flex;
   top: 0;
   padding: 2% 5%;
+  align-items: center;
   box-sizing: border-box;
   z-index: 999;
 }

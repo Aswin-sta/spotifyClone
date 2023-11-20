@@ -58,7 +58,7 @@
   background-color: #242424;
   color: #b3b3b3;
   width: 400px;
-  height: 50px;
+  height: 40px;
   padding-left: 12%;
 }
 .search-input[type="text"]:onclick {
