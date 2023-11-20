@@ -1,6 +1,6 @@
 :root {
-  --blue: #1e90ff;
-  --white: #ffffff;
+  --spotify-grey: #121212;
+  --spotify-light-grey: #212121;
 }
 
 * {
@@ -51,7 +51,7 @@
   justify-content: center;
   border-radius: 7px;
   padding-block: 0.5%;
-  background-color: #121212;
+  background-color: var(--spotify-grey);
   height: 25%;
   margin: 2%;
 }
@@ -79,7 +79,7 @@
 #sideBar .sideDivTile {
   border-radius: 7px;
   padding-block: 0.5%;
-  background-color: #121212;
+  background-color: var(--spotify-grey);
   color: rgb(163, 156, 156);
   height: 83%;
   overflow-y: scroll;
@@ -99,7 +99,7 @@
 #sideBar .sideDivTile div {
   padding: 2% 5%;
   border-radius: 10px;
-  background-color: #212121;
+  background-color: var(--spotify-light-grey);
   color: white;
   margin: 8% 3%;
 }
@@ -130,7 +130,7 @@
   border-radius: 7px;
   overflow-y: scroll;
   margin: 0.5%;
-  background-color: #121212;
+  background-color: var(--spotify-grey);
   position: relative;
 }
 
@@ -227,7 +227,7 @@ nav {
   position: absolute;
   right: 10%;
   padding: 1% 2%;
-  color: #121212;
+  color: var(--spotify-grey);
   border: none;
   font-weight: bolder;
   border-radius: 45px;
@@ -253,7 +253,7 @@ nav {
   flex-direction: column;
   padding: 1.5%;
   box-sizing: border-box;
-  background-color: #212121;
+  background-color: var(--spotify-light-grey);
   padding-bottom: 1%;
   box-sizing: border-box;
   border-radius: 10px;
@@ -315,7 +315,7 @@ nav {
 }
 
 .title-title-name {
-  /* background-color: #212121; */
+  /* background-color: var(--spotify-light-grey); */
   margin-left: 23px;
 }
 

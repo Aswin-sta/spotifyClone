@@ -26,6 +26,7 @@ newReleasesPromise.then((data) => {
   const newAlbums = [...data.albums.items];
 
   newAlbums.forEach((albums) => {
+    console.log(albums);
     let newReleaseContainer = document.querySelector(".newReleases");
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
@@ -50,7 +51,7 @@ newReleasesPromise.then((data) => {
     albumImageWrapper.append(albumImage, playButton);
     itemTile.append(albumImageWrapper, albumTitle, artistTitle);
     itemTile.onclick = () => {
-      window.location.href = `musiclist.html?id=${albums.id}`;
+      window.location.href = `musiclist.html?id=${albums.id}&type=${albums.type}`;
     };
     newReleaseContainer.append(itemTile);
   });
@@ -89,7 +90,7 @@ romanticPromise.then((data) => {
     itemTile.append(albumImageWrapper, albumTitle, artistTitle);
 
     itemTile.onclick = () => {
-      window.location.href = `musiclist.html?id=${playlists.id}`;
+      window.location.href = `musiclist.html?id=${playlists.id}&type=${playlists.type}`;
     };
     newReleaseContainer.append(itemTile);
   });
@@ -101,7 +102,7 @@ episodes.then((data) => {
 
   const topSongs = [...data.tracks];
   topSongs.forEach((playlists) => {
-    // console.log(playlists);
+    console.log(playlists);
     let top10Container = document.querySelector(".topTen");
     let itemTile = document.createElement("div");
     itemTile.classList.add("itemTile");
@@ -121,7 +122,7 @@ episodes.then((data) => {
     albumImageWrapper.append(albumImage, playButton);
     itemTile.append(albumImageWrapper, albumTitle);
     itemTile.onclick = () => {
-      window.location.href = `musiclist.html?id=${playlists.album.id}`;
+      window.location.href = `musiclist.html?id=${playlists.album.id}&type=${playlists.album.type}`;
     };
     top10Container.append(itemTile);
   });
@@ -152,7 +153,7 @@ anirudhAlbums.then((data, index) => {
     albumImageWrapper.append(albumImage, playButton);
     itemTile.append(albumImageWrapper, albumTitle);
     itemTile.onclick = () => {
-      window.location.href = `musiclist.html?id=${playlists.id}`;
+      window.location.href = `musiclist.html?id=${playlists.id}&type=${playlists.type}`;
     };
     anirudhContainer.append(itemTile);
   });
