@@ -1,0 +1,106 @@
+.body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  color: #fff;
+}
+
+.playlist-card {
+  width: 270px;
+  height: 370px;
+  align-items: center;
+  padding-bottom: 25px;
+  justify-content: space-evenly;
+  position: relative;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #221818;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.playlist-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background-color: rgb(70, 67, 67);
+}
+
+.playlist-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.img_element {
+  width: 92%;
+  height: 60%;
+  align-self: center;
+  margin-top: 5px;
+  object-fit: fill;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.playlist-title {
+  font-size: 1.2em;
+  margin-left: 10px;
+  padding: 10px 0;
+}
+
+.description {
+  font-size: 1.1em;
+  color: #888;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.img-container {
+  position: relative;
+}
+/* 
+.play {
+  position: absolute;
+  bottom: 30px;
+  right: 5px;
+  transform: translateX(-50%);
+  background-color: #1db954;
+  border-radius: 70%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: black;
+  font-size: x-large;
+  padding: 20px;
+} */
+
+.spotify-play-button {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  opacity: 0; /* Start with 0 opacity */
+  position: absolute;
+  right: 8%;
+  bottom: 15%;
+  transform: translateY(15px);
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add opacity to the transition */
+}
+
+.playlist-card:hover .spotify-play-button {
+  opacity: 1;
+}

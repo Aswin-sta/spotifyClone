@@ -1,8 +1,8 @@
-import { getData, refreshAccessToken } from "./get.js";
+import { getData, refreshAccessToken } from './get.js';
 
-await refreshAccessToken(localStorage.getItem("refresh_token"));
+await refreshAccessToken(localStorage.getItem('refresh_token'));
 
-const id = new URLSearchParams(window.location.search).get("id");
+const id = new URLSearchParams(window.location.search).get('id');
 
 const newReleasesPromise = getData(id);
 
@@ -23,30 +23,30 @@ function timeConvertion(duration_ms) {
 //   return `${year}:${month}:${day}`;
 // }
 
-newReleasesPromise.then((data) => {
+newReleasesPromise.then(data => {
   console.log(data);
   //bannerImage
-  const bannerImage = document.querySelector(".banner-img img");
+  const bannerImage = document.querySelector('.banner-img img');
   bannerImage.src = data.images[0].url;
   //banner Title
-  const bannerTitle = document.querySelector(".banner-header h1");
+  const bannerTitle = document.querySelector('.banner-header h1');
   bannerTitle.textContent = data.name;
   //banner description
-  const bannerDescription = document.querySelector(".banner-header-desc");
+  const bannerDescription = document.querySelector('.banner-header-desc');
   bannerDescription.textContent = data.description;
   //iteratable objects of array
   const musicDataList = data.tracks.items;
-  const albumSongList = document.querySelector(".album-song-list");
+  const albumSongList = document.querySelector('.album-song-list');
   for (let i = 0; i < data.tracks.items.length; i++) {
-    const songListTrack = document.createElement("div");
-    songListTrack.className = "song-list-track";
+    const songListTrack = document.createElement('div');
+    songListTrack.className = 'song-list-track';
     songListTrack.id = `Track-${Number(i + 1)}`;
-    const trackNo = document.createElement("p");
-    trackNo.className = "title-hash";
+    const trackNo = document.createElement('p');
+    trackNo.className = 'title-hash';
     trackNo.textContent = `${Number(i + 1)}`;
 
-    const trackName = document.createElement("p");
-    trackName.className = "title-title-name";
+    const trackName = document.createElement('p');
+    trackName.className = 'title-title-name';
     trackName.textContent = musicDataList[i].name;
     // const trackAlbum = document.createElement("p");
     // trackAlbum.className = "title-album";
@@ -56,8 +56,8 @@ newReleasesPromise.then((data) => {
     // trackDateAdded.textContent = convertISOStringToCustomFormat(
     //   musicDataList[i].added_at
     // );
-    const trackDuration = document.createElement("p");
-    trackDuration.className = "title-spotify-duration";
+    const trackDuration = document.createElement('p');
+    trackDuration.className = 'title-spotify-duration';
     trackDuration.textContent = timeConvertion(musicDataList[i].duration_ms);
     songListTrack.append(trackNo);
     songListTrack.append(trackName);
