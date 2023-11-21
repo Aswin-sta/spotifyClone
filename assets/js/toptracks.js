@@ -27,7 +27,7 @@ function createSongElement(track, songNumber) {
   albumImage.alt = "Album Cover";
 
   const songDetails = document.createElement("div");
-  songDetails.classList.add("song-details");
+  songDetails.classList.add("songDetails");
 
   const songName = document.createElement("h3");
   songName.textContent = track.name;
