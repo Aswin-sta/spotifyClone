@@ -3,13 +3,16 @@ import { changeSource } from "./player.js";
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
 
+//url search parameters
 const id = new URLSearchParams(window.location.search).get("id");
 const type = new URLSearchParams(window.location.search).get("type");
 
+//musiclist api
 const newReleasesPromise = getData(
   "https://api.spotify.com/v1/" + type + "s/" + id
 );
 
+//function to convert ms to min:sec format
 function timeConvertion(duration_ms) {
   const totalSeconds = Math.floor(duration_ms / 1000);
   const minutes = Math.floor(totalSeconds / 60);
@@ -36,8 +39,8 @@ newReleasesPromise.then((data) => {
   bannerDescription.textContent = data.description;
 
   const musicDataList = data.tracks.items;
-
   const albumSongList = document.querySelector(".albumSongList");
+
   if (type == "album") {
     musicDataList.forEach((track, index) => {
       const songListTrack = document.createElement("div");
@@ -59,6 +62,7 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackNo);
       songListTrack.append(trackName);
       songListTrack.append(trackDuration);
+
       songListTrack.onclick = () => {
         changeSource(
           track.preview_url,
