@@ -21,6 +21,7 @@
   display: flex;
 }
 .song .songDetails {
+  display: flex;
   padding: 1% 0% 1% 0%;
   font-size: 14px;
   display: flex;
