@@ -1,9 +1,9 @@
-.toptracks {
+.topTracks {
   margin: 40px 0px 20px 40px;
   width: 90%;
 }
 
-.toptracks a,
+.topTracks a,
 .text {
   text-decoration: none;
   color: #a7a7a7;
@@ -11,11 +11,13 @@
   padding-top: 1%;
   margin-bottom: 1%;
 }
-.toptracks a:hover {
+.topTracks a:hover {
   color: white;
   text-decoration: underline;
 }
+
 .toptracks .toptrackslist .song .songDetails {
+
   display: flex;
 }
 .song {
@@ -26,7 +28,7 @@
   padding: 1% 0% 1% 0%;
   font-size: 14px;
 }
-.song .songnumber {
+.song .songNumber {
   padding: 2% 2% 2% 0%;
   margin-left: 2%;
   font-size: 15px;
@@ -37,13 +39,13 @@
   border-radius: 20%;
   padding: 1% 2% 1% 0%;
 }
-.song .name-artists {
+.song .nameAndArtists {
   width: 400px;
 }
-.song .album-name {
+.song .albumName {
   width: 300px;
 }
-.song .album-name a {
+.song .albumName a {
   font-size: 14px;
 }
 .song:hover {

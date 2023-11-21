@@ -65,15 +65,15 @@
           </div>
           <a id="loginLink" href="#"><img src="./assets/imgs/user.png" /></a>
         </nav>
-        <section class="album-song-list">
+        <section class="albumSongList">
           <div class="banner">
-            <div class="banner-img"></div>
-            <div class="banner-header">
+            <div class="bannerImg"></div>
+            <div class="bannerHeader">
               <p>Playlist</p>
               <h1></h1>
-              <p class="banner-header-desc"></p>
+              <p class="bannerHeaderDesc"></p>
               <p>
-                <span class="banner-header-spotify-icon"
+                <span class="bannerHeaderSpotifyIcon"
                   ><img
                     src="./assets/imgs/Spotify_icon_svg.svg"
                     alt="icon" /></span
@@ -83,32 +83,32 @@
               </p>
             </div>
           </div>
-          <div class="interaction-buttons">
+          <div class="interactionButtons">
             <img
               src="./assets/imgs/spotify-play-button.png"
               alt=""
-              class="spotify-play-button"
+              class="spotifyPlayButton"
             />
             <img
               src="./assets/imgs/spotify-save-to-library.png"
               alt=""
-              class="spotify-save-to-library"
+              class="spotifySaveToLibrary"
             />
             <img
               src="./assets/imgs/spotify-more-options.png"
               alt=""
-              class="spotify-more-options"
+              class="spotifyMoreOptions"
             />
           </div>
-          <div class="song-list-title">
-            <p class="title-hash">#</p>
-            <p class="title-title">Title</p>
+          <div class="songListTitle">
+            <p class="titleHash">#</p>
+            <p class="titleTitle">Title</p>
             <!-- <p class="title-album">Album</p>
             <p class="title-date">Date added</p> -->
             <img
               src="./assets/imgs/spotify-duration.svg"
               alt=""
-              class="title-spotify-duration-icon"
+              class="titleSpotifyDurationIcon"
             />
           </div>
           <hr />
@@ -189,56 +189,52 @@
         </div>
       </div>
     </div>
-    <div class="spotify-player">
-      <div id="player-song-info">
-        <img id="player-album-art" src="./assets/imgs/album.png" />
+    <div class="spotifyPlayer">
+      <div id="playerSongInfo">
+        <img id="playerAlbumArt" src="./assets/imgs/album.png" />
         <div>
-          <p id="player-song-title">
+          <p id="playerSongTitle">
             Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
           </p>
-          <p id="player-song-album">
+          <p id="playerSongAlbum">
             ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
           </p>
         </div>
       </div>
-      <div class="player-controls">
-        <div class="control-button-wrapper">
-          <button class="control-button" id="shuffle" onclick="toggleShuffle()">
+      <div class="playerControls">
+        <div class="controlButtonWrapper">
+          <button class="controlButton" id="shuffle" onclick="toggleShuffle()">
             <i class="fas fa-random"></i>
           </button>
           <button
-            class="control-button"
-            id="skip-backward"
+            class="controlButton"
+            id="skipBackward"
             onclick="skipBackward()"
           >
             <i class="fas fa-step-backward"></i>
           </button>
-          <div id="play-pause-div">
-            <button class="control-button" id="play-pause">
+          <div id="playPauseDiv">
+            <button class="controlButton" id="playPause">
               <i class="fas fa-play"></i>
             </button>
           </div>
           <button
-            class="control-button"
-            id="skip-forward"
+            class="controlButton"
+            id="skipForward"
             onclick="skipForward()"
           >
             <i class="fas fa-step-forward"></i>
           </button>
-          <button class="control-button" id="repeat" onclick="toggleRepeat()">
+          <button class="controlButton" id="repeat" onclick="toggleRepeat()">
             <i class="fas fa-retweet"></i>
           </button>
         </div>
-        <div class="progress-bar">
+        <div class="progressBar">
           <div class="progress"></div>
         </div>
       </div>
       <audio id="musicPlayer">
-        <source
-          id="audioSource"
-          src="https://example.com/default-music.mp3"
-          type="audio/mp3"
-        />
+        <source id="audioSource" type="audio/mp3" />
         Your browser does not support the audio tag.
       </audio>
     </div>

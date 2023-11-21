@@ -68,7 +68,7 @@
         </nav>
         <div class="titleDiv">
           <h1
-            id="genre-title"
+            id="genreTitleElement"
             style="
               margin-top: 15%;
               margin-left: 5%;
@@ -78,7 +78,7 @@
           ></h1>
         </div>
         <section class="">
-          <div id="main-container"></div>
+          <div id="mainContainer"></div>
         </section>
         <div class="bottomBar">
           <div class="footerTop">
@@ -156,74 +156,54 @@
         </div>
       </div>
     </div>
-    <div class="spotify-player">
-      <div id="player-song-info">
-        <img id="player-album-art" src="./assets/imgs/album.png" />
-        <p id="player-song-title">
-          Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          <br />
-          <span id="player-song-album"
-            >ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span
+    <div class="spotifyPlayer">
+      <div id="playerSongInfo">
+        <img id="playerAlbumArt" src="./assets/imgs/album.png" />
+        <div>
+          <p id="playerSongTitle">
+            Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+          <p id="playerSongAlbum">
+            ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+        </div>
+      </div>
+      <div class="playerControls">
+        <div class="controlButtonWrapper">
+          <button class="controlButton" id="shuffle" onclick="toggleShuffle()">
+            <i class="fas fa-random"></i>
+          </button>
+          <button
+            class="controlButton"
+            id="skipBackward"
+            onclick="skipBackward()"
           >
-        </p>
-      </div>
-      <div class="spotify-player">
-        <div id="player-song-info">
-          <img id="player-album-art" src="./assets/imgs/album.png" />
-          <div>
-            <p id="player-song-title">
-              Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p>
-            <p id="player-song-album">
-              ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </p>
+            <i class="fas fa-step-backward"></i>
+          </button>
+          <div id="playPauseDiv">
+            <button class="controlButton" id="playPause">
+              <i class="fas fa-play"></i>
+            </button>
           </div>
+          <button
+            class="controlButton"
+            id="skipForward"
+            onclick="skipForward()"
+          >
+            <i class="fas fa-step-forward"></i>
+          </button>
+          <button class="controlButton" id="repeat" onclick="toggleRepeat()">
+            <i class="fas fa-retweet"></i>
+          </button>
         </div>
-        <div class="player-controls">
-          <div class="control-button-wrapper">
-            <button
-              class="control-button"
-              id="shuffle"
-              onclick="toggleShuffle()"
-            >
-              <i class="fas fa-random"></i>
-            </button>
-            <button
-              class="control-button"
-              id="skip-backward"
-              onclick="skipBackward()"
-            >
-              <i class="fas fa-step-backward"></i>
-            </button>
-            <div id="play-pause-div">
-              <button class="control-button" id="play-pause">
-                <i class="fas fa-play"></i>
-              </button>
-            </div>
-            <button
-              class="control-button"
-              id="skip-forward"
-              onclick="skipForward()"
-            >
-              <i class="fas fa-step-forward"></i>
-            </button>
-            <button class="control-button" id="repeat" onclick="toggleRepeat()">
-              <i class="fas fa-retweet"></i>
-            </button>
-          </div>
-          <div class="progress-bar">
-            <div class="progress"></div>
-          </div>
+        <div class="progressBar">
+          <div class="progress"></div>
         </div>
-        <audio id="musicPlayer">
-          <source
-            id="audioSource"
-            src="https://example.com/default-music.mp3"
-            type="audio/mp3"
-          />
-          Your browser does not support the audio tag.
-        </audio>
       </div>
+      <audio id="musicPlayer">
+        <source id="audioSource" type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
     </div>
   </body>
 </html>
