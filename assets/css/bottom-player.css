@@ -1,5 +1,4 @@
-@import url(./main.css);
-.spotify-player {
+.spotifyPlayer {
   background-color: #000000;
   display: flex;
   padding: 0.5% 1%;
@@ -7,21 +6,21 @@
   box-sizing: border-box;
 }
 
-#player-song-info {
+#playerSongInfo {
   display: flex;
   align-items: center;
   min-width: 25%;
   max-width: 25%;
 }
 
-#player-album-art {
+#playerAlbumArt {
   width: 60px;
   height: 60px;
   border-radius: 10%;
   margin-right: 15px;
 }
 
-#player-song-title {
+#playerSongTitle {
   color: white;
   margin-block: auto;
   margin-block: 0;
@@ -31,7 +30,7 @@
   white-space: nowrap;
 }
 
-#player-song-album {
+#playerSongAlbum {
   color: rgb(150, 145, 145);
   font-size: smaller;
   margin-block: 0;
@@ -40,7 +39,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.player-controls {
+
+.playerControls {
   display: inline-block;
   justify-content: center;
   box-sizing: border-box;
@@ -48,12 +48,13 @@
   width: 50vw;
 }
 
-.control-button-wrapper {
+.controlButtonWrapper {
   display: flex;
   justify-content: center;
   margin-block: 0px 18px;
 }
-.control-button {
+
+.controlButton {
   background-color: #000000;
   color: grey;
   border: none;
@@ -62,20 +63,20 @@
   margin-inline: 2%;
 }
 
-.control-button {
+.controlButton {
   color: grey;
 }
 
-.control-button :hover {
+.controlButton:hover {
   color: white;
 }
 
-.control-button .fa-play {
+.controlButton .fa-play {
   color: black;
   background-color: white;
 }
 
-.progress-bar {
+.progressBar {
   background-color: #555;
   height: 3px;
   width: 70%;
@@ -91,7 +92,7 @@
   transition: width 0.3s ease;
 }
 
-#play-pause {
+#playPause {
   background-color: white;
   color: #000000;
   font-size: 16px;
@@ -104,9 +105,11 @@
   display: inline-flex;
   align-items: center;
 }
-#play-pause :hover {
+
+#playPause:hover {
   color: black;
 }
-#play-pause-div:hover {
+
+#playPauseDiv:hover {
   transform: scale(1.1);
 }
