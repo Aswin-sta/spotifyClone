@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="./assets/css/profile.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <script type="module" src="./assets/js/profile.js" defer></script>
+    <script type="module" src="./assets/js/player.js" async></script>
   </head>
   <body>
     <div class="wrapper">
       <div id="sideBar">
-        <div class="sideDivTile--top">
+        <div class="sideDivTileTop">
           <ul>
             <li>
               <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
@@ -45,14 +46,14 @@
       <div id="heroSection">
         <nav>
           <div>
-            <button id="left--arrow">
+            <button id="leftArrow">
               <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
             </button>
-            <button id="right--arrow">
+            <button id="rightArrow">
               <!-- <img src="./assets/imgs/rightarrow.png" /> -->
             </button>
           </div>
-          <a id="login" href="profile.html"
+          <a id="loginLink" href="profile.html"
             ><img src="./assets/imgs/user.png"
           /></a>
         </nav>
@@ -98,7 +99,7 @@
             </div> -->
         </section>
         <div class="bottomBar">
-          <div class="footertop">
+          <div class="footerTop">
             <div class="companyWrapper">
               <p class="header">Company</p>
               <p>
@@ -121,7 +122,7 @@
               </p>
               <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
             </div>
-            <div class="useWrapper">
+            <div class="usefulLinksWrapper">
               <p class="header">Useful links</p>
               <p><a href="https://support.spotify.com/in-en/">Support</a></p>
               <p>
@@ -137,7 +138,7 @@
             </div>
           </div>
           <hr />
-          <div class="footerbottom">
+          <div class="footerBottom">
             <div class="navbar">
               <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
               <p>
@@ -173,8 +174,58 @@
         </div>
       </div>
     </div>
-    <div class="player">
-      <h1>hello</h1>
+    <div class="spotify-player">
+      <div id="player-song-info">
+        <img id="player-album-art" src="./assets/imgs/album.png" />
+        <div>
+          <p id="player-song-title">
+            Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+          <p id="player-song-album">
+            ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+        </div>
+      </div>
+      <div class="player-controls">
+        <div class="control-button-wrapper">
+          <button class="control-button" id="shuffle" onclick="toggleShuffle()">
+            <i class="fas fa-random"></i>
+          </button>
+          <button
+            class="control-button"
+            id="skip-backward"
+            onclick="skipBackward()"
+          >
+            <i class="fas fa-step-backward"></i>
+          </button>
+          <div id="play-pause-div">
+            <button class="control-button" id="play-pause">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+          <button
+            class="control-button"
+            id="skip-forward"
+            onclick="skipForward()"
+          >
+            <i class="fas fa-step-forward"></i>
+          </button>
+          <button class="control-button" id="repeat" onclick="toggleRepeat()">
+            <i class="fas fa-retweet"></i>
+          </button>
+        </div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
+      <audio id="musicPlayer">
+        <source
+          id="audioSource"
+          src="https://example.com/default-music.mp3"
+          type="audio/mp3"
+        />
+        Your browser does not support the audio tag.
+      </audio>
     </div>
   </body>
 </html>

@@ -1,4 +1,5 @@
 import { getData, refreshAccessToken } from "./get.js";
+import { changeSource } from "./player.js";
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
 
@@ -58,9 +59,16 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackNo);
       songListTrack.append(trackName);
       songListTrack.append(trackDuration);
-
+      songListTrack.onclick = () => {
+        changeSource(
+          musicDataList[i].preview_url,
+          musicDataList[i].name,
+            data.name,
+          data.images[0].url
+        );
+      };
       albumSongList.append(songListTrack);
-    });
+    }
   } else if (type == "playlist") {
     musicDataList.forEach((_, index) => {
       const playList = musicDataList[index].track;
@@ -84,8 +92,15 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackNo);
       songListTrack.append(trackName);
       songListTrack.append(trackDuration);
-
+      songListTrack.onclick = () => {
+        changeSource(
+          playList.preview_url,
+          playList.name,
+          data.name,
+          data.images[0].url
+        );
+      };
       albumSongList.append(songListTrack);
-    });
+    }
   }
 });

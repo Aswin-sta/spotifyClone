@@ -5,11 +5,14 @@ nav {
   width: 77%;
   display: flex;
   top: 0;
-  padding: 2% 5%;
+  padding: 1% 5%;
   align-items: center;
+  opacity: 1;
   box-sizing: border-box;
   z-index: 999;
+  background-color: var(--spotify-grey);
 }
+
 #heroSection nav div {
   display: flex;
 }
@@ -28,21 +31,21 @@ nav {
   background-repeat: no-repeat;
 }
 
-#left--arrow {
+#leftArrow {
   background-image: url(../imgs/leftarrrow.png);
 }
-#right--arrow {
+#rightArrow {
   background-image: url(../imgs/rightarrow.png);
 }
 
-#login {
+#loginLink {
   border-radius: 50%;
   padding: 0.8% 1%;
   border: hidden;
   background-color: #0f0909;
 }
 
-#login img {
+#loginLink img {
   width: 20px;
   height: 20px;
 }
