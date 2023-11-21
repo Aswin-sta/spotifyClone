@@ -9,7 +9,6 @@ const type = new URLSearchParams(window.location.search).get("type");
 const newReleasesPromise = getData(
   "https://api.spotify.com/v1/" + type + "s/" + id
 );
-console.log(newReleasesPromise);
 
 function timeConvertion(duration_ms) {
   const totalSeconds = Math.floor(duration_ms / 1000);
@@ -23,37 +22,38 @@ function timeConvertion(duration_ms) {
 newReleasesPromise.then((data) => {
   //bannerImage
   const bannerImage = document.createElement("img");
-  bannerImage.className = "banner-img-img skeleton";
-  const bannerImageSection = document.querySelector(".banner-img");
+  bannerImage.className = "bannerImgImg skeleton";
+  const bannerImageSection = document.querySelector(".bannerImg");
   bannerImageSection.append(bannerImage);
   bannerImage.src = data.images[0].url;
 
   //banner Title
-  const bannerTitle = document.querySelector(".banner-header h1");
+  const bannerTitle = document.querySelector(".bannerHeader h1");
   bannerTitle.textContent = data.name;
+
   //banner description
-  const bannerDescription = document.querySelector(".banner-header-desc");
+  const bannerDescription = document.querySelector(".bannerHeaderDesc");
   bannerDescription.textContent = data.description;
 
   const musicDataList = data.tracks.items;
 
-  const albumSongList = document.querySelector(".album-song-list");
+  const albumSongList = document.querySelector(".albumSongList");
   if (type == "album") {
     musicDataList.forEach((track, index) => {
       const songListTrack = document.createElement("div");
-      songListTrack.className = "song-list-track";
+      songListTrack.className = "songListTrack";
       songListTrack.id = `Track-${Number(index + 1)}`;
 
       const trackNo = document.createElement("p");
-      trackNo.className = "title-hash";
+      trackNo.className = "titleHash";
       trackNo.textContent = `${Number(index + 1)}`;
 
       const trackName = document.createElement("p");
-      trackName.className = "title-title-name";
+      trackName.className = "titleTitleName";
       trackName.textContent = track.name;
 
       const trackDuration = document.createElement("p");
-      trackDuration.className = "title-spotify-duration";
+      trackDuration.className = "titleSpotifyDuration";
       trackDuration.textContent = timeConvertion(track.duration_ms);
 
       songListTrack.append(trackNo);
@@ -74,19 +74,19 @@ newReleasesPromise.then((data) => {
       const playList = musicDataList[index].track;
 
       const songListTrack = document.createElement("div");
-      songListTrack.className = "song-list-track";
+      songListTrack.className = "songListTrack";
       songListTrack.id = `Track-${Number(index + 1)}`;
 
       const trackNo = document.createElement("p");
-      trackNo.className = "title-hash";
+      trackNo.className = "titleHash";
       trackNo.textContent = `${Number(index + 1)}`;
 
       const trackName = document.createElement("p");
-      trackName.className = "title-title-name";
+      trackName.className = "titleTitleName";
       trackName.textContent = playList.name;
 
       const trackDuration = document.createElement("p");
-      trackDuration.className = "title-spotify-duration";
+      trackDuration.className = "titleSpotifyDuration";
       trackDuration.textContent = timeConvertion(playList.duration_ms);
 
       songListTrack.append(trackNo);
