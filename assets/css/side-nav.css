@@ -4,7 +4,7 @@
   height: 88%;
   position: relative;
 }
-#sideBar .sideDivTile--top {
+#sideBar .sideDivTileTop {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
   margin: 2%;
 }
 
-#sideBar .sideDivTile--top li {
+#sideBar .sideDivTileTop li {
   font-size: 0.95rem;
   font-weight: 700;
   margin-inline: 0.5% 2%;
@@ -24,14 +24,14 @@
   text-decoration: none;
 }
 
-#sideBar .sideDivTile--top li a {
+#sideBar .sideDivTileTop li a {
   display: flex;
   align-items: center;
   padding-block: auto;
   color: rgb(163, 156, 156);
   text-decoration: none;
 }
-#sideBar .sideDivTile--top li img {
+#sideBar .sideDivTileTop li img {
   margin-inline: 6%;
   width: 8%;
 }

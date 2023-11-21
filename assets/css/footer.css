@@ -3,46 +3,46 @@
   margin-top: 10%;
   bottom: 0;
 }
-.footertop {
+.footerTop {
   display: flex;
   margin-left: 40px;
   margin-bottom: 20px;
 }
-.footertop .header {
+.footerTop .header {
   color: white;
   font-weight: 600;
 }
-.footertop p {
+.footerTop p {
   padding-bottom: 10px;
 }
-.footertop a {
+.footerTop a {
   text-decoration: none;
   color: gray;
 }
-.footertop a:hover {
+.footerTop a:hover {
   text-decoration: underline;
   color: white;
 }
-.footertop .companyWrapper {
+.footerTop .companyWrapper {
   margin-right: 15%;
 }
-.footertop .communitiesWrapper {
+.footerTop .communitiesWrapper {
   margin-right: 15%;
 }
-.footertop .useWrapper {
+.footerTop .usefulLinksWrapper {
   margin-right: 10%;
 }
-.footertop .socialWrapper {
+.footerTop .socialWrapper {
   display: flex;
 }
-.footertop .socialWrapper button {
+.footerTop .socialWrapper button {
   height: 30px;
   width: 30px;
   margin: 10px;
   border: none;
   border-radius: 50px;
 }
-.footertop .socialWrapper img {
+.footerTop .socialWrapper img {
   height: 30px;
   width: 30px;
 }
@@ -51,28 +51,28 @@
   margin-left: 20px;
   border: 1px solid gray;
 }
-.footerbottom {
+.footerBottom {
   display: flex;
   margin-bottom: 10%;
 }
-.footerbottom .navbar {
+.footerBottom .navbar {
   display: flex;
   margin: 30px 0px 0px 40px;
 }
-.footerbottom .navbar p {
+.footerBottom .navbar p {
   padding-right: 20px;
   font-size: 13px;
 }
-.footerbottom .navbar a {
+.footerBottom .navbar a {
   text-decoration: none;
   color: gray;
 }
-.footerbottom .navbar a:hover {
+.footerBottom .navbar a:hover {
   color: white;
 }
-.footerbottom .copyright {
+.footerBottom .copyright {
   margin: 30px 0px 0px 22%;
 }
-.footerbottom .copyright p {
+.footerBottom .copyright p {
   font-size: 14px;
 }
