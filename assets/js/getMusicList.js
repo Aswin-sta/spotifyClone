@@ -61,14 +61,14 @@ newReleasesPromise.then((data) => {
       songListTrack.append(trackDuration);
       songListTrack.onclick = () => {
         changeSource(
-          musicDataList[i].preview_url,
-          musicDataList[i].name,
-            data.name,
+          track.preview_url,
+          track.name,
+          data.name,
           data.images[0].url
         );
       };
       albumSongList.append(songListTrack);
-    }
+    });
   } else if (type == "playlist") {
     musicDataList.forEach((_, index) => {
       const playList = musicDataList[index].track;
@@ -101,6 +101,6 @@ newReleasesPromise.then((data) => {
         );
       };
       albumSongList.append(songListTrack);
-    }
+    });
   }
 });
