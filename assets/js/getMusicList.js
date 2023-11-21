@@ -41,70 +41,34 @@ newReleasesPromise.then((data) => {
   const musicDataList = data.tracks.items;
   const albumSongList = document.querySelector(".albumSongList");
 
-  if (type == "album") {
-    musicDataList.forEach((track, index) => {
-      const songListTrack = document.createElement("div");
-      songListTrack.className = "songListTrack";
-      songListTrack.id = `Track-${Number(index + 1)}`;
+  musicDataList.forEach((track, index) => {
+    const songListTrack = document.createElement("div");
+    songListTrack.className = "songListTrack";
+    songListTrack.id = `Track-${Number(index + 1)}`;
 
-      const trackNo = document.createElement("p");
-      trackNo.className = "titleHash";
-      trackNo.textContent = `${Number(index + 1)}`;
+    const trackNo = document.createElement("p");
+    trackNo.className = "titleHash";
+    trackNo.textContent = `${Number(index + 1)}`;
 
-      const trackName = document.createElement("p");
-      trackName.className = "titleTitleName";
-      trackName.textContent = track.name;
+    const trackName = document.createElement("p");
+    trackName.className = "titleTitleName";
+    trackName.textContent = type === "playlist" ? track.track.name : track.name;
 
-      const trackDuration = document.createElement("p");
-      trackDuration.className = "titleSpotifyDuration";
-      trackDuration.textContent = timeConvertion(track.duration_ms);
+    const trackDuration = document.createElement("p");
+    trackDuration.className = "titleSpotifyDuration";
+    trackDuration.textContent = timeConvertion(
+      type === "playlist" ? track.track.duration_ms : track.duration_ms
+    );
 
-      songListTrack.append(trackNo);
-      songListTrack.append(trackName);
-      songListTrack.append(trackDuration);
+    songListTrack.append(trackNo, trackName, trackDuration);
 
-      songListTrack.onclick = () => {
-        changeSource(
-          track.preview_url,
-          track.name,
-          data.name,
-          data.images[0].url
-        );
-      };
-      albumSongList.append(songListTrack);
-    });
-  } else if (type == "playlist") {
-    musicDataList.forEach((_, index) => {
-      const playList = musicDataList[index].track;
+    songListTrack.onclick = () => {
+      const sourceUrl =
+        type === "playlist" ? track.track.preview_url : track.preview_url;
+      const sourceName = type === "playlist" ? track.track.name : track.name;
+      changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
+    };
 
-      const songListTrack = document.createElement("div");
-      songListTrack.className = "songListTrack";
-      songListTrack.id = `Track-${Number(index + 1)}`;
-
-      const trackNo = document.createElement("p");
-      trackNo.className = "titleHash";
-      trackNo.textContent = `${Number(index + 1)}`;
-
-      const trackName = document.createElement("p");
-      trackName.className = "titleTitleName";
-      trackName.textContent = playList.name;
-
-      const trackDuration = document.createElement("p");
-      trackDuration.className = "titleSpotifyDuration";
-      trackDuration.textContent = timeConvertion(playList.duration_ms);
-
-      songListTrack.append(trackNo);
-      songListTrack.append(trackName);
-      songListTrack.append(trackDuration);
-      songListTrack.onclick = () => {
-        changeSource(
-          playList.preview_url,
-          playList.name,
-          data.name,
-          data.images[0].url
-        );
-      };
-      albumSongList.append(songListTrack);
-    });
-  }
+    albumSongList.append(songListTrack);
+  });
 });
