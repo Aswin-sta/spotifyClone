@@ -13,13 +13,13 @@ topTracksPromise.then((data) => {
 });
 
 function createSongElement(track, songNumber) {
-  const toptrackslist = document.getElementById("toptrackslist");
+  const topTracksList = document.getElementById("topTracksList");
 
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
 
   const number = document.createElement("p");
-  number.classList.add("songnumber");
+  number.classList.add("songNumber");
   number.textContent = `${songNumber + 1}`;
 
   const albumImage = document.createElement("img");
@@ -27,7 +27,7 @@ function createSongElement(track, songNumber) {
   albumImage.alt = "Album Cover";
 
   const songDetails = document.createElement("div");
-  songDetails.classList.add("song-details");
+  songDetails.classList.add("songDetails");
 
   const songName = document.createElement("h3");
   songName.textContent = track.name;
@@ -40,12 +40,12 @@ function createSongElement(track, songNumber) {
   );
 
   const detailsLeft = document.createElement("div");
-  detailsLeft.classList.add("name-artists");
+  detailsLeft.classList.add("nameAndArtists");
   detailsLeft.appendChild(songName);
   detailsLeft.appendChild(artists);
 
   const albumName = document.createElement("div");
-  albumName.classList.add("album-name");
+  albumName.classList.add("albumName");
 
   const album = document.createElement("a");
   album.href = "#";
@@ -64,7 +64,7 @@ function createSongElement(track, songNumber) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
-  toptrackslist.appendChild(songContainer);
+  topTracksList.appendChild(songContainer);
 }
 
 function formatDuration(durationInMs) {
