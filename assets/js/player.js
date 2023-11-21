@@ -1,11 +1,11 @@
 const musicPlayer = document.getElementById("musicPlayer");
-const playPauseButton = document.getElementById("play-pause");
-const playPauseDiv = document.getElementById("play-pause-div");
+const playPauseButton = document.getElementById("playPause");
+const playPauseDiv = document.getElementById("playPauseDiv");
 const progress = document.querySelector(".progress");
 
-const playerSongTitle = document.querySelector("#player-song-title");
-const playerSongAlbum = document.querySelector("#player-song-album");
-const playerAlbumArt = document.querySelector("#player-album-art");
+const playerSongTitle = document.querySelector("#playerSongTitle");
+const playerSongAlbum = document.querySelector("#playerSongAlbum");
+const playerAlbumArt = document.querySelector("#playerAlbumArt");
 
 playPauseDiv.addEventListener("click", togglePlayPause);
 
