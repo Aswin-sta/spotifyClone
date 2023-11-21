@@ -1,3 +1,4 @@
+@import url(./main.css);
 .playlist {
   margin: 3% 0% 0% 3%;
 }
@@ -11,6 +12,17 @@
   height: 100%;
   width: 15%;
   background-color: #181818;
+  min-width: 185px;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5%;
+  box-sizing: border-box;
+  background-color: var(--spotify-light-grey);
+  padding-bottom: 1%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-right: 2%;
 }
 .playlistTile h4 {
   font-size: 15px;
@@ -20,4 +32,24 @@
   font-size: 13px;
   color: lightgray;
   padding: 5% 0% 5% 5%;
+}
+
+.playlist .playlistTile div {
+  max-width: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  height: 160px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 0;
+  background-color: var(--spotify-light-grey-hover);
+  border-radius: 10px;
+}
+
+.playlist .playlistTile div img {
+  width: 30%;
+  display: block;
 }
