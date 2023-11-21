@@ -134,23 +134,3 @@
   line-height: 1.5em;
 }
 
-.titleTitleName {
-  margin-left: 23px;
-}
-
-.titleSpotifyDuration {
-  height: 30px;
-  width: 4%;
-  position: absolute;
-  bottom: 25%;
-  right: 4%;
-  top: 5%;
-}
-
-.songListTrack {
-  margin-top: 20px;
-}
-
-.songListTrack p {
-  color: #c5c5c5;
-}
