@@ -1,0 +1,51 @@
+@import url(./main.css);
+nav {
+  justify-content: space-between;
+  position: fixed;
+  width: 77%;
+  display: flex;
+  top: 0;
+  padding: 1% 5%;
+  align-items: center;
+  opacity: 1;
+  box-sizing: border-box;
+  z-index: 999;
+  background-color: var(--spotify-grey);
+}
+
+#heroSection nav div {
+  display: flex;
+}
+
+#heroSection nav div button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background-color: #0f0909;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-right: 20px;
+  background-size: 60%;
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+#leftArrow {
+  background-image: url(../imgs/leftarrrow.png);
+}
+#rightArrow {
+  background-image: url(../imgs/rightarrow.png);
+}
+
+#loginLink {
+  border-radius: 50%;
+  padding: 0.8% 1%;
+  border: hidden;
+  background-color: #0f0909;
+}
+
+#loginLink img {
+  width: 20px;
+  height: 20px;
+}

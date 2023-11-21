@@ -1,0 +1,85 @@
+@import url(./main.css);
+#sideBar {
+  width: 23%;
+  height: 88%;
+  position: relative;
+}
+#sideBar .sideDivTileTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 7px;
+  padding-block: 0.5%;
+  background-color: var(--spotify-grey);
+  height: 25%;
+  margin: 2%;
+}
+
+#sideBar .sideDivTileTop li {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-inline: 0.5% 2%;
+  margin-block: 5% 7%;
+  list-style: none;
+  text-decoration: none;
+}
+
+#sideBar .sideDivTileTop li a {
+  display: flex;
+  align-items: center;
+  padding-block: auto;
+  color: rgb(163, 156, 156);
+  text-decoration: none;
+}
+#sideBar .sideDivTileTop li img {
+  margin-inline: 6%;
+  width: 8%;
+}
+#sideBar .sideDivTile {
+  border-radius: 7px;
+  padding-block: 0.5%;
+  background-color: var(--spotify-grey);
+  color: rgb(163, 156, 156);
+  height: 83%;
+  overflow-y: scroll;
+  margin-top: 25%;
+  margin: 2%;
+}
+#sideBar .sideDivTile h4 {
+  margin: 5% 7%;
+  display: flex;
+  font-size: 0.95em;
+  align-items: center;
+}
+#sideBar .sideDivTile h4 img {
+  margin-right: 6%;
+  width: 9%;
+}
+#sideBar .sideDivTile div {
+  padding: 2% 5%;
+  border-radius: 10px;
+  background-color: var(--spotify-light-grey);
+  color: white;
+  margin: 8% 3%;
+}
+
+#sideBar .sideDivTile div h3 {
+  font-size: 0.95em;
+  font-weight: 600;
+  margin-block: 6% 1%;
+}
+
+#sideBar .sideDivTile div p {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-block: 4% 1%;
+}
+
+#sideBar .sideDivTile div button {
+  color: black;
+  padding: 3% 5%;
+  font-weight: 750;
+  border-radius: 25px;
+  border: none;
+  margin-block: 6%;
+}

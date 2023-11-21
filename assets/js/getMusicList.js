@@ -1,10 +1,15 @@
-import { getData, refreshAccessToken } from './get.js';
+import { getData, refreshAccessToken } from "./get.js";
+import { changeSource } from "./player.js";
 
-await refreshAccessToken(localStorage.getItem('refresh_token'));
+await refreshAccessToken(localStorage.getItem("refresh_token"));
 
-const id = new URLSearchParams(window.location.search).get('id');
+const id = new URLSearchParams(window.location.search).get("id");
+const type = new URLSearchParams(window.location.search).get("type");
 
-const newReleasesPromise = getData(id);
+const newReleasesPromise = getData(
+  "https://api.spotify.com/v1/" + type + "s/" + id
+);
+console.log(newReleasesPromise);
 
 function timeConvertion(duration_ms) {
   const totalSeconds = Math.floor(duration_ms / 1000);
@@ -15,58 +20,87 @@ function timeConvertion(duration_ms) {
   return `${minutes}:${formattedSeconds}`;
 }
 
-// function convertISOStringToCustomFormat(isoString) {
-//   const date = new Date(isoString);
-//   const year = date.getFullYear();
-//   const month = (date.getMonth() + 1).toString().padStart(2, "0");
-//   const day = date.getDate().toString().padStart(2, "0");
-//   return `${year}:${month}:${day}`;
-// }
-
-newReleasesPromise.then(data => {
-  console.log(data);
+newReleasesPromise.then((data) => {
   //bannerImage
-  const bannerImage = document.querySelector('.banner-img img');
+  const bannerImage = document.createElement("img");
+  bannerImage.className = "banner-img-img skeleton";
+  const bannerImageSection = document.querySelector(".banner-img");
+  bannerImageSection.append(bannerImage);
   bannerImage.src = data.images[0].url;
+
   //banner Title
-  const bannerTitle = document.querySelector('.banner-header h1');
+  const bannerTitle = document.querySelector(".banner-header h1");
   bannerTitle.textContent = data.name;
   //banner description
-  const bannerDescription = document.querySelector('.banner-header-desc');
+  const bannerDescription = document.querySelector(".banner-header-desc");
   bannerDescription.textContent = data.description;
-  //iteratable objects of array
+
   const musicDataList = data.tracks.items;
-  const albumSongList = document.querySelector('.album-song-list');
-  for (let i = 0; i < data.tracks.items.length; i++) {
-    const songListTrack = document.createElement('div');
-    songListTrack.className = 'song-list-track';
-    songListTrack.id = `Track-${Number(i + 1)}`;
-    const trackNo = document.createElement('p');
-    trackNo.className = 'title-hash';
-    trackNo.textContent = `${Number(i + 1)}`;
 
-    const trackName = document.createElement('p');
-    trackName.className = 'title-title-name';
-    trackName.textContent = musicDataList[i].name;
-    // const trackAlbum = document.createElement("p");
-    // trackAlbum.className = "title-album";
-    // trackAlbum.textContent = musicDataList[i].track.name;
-    // const trackDateAdded = document.createElement("p");
-    // trackDateAdded.className = "title-date";
-    // trackDateAdded.textContent = convertISOStringToCustomFormat(
-    //   musicDataList[i].added_at
-    // );
-    const trackDuration = document.createElement('p');
-    trackDuration.className = 'title-spotify-duration';
-    trackDuration.textContent = timeConvertion(musicDataList[i].duration_ms);
-    songListTrack.append(trackNo);
-    songListTrack.append(trackName);
+  const albumSongList = document.querySelector(".album-song-list");
+  if (type == "album") {
+    musicDataList.forEach((track, index) => {
+      const songListTrack = document.createElement("div");
+      songListTrack.className = "song-list-track";
+      songListTrack.id = `Track-${Number(index + 1)}`;
 
-    // songListTrack.append(trackAlbum);
-    // songListTrack.append(trackDateAdded);
+      const trackNo = document.createElement("p");
+      trackNo.className = "title-hash";
+      trackNo.textContent = `${Number(index + 1)}`;
 
-    console.log(songListTrack);
-    songListTrack.append(trackDuration);
-    albumSongList.append(songListTrack);
+      const trackName = document.createElement("p");
+      trackName.className = "title-title-name";
+      trackName.textContent = track.name;
+
+      const trackDuration = document.createElement("p");
+      trackDuration.className = "title-spotify-duration";
+      trackDuration.textContent = timeConvertion(track.duration_ms);
+
+      songListTrack.append(trackNo);
+      songListTrack.append(trackName);
+      songListTrack.append(trackDuration);
+      songListTrack.onclick = () => {
+        changeSource(
+          track.preview_url,
+          track.name,
+          data.name,
+          data.images[0].url
+        );
+      };
+      albumSongList.append(songListTrack);
+    });
+  } else if (type == "playlist") {
+    musicDataList.forEach((_, index) => {
+      const playList = musicDataList[index].track;
+
+      const songListTrack = document.createElement("div");
+      songListTrack.className = "song-list-track";
+      songListTrack.id = `Track-${Number(index + 1)}`;
+
+      const trackNo = document.createElement("p");
+      trackNo.className = "title-hash";
+      trackNo.textContent = `${Number(index + 1)}`;
+
+      const trackName = document.createElement("p");
+      trackName.className = "title-title-name";
+      trackName.textContent = playList.name;
+
+      const trackDuration = document.createElement("p");
+      trackDuration.className = "title-spotify-duration";
+      trackDuration.textContent = timeConvertion(playList.duration_ms);
+
+      songListTrack.append(trackNo);
+      songListTrack.append(trackName);
+      songListTrack.append(trackDuration);
+      songListTrack.onclick = () => {
+        changeSource(
+          playList.preview_url,
+          playList.name,
+          data.name,
+          data.images[0].url
+        );
+      };
+      albumSongList.append(songListTrack);
+    });
   }
 });

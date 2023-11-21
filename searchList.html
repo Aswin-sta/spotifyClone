@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/searchList.css" />
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/searchpage.css">
-    <script type="module" src="./assets/js/searchList.js"></script>
+    <link rel="stylesheet" href="./assets/css/top-nav.css" />
+    <link rel="stylesheet" href="./assets/css/side-nav.css" />
+    <link rel="stylesheet" href="./assets/css/bottom-player.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/searchpage.css" />
+    <script type="module" src="./assets/js/searchList.js" defer></script>
+    <script type="module" src="assets/js/getSearch.js" defer></script>
+    <script type="module" src="./assets/js/player.js" async></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -17,13 +21,15 @@
   <body>
     <div class="wrapper">
       <div id="sideBar">
-        <div class="sideDivTile--top">
+        <div class="sideDivTileTop">
           <ul>
             <li>
-          <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
+              <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
             </li>
             <li>
-                   <a href="searchpage.html"><img src="./assets/imgs/search.svg" />Search</a>
+              <a href="searchpage.html"
+                ><img src="./assets/imgs/search.svg" />Search</a
+              >
             </li>
           </ul>
         </div>
@@ -46,10 +52,10 @@
       <div id="heroSection">
         <nav>
           <div>
-            <button id="left--arrow">
+            <button id="leftArrow">
               <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
             </button>
-            <button id="right--arrow">
+            <button id="rightArrow">
               <!-- <img src="./assets/imgs/rightarrow.png" /> -->
             </button>
             <div class="search">
@@ -60,7 +66,7 @@
               />
             </div>
           </div>
-          <button id="login" href="#">
+          <button id="loginLink" href="#">
             <img src="./assets/imgs/user.png" />
           </button>
         </nav>
@@ -68,7 +74,7 @@
           <h1>Songs</h1>
         </div>
         <div class="bottomBar">
-          <div class="footertop">
+          <div class="footerTop">
             <div class="companyWrapper">
               <p class="header">Company</p>
               <p>
@@ -91,7 +97,7 @@
               </p>
               <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
             </div>
-            <div class="useWrapper">
+            <div class="usefulLinksWrapper">
               <p class="header">Useful links</p>
               <p><a href="https://support.spotify.com/in-en/">Support</a></p>
               <p>
@@ -107,7 +113,7 @@
             </div>
           </div>
           <hr />
-          <div class="footerbottom">
+          <div class="footerBottom">
             <div class="navbar">
               <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
               <p>
@@ -146,13 +152,14 @@
     <div class="spotify-player">
       <div id="player-song-info">
         <img id="player-album-art" src="./assets/imgs/album.png" />
-        <p id="player-song-title">
-          Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          <br />
-          <span id="player-song-album"
-            >ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span
-          >
-        </p>
+        <div>
+          <p id="player-song-title">
+            Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+          <p id="player-song-album">
+            ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </p>
+        </div>
       </div>
       <div class="player-controls">
         <div class="control-button-wrapper">
@@ -167,11 +174,7 @@
             <i class="fas fa-step-backward"></i>
           </button>
           <div id="play-pause-div">
-            <button
-              class="control-button"
-              id="play-pause"
-              onclick="togglePlayPause()"
-            >
+            <button class="control-button" id="play-pause">
               <i class="fas fa-play"></i>
             </button>
           </div>
@@ -190,10 +193,14 @@
           <div class="progress"></div>
         </div>
       </div>
+      <audio id="musicPlayer">
+        <source
+          id="audioSource"
+          src="https://example.com/default-music.mp3"
+          type="audio/mp3"
+        />
+        Your browser does not support the audio tag.
+      </audio>
     </div>
-  </body>
-  <script type="module" src="assets/js/getSearch.js"></script>
-</html>
-
   </body>
 </html>
