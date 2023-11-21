@@ -2,50 +2,50 @@ import { getData, refreshAccessToken } from './get.js';
 
 await refreshAccessToken(localStorage.getItem('refresh_token'));
 
-const id = new URLSearchParams(window.location.search).get('id');
-const url = `https://api.spotify.com/v1/browse/categories/${id}`;
+const categoryId = new URLSearchParams(window.location.search).get('id');
+const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
+console.log(genreUrl);
 
-console.log(url);
-const genreData = await getData(url);
-const playlistData = await getData(url + '/playlists');
+const genreData = await getData(genreUrl);
+const playlistData = await getData(genreUrl + '/playlists');
 console.log(playlistData);
 
-const genreTitle = document.querySelector('#genre-title');
-genreTitle.innerHTML = genreData.name;
+const genreTitleElement = document.querySelector('#genreTitleElement');
+genreTitleElement.innerHTML = genreData.name;
 
-const mainContainer = document.getElementById('main-container');
+const mainContainer = document.getElementById('mainContainer');
 
 playlistData.playlists.items.forEach(playlist => {
-  const playlist_card = document.createElement('div');
-  playlist_card.className = 'playlist-card';
+  const playlistCard = document.createElement('div');
+  playlistCard.className = 'playlistCard';
 
-  const img_container = document.createElement('div');
-  img_container.classList.add('img-container');
+  const imgContainer = document.createElement('div');
+  imgContainer.classList.add('imgContainer');
 
-  const img_element = document.createElement('img');
-  img_element.classList.add('img_element');
-  img_element.src = playlist.images[0].url;
+  const imgElement = document.createElement('img');
+  imgElement.classList.add('imgElement');
+  imgElement.src = playlist.images[0].url;
 
   const playButton = document.createElement('img');
   playButton.src = './assets/imgs/spotify-play-button.png';
   playButton.alt = 'Play';
-  playButton.classList.add('spotify-play-button');
+  playButton.classList.add('spotifyPlayButton');
 
-  img_container.appendChild(img_element);
-  img_container.appendChild(playButton);
+  imgContainer.appendChild(imgElement);
+  imgContainer.appendChild(playButton);
 
-  const playlist_title = document.createElement('h3');
-  playlist_title.className = 'playlist-title';
-  playlist_title.innerHTML = playlist.name;
+  const playlistTitleElement = document.createElement('h3');
+  playlistTitleElement.className = 'playlistTitleElement';
+  playlistTitleElement.innerHTML = playlist.name;
 
-  const description = document.createElement('p');
-  description.classList.add('description');
-  description.innerHTML = playlist.description;
+  const descriptionElement = document.createElement('p');
+  descriptionElement.classList.add('descriptionElement');
+  descriptionElement.innerHTML = playlist.description;
 
-  playlist_card.append(img_container, playlist_title, description);
-  mainContainer.appendChild(playlist_card);
+  playlistCard.append(imgContainer, playlistTitleElement, descriptionElement);
+  mainContainer.appendChild(playlistCard);
 
-  playlist_card.onclick = () => {
+  playlistCard.onclick = () => {
     window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
   };
 });
