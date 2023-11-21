@@ -7,7 +7,7 @@ console.log(playlistPromise);
 playlistPromise.then((data) => {
   data.items.forEach((playlist) => {
     console.log(playlist);
-    const playlistTile = document.getElementById("playlist-tile");
+    const playlistTile = document.getElementById("playlistTile");
     const playlistImage = document.createElement("img");
     playlistImage.src = playlist.images[0];
     const playlistName = document.createElement("h4");

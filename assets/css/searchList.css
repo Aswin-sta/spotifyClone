@@ -25,7 +25,7 @@
   margin-right: 10px;
 }
 
-.song-details {
+.songDetails {
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
