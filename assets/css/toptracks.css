@@ -15,7 +15,9 @@
   color: white;
   text-decoration: underline;
 }
-.topTracks .topTracksList .song .songDetails {
+
+.toptracks .toptrackslist .song .songDetails {
+
   display: flex;
 }
 .song {

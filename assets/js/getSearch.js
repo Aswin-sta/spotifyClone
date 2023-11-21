@@ -11,7 +11,7 @@ searchCateogoryPromise.then(data => {
   const searchSection = document.querySelector('section.searchDisplay');
   categoryData.forEach(elements => {
     const searchContainer = document.createElement('div');
-    searchContainer.classList.add('search-block');
+    searchContainer.classList.add('searchBlock');
 
     const title = document.createElement('h2');
     title.textContent = elements.name;
@@ -39,7 +39,7 @@ function getRandomColor() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
-const searchBar = document.querySelector('.search-input');
+const searchBar = document.querySelector('.searchInput');
 searchBar.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     window.location.href = `searchList.html?q=${searchBar.value}`;
