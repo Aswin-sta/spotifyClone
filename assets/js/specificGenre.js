@@ -1,51 +1,76 @@
 import { getData, refreshAccessToken } from './get.js';
 
-await refreshAccessToken(localStorage.getItem('refresh_token'));
+try {
+  // Refresh access token
+  await refreshAccessToken(localStorage.getItem('refresh_token'));
 
-const categoryId = new URLSearchParams(window.location.search).get('id');
-const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
-console.log(genreUrl);
+  // Get category ID from URL
+  const categoryId = new URLSearchParams(window.location.search).get('id');
+  const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
 
-const genreData = await getData(genreUrl);
-const playlistData = await getData(genreUrl + '/playlists');
-console.log(playlistData);
+  console.log(genreUrl);
 
-const genreTitleElement = document.querySelector('#genreTitleElement');
-genreTitleElement.innerHTML = genreData.name;
+  // Fetch genre data and playlist data concurrently
+  const [genreData, playlistData] = await Promise.all([
+    getData(genreUrl),
+    getData(`${genreUrl}/playlists`),
+  ]);
 
-const mainContainer = document.getElementById('mainContainer');
+  console.log(playlistData);
 
-playlistData.playlists.items.forEach(playlist => {
-  const playlistCard = document.createElement('div');
-  playlistCard.className = 'playlistCard';
+  // Update genre title element
+  const genreTitleElement = document.querySelector('#genreTitleElement');
+  genreTitleElement.innerHTML = genreData.name;
 
-  const imgContainer = document.createElement('div');
-  imgContainer.classList.add('imgContainer');
+  // Get main container element
+  const mainContainer = document.getElementById('mainContainer');
 
-  const imgElement = document.createElement('img');
-  imgElement.classList.add('imgElement');
-  imgElement.src = playlist.images[0].url;
+  // Iterate through playlist items
+  playlistData.playlists.items.forEach(playlist => {
+    // Create playlist card element
+    const playlistCard = document.createElement('div');
+    playlistCard.className = 'playlistCard';
 
-  const playButton = document.createElement('img');
-  playButton.src = './assets/imgs/spotify-play-button.png';
-  playButton.alt = 'Play';
-  playButton.classList.add('spotifyPlayButton');
+    // Create image container
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('imgContainer');
 
-  imgContainer.appendChild(imgElement);
-  imgContainer.appendChild(playButton);
+    // Create image element
+    const imgElement = document.createElement('img');
+    imgElement.classList.add('imgElement');
+    imgElement.src = playlist.images[0]?.url || ''; // Use optional chaining to avoid errors
 
-  const playlistTitleElement = document.createElement('h3');
-  playlistTitleElement.className = 'playlistTitleElement';
-  playlistTitleElement.innerHTML = playlist.name;
+    // Create play button element
+    const playButton = document.createElement('img');
+    playButton.src = './assets/imgs/spotify-play-button.png';
+    playButton.alt = 'Play';
+    playButton.classList.add('spotifyPlayButton');
 
-  const descriptionElement = document.createElement('p');
-  descriptionElement.classList.add('descriptionElement');
-  descriptionElement.innerHTML = playlist.description;
+    // Append image and play button to image container
+    imgContainer.append(imgElement, playButton);
 
-  playlistCard.append(imgContainer, playlistTitleElement, descriptionElement);
-  mainContainer.appendChild(playlistCard);
+    // Create playlist title element
+    const playlistTitleElement = document.createElement('h3');
+    playlistTitleElement.className = 'playlistTitleElement';
+    playlistTitleElement.innerHTML = playlist.name;
 
-  playlistCard.onclick = () => {
-    window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
-  };
-});
+    // Create description element
+    const descriptionElement = document.createElement('p');
+    descriptionElement.classList.add('descriptionElement');
+    descriptionElement.innerHTML = playlist.description;
+
+    // Append elements to playlist card
+    playlistCard.append(imgContainer, playlistTitleElement, descriptionElement);
+
+    // Append playlist card to main container
+    mainContainer.appendChild(playlistCard);
+
+    // Add click event to navigate to musiclist.html
+    playlistCard.onclick = () => {
+      window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+    };
+  });
+} catch (error) {
+  console.error('An error occurred:', error.message);
+  // Handle the error as needed, e.g., show a user-friendly message.
+}
