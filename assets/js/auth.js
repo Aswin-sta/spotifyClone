@@ -4,6 +4,7 @@ const redirectUri = "http://127.0.0.1:5500/home.html?page=hallofmusic";
 const scope =
   "user-read-private user-read-email user-top-read user-library-read user-library-modify streaming"; // Add the scopes you need
 
+
 const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
 window.location.href = authorizationUrl;
 

@@ -17,10 +17,12 @@
 .profileWrapper .image img {
   height: 200px;
   width: 200px;
+  border-radius: 100%;
 }
 .profileWrapper .text {
   padding-left: 25px;
   margin-top: 20px;
+  color: white;
 }
 .profileWrapper .text p {
   font-size: 15px;
@@ -34,8 +36,7 @@
   cursor: pointer;
 }
 .editDots {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin: 40px 0px 20px 30px;
 }
 .editDots #dots {
   background-color: #191414;

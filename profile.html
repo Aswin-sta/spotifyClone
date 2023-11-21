@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/profile.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
-    <script type="module" src="./assets/js/profile.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/toptracks.css" />
+    <link rel="stylesheet" href="./assets/css/profileplaylist.css" />
+    //script
+    <script type="module" src="./assets/js/profile.js"></script>
+    <script type="module" src="./assets/js/toptracks.js"></script>
+    <script type="module" src="./assets/js/profilePlaylist.js"></script>
     <script type="module" src="./assets/js/player.js" async></script>
   </head>
   <body>
@@ -74,6 +79,15 @@
           </div>
           <div class="editDots">
             <button id="dots" title="More options for QWERTY">. . .</button>
+          </div>
+          <div class="toptracks">
+            <h3>Top Tracks this month</h3>
+            <p class="text">Only visible to you</p>
+            <div id="toptrackslist" class="toptrackslist"></div>
+          </div>
+          <div class="playlist">
+            <h3>Public Playlist</h3>
+            <div id="playlist-tile" class="playlist-tile"></div>
           </div>
           <!-- <div id="profileEdit" class="profilechange">
               <h2>Profile details</h2>
