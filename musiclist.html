@@ -17,6 +17,7 @@
     />
     <script type="module" src="./assets/js/getMusicList.js" defer></script>
     <script type="module" src="./assets/js/player.js" async></script>
+    <script type="module" src="./assets/js/side-div.js" async></script>
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
       rel="stylesheet"
@@ -41,12 +42,14 @@
           <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
           <a></a>
           <a></a>
-          <div>
-            <h3>Create your first playlist</h3>
-            <p>it's easy, we'll help you</p>
-            <button>Create Playlist</button>
+          <div id="playlistWrapper">
+            <div id="playlistItemPlaceholder">
+              <h3>Create your first playlist</h3>
+              <p>it's easy, we'll help you</p>
+              <button>Create Playlist</button>
+            </div>
           </div>
-          <div>
+          <div id="podcastWrapper">
             <h3>Lets's find some podcast to follow</h3>
             <p>We'll leep you updated on new episodes</p>
             <button>Browse podcast</button>

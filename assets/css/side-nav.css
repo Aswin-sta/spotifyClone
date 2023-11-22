@@ -55,7 +55,8 @@
   margin-right: 6%;
   width: 9%;
 }
-#sideBar .sideDivTile div {
+#sideBar .sideDivTile #playlistWrapper,
+#podcastWrapper {
   padding: 2% 5%;
   border-radius: 10px;
   background-color: var(--spotify-light-grey);
@@ -63,23 +64,48 @@
   margin: 8% 3%;
 }
 
-#sideBar .sideDivTile div h3 {
+#sideBar .sideDivTile #playlistWrapper h3,
+#podcastWrapper h3 {
   font-size: 0.95em;
   font-weight: 600;
   margin-block: 6% 1%;
 }
 
-#sideBar .sideDivTile div p {
+#sideBar .sideDivTile #playlistWrapper p,
+#podcastWrapper p {
   font-size: 0.9em;
   font-weight: 500;
   margin-block: 4% 1%;
 }
 
-#sideBar .sideDivTile div button {
+#sideBar .sideDivTile #playlistWrapper button,
+#podcastWrapper button {
   color: black;
   padding: 3% 5%;
   font-weight: 750;
   border-radius: 25px;
   border: none;
   margin-block: 6%;
+}
+
+#playlistWrapper .playlistItem {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+#playlistWrapper .playlistItem img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  padding: 12px;
+  border-radius: 5%;
+  background-color: var(--spotify-grey);
+}
+
+#playlistWrapper .playlistItem h4,
+#playlistWrapper .playlistItem p {
+  margin: 0;
+  font-size: small;
 }

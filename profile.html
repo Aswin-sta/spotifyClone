@@ -16,6 +16,7 @@
     <script type="module" src="./assets/js/topTracks.js"></script>
     <script type="module" src="./assets/js/profilePlaylist.js"></script>
     <script type="module" src="./assets/js/player.js" async></script>
+    <script type="module" src="./assets/js/side-div.js" async></script>
 
     <link
       rel="stylesheet"
@@ -41,12 +42,14 @@
           <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
           <a></a>
           <a></a>
-          <div>
-            <h3>Create your first playlist</h3>
-            <p>it's easy, we'll help you</p>
-            <button>Create Playlist</button>
+          <div id="playlistWrapper">
+            <div id="playlistItemPlaceholder">
+              <h3>Create your first playlist</h3>
+              <p>it's easy, we'll help you</p>
+              <button>Create Playlist</button>
+            </div>
           </div>
-          <div>
+          <div id="podcastWrapper">
             <h3>Lets's find some podcast to follow</h3>
             <p>We'll leep you updated on new episodes</p>
             <button>Browse podcast</button>
