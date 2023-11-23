@@ -21,6 +21,7 @@
     />
     <script type="module" src="./assets/js/player.js" async></script>
     <script type="module" src="assets/js/specificGenre.js" defer></script>
+    <script type="module" src="./assets/js/side-div.js" async></script>
   </head>
   <body>
     <div class="wrapper">
@@ -28,10 +29,12 @@
         <div class="sideDivTileTop">
           <ul>
             <li>
-              <a><img src="./assets/imgs/home.svg" />Home</a>
+              <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
             </li>
             <li>
-              <a><img src="./assets/imgs/search.svg" />Search</a>
+              <a href="searchpage.html"
+                ><img src="./assets/imgs/search.svg" />Search</a
+              >
             </li>
           </ul>
         </div>
@@ -39,12 +42,14 @@
           <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
           <a></a>
           <a></a>
-          <div>
-            <h3>Create your first playlist</h3>
-            <p>it's easy, we'll help you</p>
-            <button>Create Playlist</button>
+          <div id="playlistWrapper">
+            <div id="playlistItemPlaceholder">
+              <h3>Create your first playlist</h3>
+              <p>it's easy, we'll help you</p>
+              <button>Create Playlist</button>
+            </div>
           </div>
-          <div>
+          <div id="podcastWrapper">
             <h3>Lets's find some podcast to follow</h3>
             <p>We'll leep you updated on new episodes</p>
             <button>Browse podcast</button>
@@ -62,20 +67,12 @@
             </button>
             <!-- s -->
           </div>
-          <button id="loginLink" href="#">
+          <button id="loginLink" href="profile.html">
             <img src="./assets/imgs/user.png" />
           </button>
         </nav>
         <div class="titleDiv">
-          <h1
-            id="genreTitleElement"
-            style="
-              margin-top: 15%;
-              margin-left: 5%;
-              margin-bottom: 5%;
-              font-size: 68px;
-            "
-          ></h1>
+          <h2 id="genreTitleElement"></h2>
         </div>
         <section class="">
           <div id="mainContainer"></div>

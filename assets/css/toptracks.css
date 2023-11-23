@@ -16,17 +16,15 @@
   text-decoration: underline;
 }
 
-.toptracks .toptrackslist .song .songDetails {
-
-  display: flex;
-}
 .song {
   border-radius: 5px;
   display: flex;
 }
 .song .songDetails {
+  display: flex;
   padding: 1% 0% 1% 0%;
   font-size: 14px;
+  display: flex;
 }
 .song .songNumber {
   padding: 2% 2% 2% 0%;
