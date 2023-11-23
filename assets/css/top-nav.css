@@ -1,15 +1,12 @@
 @import url(./main.css);
-nav {
+#heroSection nav {
   justify-content: space-between;
-  position: fixed;
-  width: 77%;
   display: flex;
-  top: 0;
-  padding: 1% 5%;
   align-items: center;
   opacity: 1;
   box-sizing: border-box;
   z-index: 999;
+  padding-top: 2%;
   background-color: var(--spotify-grey);
 }
 
@@ -17,7 +14,8 @@ nav {
   display: flex;
 }
 
-#heroSection nav div button {
+#heroSection nav div button,
+#heroSection nav div a {
   width: 38px;
   height: 38px;
   border: none;
@@ -37,11 +35,21 @@ nav {
 #rightArrow {
   background-image: url(../imgs/rightarrow.png);
 }
-
+#navHomeButton {
+  background-image: url(../imgs/home.svg);
+}
+#navSearchButton {
+  background-image: url(../imgs/search.svg);
+}
 #loginLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  padding: 0.8% 1%;
+  padding: 1% 1%;
   border: hidden;
+  width: 38px;
+  height: 38px;
   background-color: #0f0909;
 }
 

@@ -2,15 +2,19 @@
   background-color: #000000;
   display: flex;
   padding: 0.5% 1%;
+  margin: 0;
   height: 13vh;
   box-sizing: border-box;
 }
 
 #playerSongInfo {
   display: flex;
-  align-items: center;
-  min-width: 25%;
-  max-width: 25%;
+  margin-block: auto;
+}
+
+#playerSongInfo div {
+  overflow: hidden;
+  width: 100%;
 }
 
 #playerAlbumArt {
@@ -24,34 +28,58 @@
   color: white;
   margin-block: auto;
   margin-block: 0;
-  max-width: 25ch;
-  overflow: hidden;
+  max-width: 30ch;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
+
+#playerSongTitle:hover {
+  color: white;
+  margin-block: auto;
+  margin-block: 0;
+  max-width: 30ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* #playerSongTitle:hover {
+  white-space: calc();
+  overflow: auto;
+  animation: scroll 12s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
 
 #playerSongAlbum {
   color: rgb(150, 145, 145);
   font-size: smaller;
   margin-block: 0;
   max-width: 25ch;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .playerControls {
   display: inline-block;
   justify-content: center;
   box-sizing: border-box;
-  padding-inline: 2%;
-  width: 50vw;
+  margin-block: auto;
 }
 
 .controlButtonWrapper {
   display: flex;
   justify-content: center;
-  margin-block: 0px 18px;
+  margin-bottom: 1.5%;
 }
 
 .controlButton {

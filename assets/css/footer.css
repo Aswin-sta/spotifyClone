@@ -4,16 +4,12 @@
   bottom: 0;
 }
 .footerTop {
-  display: flex;
   margin-left: 40px;
   margin-bottom: 20px;
 }
 .footerTop .header {
   color: white;
   font-weight: 600;
-}
-.footerTop p {
-  padding-bottom: 10px;
 }
 .footerTop a {
   text-decoration: none;
@@ -22,15 +18,6 @@
 .footerTop a:hover {
   text-decoration: underline;
   color: white;
-}
-.footerTop .companyWrapper {
-  margin-right: 15%;
-}
-.footerTop .communitiesWrapper {
-  margin-right: 15%;
-}
-.footerTop .usefulLinksWrapper {
-  margin-right: 10%;
 }
 .footerTop .socialWrapper {
   display: flex;
@@ -52,15 +39,10 @@
   border: 1px solid gray;
 }
 .footerBottom {
-  display: flex;
   margin-bottom: 10%;
-}
-.footerBottom .navbar {
-  display: flex;
-  margin: 30px 0px 0px 40px;
+  margin-left: 40px;
 }
 .footerBottom .navbar p {
-  padding-right: 20px;
   font-size: 13px;
 }
 .footerBottom .navbar a {
@@ -71,8 +53,9 @@
   color: white;
 }
 .footerBottom .copyright {
-  margin: 30px 0px 0px 22%;
+  margin-top: 5px;
 }
 .footerBottom .copyright p {
   font-size: 14px;
+  text-align: end;
 }
