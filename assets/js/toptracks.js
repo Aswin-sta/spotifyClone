@@ -18,53 +18,62 @@ function createSongElement(track, songNumber) {
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
 
+  const songBootstrapContainer = document.createElement("div");
+  songBootstrapContainer.classList.add("container-fluid");
+
+  const songRow = document.createElement("div");
+  songRow.classList.add("row");
+
   const number = document.createElement("p");
-  number.classList.add("songNumber");
+  number.classList.add("songNumber", "col-1");
   number.textContent = `${songNumber + 1}`;
 
   const albumImage = document.createElement("img");
+  albumImage.classList.add("col-1");
   albumImage.src = track.album.images[2].url;
   albumImage.alt = "Album Cover";
 
-  const songDetails = document.createElement("div");
-  songDetails.classList.add("songDetails");
-
   const songName = document.createElement("h3");
+  songName.classList.add("songName");
   songName.textContent = track.name;
 
   const artists = document.createElement("a");
   artists.href = "#";
+  artists.classList.add("artistName", "d-none", "d-md-inline-block");
   artists.textContent = truncateText(
     track.artists.map((artist) => artist.name).join(", "),
     50
   );
 
   const detailsLeft = document.createElement("div");
-  detailsLeft.classList.add("nameAndArtists");
-  detailsLeft.appendChild(songName);
-  detailsLeft.appendChild(artists);
+  detailsLeft.classList.add("nameAndArtists", "col-5");
+  detailsLeft.append(songName);
+  detailsLeft.append(artists);
 
   const albumName = document.createElement("div");
-  albumName.classList.add("albumName");
+  albumName.classList.add("albumName", "col-3", "d-none", "d-md-inline-block");
 
   const album = document.createElement("a");
   album.href = "#";
   album.textContent = truncateText(track.album.name, 30);
 
-  albumName.appendChild(album);
+  albumName.append(album);
 
   const duration = document.createElement("span");
+  duration.classList.add("col-2");
   duration.textContent = formatDuration(track.duration_ms);
 
-  songDetails.appendChild(detailsLeft);
-  songDetails.appendChild(albumName);
-  songDetails.appendChild(duration);
+  songRow.append(number);
+  songRow.append(albumImage);
+  songRow.append(detailsLeft);
+  songRow.append(albumName);
+  songRow.append(duration);
 
-  songContainer.appendChild(number);
-  songContainer.appendChild(albumImage);
-  songContainer.appendChild(songDetails);
+  songBootstrapContainer.append(songRow);
 
-  topTracksList.appendChild(songContainer);
+  songContainer.append(songBootstrapContainer);
+
+  topTracksList.append(songContainer);
 }
 
 function formatDuration(durationInMs) {
