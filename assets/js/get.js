@@ -1,4 +1,4 @@
-// const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
+const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 
 async function getDataFromCache(

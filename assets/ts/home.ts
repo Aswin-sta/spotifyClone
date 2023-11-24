@@ -1,4 +1,4 @@
-import { getDataFromCache,refreshAccessToken } from "../js/get.js";
+import { getDataFromCache } from "../js/get.js";
  
 const clientId: string = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret: string = "98598afa94de4a93b71b39e1efd13a80";
