@@ -19,32 +19,32 @@ import { getData, refreshAccessToken } from '../js/get.js';
     ]);
     console.log(playlistData);
     const genreTitleElement = document.querySelector('#genreTitleElement');
-    genreTitleElement.classList.add('mt-4', 'mb-3');
+    genreTitleElement.classList.add('mt-5', 'mb-3');
     if (genreTitleElement) {
         genreTitleElement.innerHTML = genreData.name;
     }
     const mainContainer = document.getElementById('mainContainer');
-    mainContainer.classList.add('container-fluid', 'row', 'd-flex', 'flex-wrap', 'justify-content-evenly', 'text-white');
+    mainContainer.classList.add('container', 'd-flex', 'flex-wrap', 'text-white');
     if (mainContainer) {
         playlistData.playlists.items.forEach((playlist) => {
             const playlistCard = document.createElement('div');
-            playlistCard.classList.add('playlistCard', 'col-sm-6', 'col-lg-2', 'col-md-4', 'md-mr-0', 'mb-4', 'rounded', 'mr-4', 'shadow', 'p-3');
+            playlistCard.classList.add('playlistCard', 'col-sm-2', 'col-md-5', 'col-lg-2', 'mb-4', 'rounded', 'mr-md-4', 'mr-sm-4', 'shadow', 'p-3');
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
             const imgElement = document.createElement('img');
-            imgElement.classList.add('imgElement', 'rounded', 'w-100', 'h-50');
+            imgElement.classList.add('imgElement', 'rounded');
             imgElement.src = playlist.images[0].url;
             const playButton = document.createElement('img');
             playButton.src = './assets/imgs/spotify-play-button.png';
             playButton.alt = 'Play';
-            playButton.classList.add('spotifyPlayButton', 'img-fluid', 'rounded-circle', 'position-absolute', 'top-50', 'start-50', 'translate-middle');
+            playButton.classList.add('spotifyPlayButton', 'position-absolute');
             imgContainer.appendChild(imgElement);
             imgContainer.appendChild(playButton);
             const playlistTitleElement = document.createElement('h3');
             playlistTitleElement.classList.add('playlistTitleElement', 'text-truncate', 'mt-3', 'fw-bold');
             playlistTitleElement.innerHTML = playlist.name;
             const descriptionElement = document.createElement('p');
-            descriptionElement.classList.add('decriptionElement', 'small', 'mb-0');
+            descriptionElement.classList.add('decriptionElement', 'small', 'mb-0', 'text-truncate');
             descriptionElement.innerHTML = playlist.description;
             playlistCard.append(imgContainer, playlistTitleElement, descriptionElement);
             mainContainer.appendChild(playlistCard);

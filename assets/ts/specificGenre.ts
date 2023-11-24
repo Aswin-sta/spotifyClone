@@ -16,18 +16,16 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
   console.log(playlistData);
 
   const genreTitleElement = document.querySelector('#genreTitleElement') as HTMLHeadingElement;
-  genreTitleElement.classList.add('mt-4', 'mb-3');
+  genreTitleElement.classList.add('mt-5', 'mb-3', );
   if (genreTitleElement) {
     genreTitleElement.innerHTML = genreData.name;
   }
 
   const mainContainer = document.getElementById('mainContainer') as HTMLDivElement;
   mainContainer.classList.add(
-    'container-fluid',
-    'row',
+    'container',
     'd-flex',
     'flex-wrap',
-    'justify-content-evenly', 
     'text-white'
   );
 
@@ -36,13 +34,13 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       const playlistCard: HTMLDivElement = document.createElement('div');
       playlistCard.classList.add(
         'playlistCard',
-        'col-sm-6',
+        'col-sm-2',
+        'col-md-5',
         'col-lg-2',
-        'col-md-4',
-        'md-mr-0',
         'mb-4', 
         'rounded',
-        'mr-4',
+        'mr-md-4',
+        'mr-sm-4',
         'shadow',
         'p-3', 
       );
@@ -51,14 +49,14 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
 
       const imgElement: HTMLImageElement = document.createElement('img');
-      imgElement.classList.add('imgElement', 'rounded', 'w-100', 'h-50');
+      imgElement.classList.add('imgElement', 'rounded',);
       
       imgElement.src = playlist.images[0].url;
 
       const playButton: HTMLImageElement = document.createElement('img');
       playButton.src = './assets/imgs/spotify-play-button.png';
       playButton.alt = 'Play';
-      playButton.classList.add('spotifyPlayButton', 'img-fluid', 'rounded-circle', 'position-absolute', 'top-50', 'start-50', 'translate-middle');
+      playButton.classList.add('spotifyPlayButton','position-absolute');
 
       imgContainer.appendChild(imgElement);
       imgContainer.appendChild(playButton);
@@ -73,7 +71,7 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       playlistTitleElement.innerHTML = playlist.name;
 
       const descriptionElement: HTMLParagraphElement = document.createElement('p');
-      descriptionElement.classList.add('decriptionElement','small', 'mb-0');
+      descriptionElement.classList.add('decriptionElement','small', 'mb-0', 'text-truncate');
       
       descriptionElement.innerHTML = playlist.description;
 
