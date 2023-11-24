@@ -61,6 +61,17 @@ function playOnLoad() {
   playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
 }
 
+var slider = document.querySelector("#slider");
+var fill = document.querySelector(".bar .fill");
+
+function setBar() {
+  fill.style.width = slider.value + "%";
+  console.log(slider.value);
+  musicPlayer.volume = slider.value / 100;
+}
+
+slider.addEventListener("input", setBar);
+
 window.addEventListener("load", playOnLoad);
 
 export { changeSource };
