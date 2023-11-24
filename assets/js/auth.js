@@ -1,6 +1,6 @@
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
-const redirectUri = "http://127.0.0.1:5500/home.html?page=hallofmusic";
+const redirectUri = "https://spotify-clone-theta-bay.vercel.app/home.html?page=hallofmusic";
 const scope = "user-read-private user-read-email"; // Add the scopes you need
 
 const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
