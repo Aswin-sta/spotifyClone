@@ -7,7 +7,7 @@
 .profileWrapper .image img {
   height: 100%;
   width: 100%;
-  border-radius: 100%;
+  border-radius: 50%;
   margin-top: -15px;
   box-shadow: 5px 5px 5px 5px #2c2828;
   margin-left: 5%;
