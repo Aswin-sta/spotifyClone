@@ -1,9 +1,6 @@
-import { getData, refreshAccessToken } from "./get.js";
+import { getData } from "./get.js";
 import { changeSource } from "./player.js";
 
-await refreshAccessToken(localStorage.getItem("refresh_token"));
-
-//url search parameters
 const id = new URLSearchParams(window.location.search).get("id");
 const type = new URLSearchParams(window.location.search).get("type");
 

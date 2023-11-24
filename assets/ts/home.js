@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getData, refreshAccessToken } from "../js/get.js";
+import { getDataFromCache } from "../js/get.js";
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const apiEndpoints = {
@@ -53,8 +53,7 @@ function createItemTile(container, data, onClickHandler) {
 // Fetch and render new releases
 (() => __awaiter(void 0, void 0, void 0, function* () {
     // Refresh Access Token
-    yield refreshAccessToken(localStorage.getItem("refresh_token"));
-    const newReleasesPromise = getData(apiEndpoints.newRelease);
+    const newReleasesPromise = getDataFromCache(apiEndpoints.newRelease, "newReleasesPromise", 36000);
     const newReleasesData = yield newReleasesPromise;
     console.log(newReleasesData);
     const newReleaseContainer = document.querySelector(".newReleases");
@@ -64,7 +63,7 @@ function createItemTile(container, data, onClickHandler) {
         });
     });
     // Fetch and render romantic playlists
-    const romanticPromise = getData(apiEndpoints.romantic);
+    const romanticPromise = getDataFromCache(apiEndpoints.romantic, "newRomanticPromise", 36000);
     const romanticData = yield romanticPromise;
     console.log(romanticData);
     const romanticContainer = document.querySelector(".romantic");
@@ -74,7 +73,7 @@ function createItemTile(container, data, onClickHandler) {
         });
     });
     // Fetch and render top Indian songs
-    const indiantopPromise = getData(apiEndpoints.indiantop);
+    const indiantopPromise = getDataFromCache(apiEndpoints.indiantop, "indianTopPromise", 36000);
     const indiantopData = yield indiantopPromise;
     console.log(indiantopData);
     const top10Container = document.querySelector(".topTen");
@@ -85,7 +84,7 @@ function createItemTile(container, data, onClickHandler) {
         });
     });
     // Fetch and render Anirudh's albums
-    const anirudhAlbumsPromise = getData(apiEndpoints.anirudh);
+    const anirudhAlbumsPromise = getDataFromCache(apiEndpoints.anirudh, "newAnirudhPromise", 36000);
     const anirudhData = yield anirudhAlbumsPromise;
     console.log(anirudhData);
     const anirudhContainer = document.querySelector(".anirudhMania");
