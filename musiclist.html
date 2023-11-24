@@ -3,189 +3,377 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/profile.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>spotify</title>
+    <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/top-nav.css" />
-    <link rel="stylesheet" href="./assets/css/side-nav.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/musiclist.css" />
+
+    <script type="module" src="./assets/js/side-div.js" async></script>
+    <script type="module" src="./assets/js/getMusicList.js" defer></script>
+    <script type="module" src="./assets/js/player.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <script type="module" src="./assets/js/getMusicList.js" defer></script>
-    <script type="module" src="./assets/js/player.js" async></script>
-    <script type="module" src="./assets/js/side-div.js" async></script>
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="wrapper">
-      <div id="sideBar">
-        <div class="sideDivTileTop">
-          <ul>
-            <li>
-              <a href="home.html"><img src="./assets/imgs/home.svg" />Home</a>
-            </li>
-            <li>
-              <a href="searchpage.html"
-                ><img src="./assets/imgs/search.svg" />Search</a
+    <div class="container-fluid" style="min-height: 100vh; max-height: 100vh">
+      <div class="row wrapper">
+        <div class="col-md-12">
+          <div class="row">
+            <div
+              class="col-md-3 d-none d-sm-block"
+              id="sideBar"
+              style="min-height: 87vh; max-height: 87vh; overflow: hidden"
+            >
+              <div id="topSideDiv" class="d-none d-md-block">
+                <img
+                  src="./assets/imgs/logo2.png"
+                  alt="spotify icon"
+                  id="logo"
+                />
+                <ul class="row w-100">
+                  <li class="col-md-12 col-lg-12 col-sm-6 col-6 mb-4">
+                    <a href="home.html" class="d-flex align-items-center">
+                      <img src="./assets/imgs/home.svg" alt="Home" />
+                      <span class="ml-2">Home</span>
+                    </a>
+                  </li>
+                  <li class="col-md-12 col-lg-12 col-sm-6 col-6">
+                    <a href="searchpage.html" class="d-flex align-items-center">
+                      <img src="./assets/imgs/search.svg" alt="Search" />
+                      <span class="ml-2">Search</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div id="bottomSideDiv">
+                <h4 id="sideBarHeading">
+                  <img src="./assets/imgs/library.svg" />Your Library
+                </h4>
+                <a></a>
+                <a></a>
+                <div id="playlistWrapper">
+                  <div id="playlistItemPlaceholder">
+                    <h3>Create your first playlist</h3>
+                    <p>it's easy, we'll help you</p>
+                    <button>Create Playlist</button>
+                  </div>
+                </div>
+                <div id="podcastWrapper">
+                  <h3>Lets's find some podcast to follow</h3>
+                  <p>We'll leep you updated on new episodes</p>
+                  <button>Browse podcast</button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-md-9 bg-light p-0"
+              id="heroSection"
+              style="overflow-y: scroll; max-height: 100vh"
+            >
+              <nav
+                class="navbar position-fixed sticky-top navbar-expand-md col-md-9"
               >
-            </li>
-          </ul>
+                <div>
+                  <a
+                    href="home.html"
+                    id="navHomeButton"
+                    class="d-flex align-items-center d-md-none mx-3"
+                  >
+                    <!-- <img src="./assets/imgs/home.svg" alt="Search" /> -->
+                  </a>
+                  <a
+                    href="searchpage.html"
+                    id="navSearchButton"
+                    class="d-flex align-items-center d-md-none mx-3"
+                  >
+                    <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
+                  </a>
+                  <button id="leftArrow" class="d-none d-md-block"></button>
+                  <button id="rightArrow" class="d-none d-md-block"></button>
+                </div>
+                <a id="loginLink" href="profile.html"
+                  ><img src="./assets/imgs/user.png"
+                /></a>
+              </nav>
+              <section class="homeWrapper">
+                <div class="container-fluid" id="playListHeader">
+                  <div class="row align-items-center">
+                    <div
+                      class="playListHeaderLeft col-lg-4 col-md-6 col-sm-1 xl-2"
+                      id="playListHeaderBanner"
+                    >
+                      <!-- album -->
+                    </div>
+                    <div class="playListHeaderRight col-lg-8 col-md-5 col-sm-1">
+                      <div class="row">
+                        <div class="col d-none d-sm-block">
+                          <h4>Playlist</h4>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col" id="playListHeaderTitle">
+                          <!-- title -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col" id="playListHeaderDesc">
+                          <!-- desc -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-1">
+                          <img
+                            src="./assets/imgs/Spotify_icon_svg.svg"
+                            alt="icon"
+                            class="iimmgg"
+                          />
+                        </div>
+                        <div class="col">
+                          <p>
+                            <b>Spotify </b>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid" id="playListInterationItems">
+                  <div class="row">
+                    <div
+                      class="col-lg-1 col-md-1 col-sm-2 col-2"
+                      id="playListInterationItemsPlay"
+                    >
+                      <img
+                        src="./assets/imgs/spotify-play-button.png"
+                        alt=""
+                        class="spotifyPlayButton"
+                      />
+                    </div>
+                    <div
+                      class="col-lg-1 col-md-1 col-sm-2 col-2"
+                      id="playListInterationItemsFav"
+                    >
+                      <img
+                        src="./assets/imgs/spotify-save-to-library.png"
+                        alt=""
+                        class="spotifySaveToLibrary"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid" id="playListTrack">
+                  <div class="row" id="playListTrackHeader">
+                    <!-- playListHeaders -->
+                    <div class="titleHash col-lg-1 col-md-1 col-1">
+                      <p>#</p>
+                    </div>
+                    <div class="titleTitle col-lg-10 col-md-10 col-sm-1 col-6">
+                      <p>Title</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                      <img
+                        src="./assets/imgs/spotify-duration.svg"
+                        alt=""
+                        class="titleSpotifyDurationIcon"
+                      />
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row" id="playListTrackLists">
+                    <!-- playList -->
+                  </div>
+                </div>
+              </section>
+              <div class="bottomBar">
+                <div class="footerTop">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col companyWrapper">
+                        <p class="header">Company</p>
+                        <p>
+                          <a
+                            href="https://www.spotify.com/in-en/about-us/contact/"
+                            >About</a
+                          >
+                        </p>
+                        <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
+                        <p>
+                          <a href="https://newsroom.spotify.com/"
+                            >For the Record</a
+                          >
+                        </p>
+                      </div>
+                      <div class="col communitiesWrapper">
+                        <p class="header">Communities</p>
+                        <p>
+                          <a href="https://artists.spotify.com/home"
+                            >For Artists</a
+                          >
+                        </p>
+                        <p>
+                          <a href="https://developer.spotify.com/"
+                            >Developers</a
+                          >
+                        </p>
+                        <p>
+                          <a href="https://ads.spotify.com/en-IN/"
+                            >Advertising</a
+                          >
+                        </p>
+                        <p>
+                          <a
+                            href="https://investors.spotify.com/home/default.aspx"
+                            >Investors</a
+                          >
+                        </p>
+                        <p>
+                          <a href="https://spotifyforvendors.com/">Vendors</a>
+                        </p>
+                      </div>
+                      <div class="col usefulLinksWrapper">
+                        <p class="header">Useful links</p>
+                        <p>
+                          <a href="https://support.spotify.com/in-en/"
+                            >Support</a
+                          >
+                        </p>
+                        <p>
+                          <a
+                            href="https://www.spotify.com/in-en/download/windows/"
+                            >Free Mobile App</a
+                          >
+                        </p>
+                      </div>
+                      <div class="col socialWrapper">
+                        <button>
+                          <img src="./assets/imgs/instagram.png" />
+                        </button>
+                        <button><img src="./assets/imgs/twitter.png" /></button>
+                        <button>
+                          <img src="./assets/imgs/facebook.png" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="footerBottom">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col navbar">
+                        <p>
+                          <a href="https://www.spotify.com/in-en/legal/"
+                            >Legal</a
+                          >
+                        </p>
+                        <p>
+                          <a href="https://www.spotify.com/in-en/privacy"
+                            >Privacy Center</a
+                          >
+                        </p>
+                        <p>
+                          <a
+                            href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                            >Privacy Policy</a
+                          >
+                        </p>
+                        <p>
+                          <a
+                            href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                            >Cookies</a
+                          >
+                        </p>
+                        <p>
+                          <a
+                            href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                            >About Ads</a
+                          >
+                        </p>
+                        <p>
+                          <a href="https://www.spotify.com/in-en/accessibility"
+                            >Accessibility</a
+                          >
+                        </p>
+                      </div>
+                      <div class="col copyright">
+                        <p>© 2023 Spotify AB</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="sideDivTile">
-          <h4><img src="./assets/imgs/library.svg" />Your Library</h4>
-          <a></a>
-          <a></a>
-          <div id="playlistWrapper">
-            <div id="playlistItemPlaceholder">
-              <h3>Create your first playlist</h3>
-              <p>it's easy, we'll help you</p>
-              <button>Create Playlist</button>
+        <div
+          class="container-fluid col-md-12 bg-secondary p-0"
+          style="max-height: 13vh; min-height: 13vh; position: fixed; bottom: 0"
+          ;
+        >
+          <div class="row spotifyPlayer">
+            <div class="col-2 p-0" id="playerSongInfo">
+              <img id="playerAlbumArt" src="./assets/imgs/album.png" />
+              <div>
+                <p id="playerSongTitle">
+                  Ramananaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p>
+                <p id="playerSongAlbum">
+                  ramaniaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p>
+              </div>
             </div>
-          </div>
-          <div id="podcastWrapper">
-            <h3>Lets's find some podcast to follow</h3>
-            <p>We'll leep you updated on new episodes</p>
-            <button>Browse podcast</button>
-          </div>
-        </div>
-      </div>
-      <div id="heroSection">
-        <nav>
-          <div>
-            <button id="leftArrow">
-              <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
-            </button>
-            <button id="rightArrow">
-              <!-- <img src="./assets/imgs/rightarrow.png" /> -->
-            </button>
-          </div>
-          <a id="loginLink" href="profile.html"
-            ><img src="./assets/imgs/user.png"
-          /></a>
-        </nav>
-        <section class="albumSongList">
-          <div class="banner">
-            <div class="bannerImg"></div>
-            <div class="bannerHeader">
-              <p>Playlist</p>
-              <h1></h1>
-              <p class="bannerHeaderDesc"></p>
-              <p>
-                <span class="bannerHeaderSpotifyIcon"
-                  ><img
-                    src="./assets/imgs/Spotify_icon_svg.svg"
-                    alt="icon" /></span
-                ><b class="bold">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spotify
-                </b>
-              </p>
-            </div>
-          </div>
-          <div class="interactionButtons">
-            <img
-              src="./assets/imgs/spotify-play-button.png"
-              alt=""
-              class="spotifyPlayButton"
-            />
-            <img
-              src="./assets/imgs/spotify-save-to-library.png"
-              alt=""
-              class="spotifySaveToLibrary"
-            />
-            <img
-              src="./assets/imgs/spotify-more-options.png"
-              alt=""
-              class="spotifyMoreOptions"
-            />
-          </div>
-          <div class="songListTitle">
-            <p class="titleHash">#</p>
-            <p class="titleTitle">Title</p>
-            <!-- <p class="title-album">Album</p>
-            <p class="title-date">Date added</p> -->
-            <img
-              src="./assets/imgs/spotify-duration.svg"
-              alt=""
-              class="titleSpotifyDurationIcon"
-            />
-          </div>
-          <hr />
-        </section>
-        <div class="bottomBar">
-          <div class="footerTop">
-            <div class="companyWrapper">
-              <p class="header">Company</p>
-              <p>
-                <a href="https://www.spotify.com/in-en/about-us/contact/"
-                  >About</a
+            <div class="col-10 px-0 py-2 playerControls">
+              <div class="controlButtonWrapper">
+                <button
+                  class="controlButton"
+                  id="shuffle"
+                  onclick="toggleShuffle()"
                 >
-              </p>
-              <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
-              <p><a href="https://newsroom.spotify.com/">For the Record</a></p>
-            </div>
-            <div class="communitiesWrapper">
-              <p class="header">Communities</p>
-              <p><a href="https://artists.spotify.com/home">For Artists</a></p>
-              <p><a href="https://developer.spotify.com/">Developers</a></p>
-              <p><a href="https://ads.spotify.com/en-IN/">Advertising</a></p>
-              <p>
-                <a href="https://investors.spotify.com/home/default.aspx"
-                  >Investors</a
+                  <i class="fas fa-random"></i>
+                </button>
+                <button
+                  class="controlButton"
+                  id="skipBackward"
+                  onclick="skipBackward()"
                 >
-              </p>
-              <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
-            </div>
-            <div class="usefulLinksWrapper">
-              <p class="header">Useful links</p>
-              <p><a href="https://support.spotify.com/in-en/">Support</a></p>
-              <p>
-                <a href="https://www.spotify.com/in-en/download/windows/"
-                  >Free Mobile App</a
+                  <i class="fas fa-step-backward"></i>
+                </button>
+                <div id="playPauseDiv">
+                  <button class="controlButton" id="playPause">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+                <button
+                  class="controlButton"
+                  id="skipForward"
+                  onclick="skipForward()"
                 >
-              </p>
-            </div>
-            <div class="socialWrapper">
-              <button><img src="./assets/imgs/instagram.png" /></button>
-              <button><img src="./assets/imgs/twitter.png" /></button>
-              <button><img src="./assets/imgs/facebook.png" /></button>
-            </div>
-          </div>
-          <hr />
-          <div class="footerBottom">
-            <div class="navbar">
-              <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
-              <p>
-                <a href="https://www.spotify.com/in-en/privacy"
-                  >Privacy Center</a
+                  <i class="fas fa-step-forward"></i>
+                </button>
+                <button
+                  class="controlButton"
+                  id="repeat"
+                  onclick="toggleRepeat()"
                 >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
-                  >Privacy Policy</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
-                  >Cookies</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
-                  >About Ads</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/accessibility"
-                  >Accessibility</a
-                >
-              </p>
+                  <i class="fas fa-retweet"></i>
+                </button>
+              </div>
+              <div class="progressBar">
+                <div class="progress"></div>
+              </div>
             </div>
             <div class="copyright">
               <p>© 2023 Spotify AB</p>
@@ -284,10 +472,11 @@
           </audio>
         </div>
       </div>
-      <audio id="musicPlayer">
-        <source id="audioSource" type="audio/mp3" />
-        Your browser does not support the audio tag.
-      </audio>
     </div>
+
+    <!-- Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
