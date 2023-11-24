@@ -60,7 +60,7 @@ function createSongElement(track, songNumber) {
   albumName.append(album);
 
   const duration = document.createElement("span");
-  duration.classList.add("col-2");
+  duration.classList.add("col-2", "text-right");
   duration.textContent = formatDuration(track.duration_ms);
 
   songRow.append(number);

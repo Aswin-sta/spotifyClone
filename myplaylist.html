@@ -7,21 +7,18 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <title>Spotify Profile</title>
+    <title>Playlists</title>
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/top-nav.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
-    <link rel="stylesheet" href="./assets/css/profile.css" />
-    <link rel="stylesheet" href="./assets/css/toptracks.css" />
-    <link rel="stylesheet" href="./assets/css/profileplaylist.css" />
+    <link rel="stylesheet" href="./assets/css/myplaylist.css" />
 
     <script type="module" src="./assets/js/side-div.js" async></script>
     <script type="module" src="./assets/js/home.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
-    <script type="module" src="./assets/js/toptracks.js" defer></script>
-    <script type="module" src="./assets/js/profile.js" defer></script>
+    <script type="module" src="./assets/js/myPlaylist.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -113,20 +110,20 @@
                 /></a>
               </nav>
               <section class="homeWrapper">
-                <section class="profilePage">
-                  <div class="profileWrapper">
+                <section class="playlistPage">
+                  <div class="playlistDetailsWrapper">
                     <div class="container-fluid">
                       <div class="row">
                         <div class="image col-3 d-none d-sm-inline-block">
-                          <img
-                            id="profile"
-                            src="./assets/imgs/png-user-icon-circled-user-icon-2240.png"
-                            alt="profile photo"
-                          />
+                          <img id="playlistPhoto" alt="playlist photo" />
                         </div>
                         <div class="text col-7">
-                          <p>Profile</p>
-                          <h1 id="username" title="Edit Profile"></h1>
+                          <p>Playlist</p>
+                          <h1 id="playlistName" class="playlistName"></h1>
+                          <div class="profile">
+                            <img id="profilePicture" class="profilePicture" />
+                            <p id="profileName" class="profileName"></p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -136,37 +133,7 @@
                       . . .
                     </button>
                   </div>
-                  <div class="topTracks">
-                    <h3>Top Tracks this month</h3>
-                    <p class="text">Only visible to you</p>
-                    <div id="topTracksList" class="topTracksList"></div>
-                  </div>
-                  <div class="playlist">
-                    <h3>Public Playlist</h3>
-                    <div id="playlistTileList" class="playlistTileList"></div>
-                  </div>
-                  <!-- <div id="profileEdit" class="profilechange">
-                      <h2>Profile details</h2>
-                      <div class="profiledetails">
-                        <div class="image">
-                          <img
-                            src="./assets/imgs/png-user-icon-circled-user-icon-2240.png"
-                            alt="photo"
-                          />
-                        </div>
-                        <div class="nameandsubmit">
-                          <div class="form">
-                            <input id="name" type="text" value="QWERTY" />
-                          </div>
-                          <div class="save"><button id="save">Save</button></div>
-                        </div>
-                      </div>
-                      <p>
-                        By proceeding, you agree to give Spotify access to the image you
-                        choose to upload. Please <br />make sure you have the right to
-                        upload the image.
-                      </p>
-                    </div> -->
+                  <hr />
                 </section>
               </section>
               <div class="bottomBar">

@@ -1,0 +1,61 @@
+@import url(./main.css);
+.playlistDetailsWrapper {
+  margin-top: 0;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  background-image: linear-gradient(gray, #2c2828);
+}
+
+.playlistDetailsWrapper .image {
+  height: 50%;
+  width: 50%;
+  margin-left: 3%;
+  margin-top: 2%;
+  background-color: #2c2828;
+  box-shadow: 5px 5px 5px 5px #2c2828;
+}
+
+.playlistDetailsWrapper .image img {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+.playlistDetailsWrapper .text {
+  margin-top: 10%;
+  color: white;
+}
+.playlistDetailsWrapper .text p {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: -5px;
+}
+.playlistDetailsWrapper .text h1 {
+  font-size: 6vw;
+  font-weight: 700;
+}
+.profile {
+  display: flex;
+}
+.profile .profilePicture {
+  border-radius: 50%;
+  height: 5%;
+  width: 5%;
+}
+.playlistDetailsWrapper .text h1:hover {
+  cursor: pointer;
+}
+.editDots {
+  margin: 40px 0px 20px 30px;
+}
+.editDots #dots {
+  background-color: #191414;
+  border: none;
+  color: lightgray;
+  font-weight: 700;
+}
+.editDots #dots:hover {
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+}
