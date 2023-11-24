@@ -26,7 +26,8 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
     'container',
     'd-flex',
     'flex-wrap',
-    'text-white'
+    'text-white',
+    'justify-content-start'
   );
 
   if (mainContainer) {
@@ -49,7 +50,7 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
 
       const imgElement: HTMLImageElement = document.createElement('img');
-      imgElement.classList.add('imgElement', 'rounded',);
+      imgElement.classList.add('imgElement', 'rounded', 'h-100', 'w-100');
       
       imgElement.src = playlist.images[0].url;
 

@@ -24,7 +24,7 @@ import { getData, refreshAccessToken } from '../js/get.js';
         genreTitleElement.innerHTML = genreData.name;
     }
     const mainContainer = document.getElementById('mainContainer');
-    mainContainer.classList.add('container', 'd-flex', 'flex-wrap', 'text-white');
+    mainContainer.classList.add('container', 'd-flex', 'flex-wrap', 'text-white', 'justify-content-start');
     if (mainContainer) {
         playlistData.playlists.items.forEach((playlist) => {
             const playlistCard = document.createElement('div');
@@ -32,7 +32,7 @@ import { getData, refreshAccessToken } from '../js/get.js';
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
             const imgElement = document.createElement('img');
-            imgElement.classList.add('imgElement', 'rounded');
+            imgElement.classList.add('imgElement', 'rounded', 'h-100', 'w-100');
             imgElement.src = playlist.images[0].url;
             const playButton = document.createElement('img');
             playButton.src = './assets/imgs/spotify-play-button.png';
