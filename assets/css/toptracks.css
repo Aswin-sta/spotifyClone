@@ -1,7 +1,7 @@
 .topTracks {
   margin: 40px 0px 20px 40px;
+  color: white;
 }
-
 .topTracks a,
 .text {
   text-decoration: none;
@@ -28,8 +28,8 @@
   width: 40px;
 }
 .song img {
-  height: 70px;
-  width: 80px;
+  height: 10%;
+  width: 10%;
   border-radius: 20%;
   padding-top: 10px;
 }

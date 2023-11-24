@@ -29,7 +29,7 @@ function createSongElement(track, songNumber) {
   number.textContent = `${songNumber + 1}`;
 
   const albumImage = document.createElement("img");
-  albumImage.classList.add("col-1");
+  albumImage.classList.add("col-1", "d-none", "d-sm-inline-block");
   albumImage.src = track.album.images[2].url;
   albumImage.alt = "Album Cover";
 
