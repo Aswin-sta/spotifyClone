@@ -21,11 +21,12 @@
 }
 .song .songDetails {
   font-size: 14px;
+  padding-top: 22px;
 }
 .song .songNumber {
   font-size: 15px;
   padding-top: 20px;
-  width: 40px;
+  width: 0;
 }
 .song img {
   height: 10%;
@@ -44,7 +45,7 @@
 }
 .song span {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 22px;
 }
 .song:hover {
   background-color: #383737;

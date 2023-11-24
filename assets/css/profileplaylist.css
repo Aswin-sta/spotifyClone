@@ -59,6 +59,7 @@
   display: block;
 }
 .playlistTile:hover {
-  background-color: #2e2e2d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background-color: var(--spotify-light-grey-hover);
   cursor: pointer;
 }

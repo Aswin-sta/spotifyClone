@@ -25,8 +25,8 @@ playlistPromise.then((data) => {
     playlistTile.classList.add("playlistTile");
     const playlistImageDiv = document.createElement("div");
     const playlistImage = document.createElement("img");
-    if (playlist.image) {
-      playlistImage.src = playlist.image.url;
+    if (playlist.images && playlist.images.length > 0) {
+      playlistImage.src = playlist.images[0].url;
     } else {
       playlistImage.src = "./assets/imgs/music-icon.png";
     }
@@ -35,6 +35,7 @@ playlistPromise.then((data) => {
     playlistName.textContent = playlist.name;
     const playlistOwner = document.createElement("p");
     playlistOwner.textContent = `By ${playlist.owner.display_name}`;
+
     playlistTile.append(playlistImageDiv, playlistName, playlistOwner);
     playlistTile.onclick = () => {
       window.location.href = `myplaylist.html?playlist_id=${playlist.id}`;

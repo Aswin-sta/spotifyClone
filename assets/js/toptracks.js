@@ -39,11 +39,13 @@ function createSongElement(track, songNumber) {
 
   const artists = document.createElement("a");
   artists.href = "#";
-  artists.classList.add("artistName", "d-none", "d-md-inline-block");
-  artists.textContent = truncateText(
-    track.artists.map((artist) => artist.name).join(", "),
-    50
+  artists.classList.add(
+    "artistName",
+    "d-none",
+    "d-md-inline-block",
+    "text-truncate"
   );
+  artists.textContent = track.artists.map((artist) => artist.name).join(", ");
 
   const detailsLeft = document.createElement("div");
   detailsLeft.classList.add("nameAndArtists", "col-5");
@@ -51,16 +53,21 @@ function createSongElement(track, songNumber) {
   detailsLeft.append(artists);
 
   const albumName = document.createElement("div");
-  albumName.classList.add("albumName", "col-3", "d-none", "d-md-inline-block");
-
+  albumName.classList.add(
+    "albumName",
+    "col-3",
+    "d-none",
+    "d-md-inline-block",
+    "text-truncate"
+  );
   const album = document.createElement("a");
   album.href = "#";
-  album.textContent = truncateText(track.album.name, 30);
+  album.textContent = track.album.name;
 
   albumName.append(album);
 
   const duration = document.createElement("span");
-  duration.classList.add("col-2", "text-right");
+  duration.classList.add("col-2");
   duration.textContent = formatDuration(track.duration_ms);
 
   songRow.append(number);
@@ -80,11 +87,4 @@ function formatDuration(durationInMs) {
   const minutes = Math.floor(durationInMs / 60000);
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-}
-
-function truncateText(text, maxLength) {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength - 3) + "...";
-  }
-  return text;
 }
