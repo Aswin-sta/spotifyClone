@@ -35,25 +35,18 @@ searchCateogoryPromise.then(data => {
   console.log(categoryData);
   const searchSection = document.querySelector('section.searchDisplay');
   categoryData.forEach(elements => {
-    // Create a Bootstrap card element
     const searchContainer = document.createElement('div');
-    searchContainer.classList.add('searchBlock','d-inline-flex','card','ml-3','overflow-hidden');
+    searchContainer.classList.add('searchBlock');
 
-    const cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
 
-    // Use Bootstrap card-title class for the title
     const title = document.createElement('h2');
     title.classList.add('card-title','fw-bolder');
     title.textContent = elements.name;
 
-    // Use Bootstrap img-thumbnail class for the image
+
     let imageElement = document.createElement('img');
     imageElement.classList.add('img-thumbnail','position-absolute');
     imageElement.src = elements.icons[0].url;
-
-    cardBody.append(title, imageElement);
-    searchContainer.appendChild(cardBody);
 
     // Use Bootstrap clickable class for the container
     searchContainer.classList.add('clickable');
@@ -66,6 +59,8 @@ searchCateogoryPromise.then(data => {
     searchContainer.style.backgroundColor = randomColor;
 
     // Append the Bootstrap-styled container to the search section
+    searchContainer.appendChild(imageElement);
+    searchContainer.appendChild(headingElement);
     searchSection.appendChild(searchContainer);
   });
 });

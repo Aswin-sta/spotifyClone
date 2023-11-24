@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./assets/css/searchpage.css" />
 
     <script type="module" src="./assets/js/side-div.js" async></script>
-    <script type="module" src="./assets/js/getSearch.js" defer></script>
+    <script type="module" src="assets/ts/getSearch.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
     <link
       rel="stylesheet"
@@ -33,7 +33,7 @@
         <div class="col-md-12">
           <div class="row">
             <div
-              class="col-md-3"
+              class="col-md-3 d-none d-sm-block"
               id="sideBar"
               style="min-height: 87vh; max-height: 87vh; overflow: hidden"
             >
@@ -104,6 +104,13 @@
                   <!-- search bar here -->
                   <button id="leftArrow" class="d-none d-md-block"></button>
                   <button id="rightArrow" class="d-none d-md-block"></button>
+                  <div class="search">
+                    <input
+                      type="text"
+                      class="searchInput"
+                      placeholder="What do you want to listen to?"
+                    />
+                  </div>
                 </div>
                 <a id="loginLink" href="profile.html"
                   ><img src="./assets/imgs/user.png"
@@ -111,7 +118,7 @@
               </nav>
               <section class="homeWrapper">
                 <section class="searchDisplay">
-                  <h1 class="text-white fw-bolder px-3">Browse All</h1>
+                  <h1 class="text-white fw-bolder px-3 pb-3">Browse All</h1>
                 </section>
               </section>
               <div class="bottomBar">

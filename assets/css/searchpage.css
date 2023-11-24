@@ -6,11 +6,9 @@
 }
 .searchBlock {
   border: none;
-  width: 35vh;
-  height: 38vh;
-  margin-left: 20px;
-  margin-block: 50px;
-  border-radius: 12px;
+  height: 28vh;
+  border-radius: 10px;
+  box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .searchDisplay h1 {
@@ -22,8 +20,8 @@
 .searchBlock img {
   width: 60%;
   height: 60%;
-  bottom: -5%;
-  right: -9%;
+  bottom: -10%;
+  right: -13%;
   transform: rotate(20deg);
 }
 .searchBlock:hover img {
