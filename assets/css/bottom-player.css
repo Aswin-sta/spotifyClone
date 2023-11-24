@@ -141,3 +141,57 @@
 #playPauseDiv:hover {
   transform: scale(1.1);
 }
+.slider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.slider-container .bar {
+  position: absolute;
+  z-index: 1;
+  margin-block: auto;
+  width: 40%;
+  height: 3px;
+  border-radius: 5px;
+  background-color: grey;
+  overflow: hidden;
+}
+
+.slider-container .bar .fill {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background-color: white;
+}
+
+.slider-container:hover .bar .fill {
+  background-color: green;
+}
+
+.slider-container .slider {
+  position: relative;
+  z-index: 2;
+  -webkit-appearance: none;
+  width: 70%;
+  height: 10px;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+}
+.slider-container .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+}
+.slider-container .slider::-webkit-slider-thumb:hover {
+  background-color: green;
+  opacity: 1;
+}
+.slider-container .slider:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(2, 248, 63, 0.1);
+}
