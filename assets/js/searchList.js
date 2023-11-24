@@ -51,7 +51,7 @@ function createSongElement(track) {
   detailsLeft.appendChild(artistsPara);
 
   const duration = document.createElement("span");
-  duration.textContent = formatDuration(duration_ms);
+  duration.textContent = formatDuration(track.duration_ms);
 
   songDetails.appendChild(detailsLeft);
   songDetails.appendChild(duration);

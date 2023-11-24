@@ -1,45 +1,29 @@
 @import url(./main.css);
 .searchDisplay {
-  display: block;
-  gap: 20px;
-  width: 100%;
   padding-block: 100px;
   background-color: #0e0e0e;
   cursor: pointer;
 }
 .searchBlock {
   border: none;
-  background-color: rgb(102, 102, 190);
-  display: inline-flex;
-  /* width: 250px; */
   width: 35vh;
-  position: relative;
-  min-height: 38vh;
-  margin-inline: 20px;
+  height: 38vh;
+  margin-left: 20px;
   margin-block: 50px;
-  overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .searchDisplay h1 {
-  color: white;
   font-size: 30px;
-  font-weight: bolder;
-  padding-left: 20px;
 }
 .searchBlock h2 {
-  padding-left: 20px;
-  padding-top: 15px;
-  font-weight: bolder;
   font-size: 25px;
-  color: white;
 }
 .searchBlock img {
   width: 60%;
   height: 60%;
-  position: absolute;
   bottom: -5%;
-  right: -8%;
+  right: -9%;
   transform: rotate(20deg);
 }
 .searchBlock:hover img {
