@@ -1,6 +1,5 @@
-import { getData, refreshAccessToken } from './get.js';
+import { getData } from './get.js';
 
-await refreshAccessToken(localStorage.getItem('refresh_token'));
 const searchCateogoryPromise = getData(
   'https://api.spotify.com/v1/browse/categories?country=IN'
 );
@@ -38,21 +37,19 @@ searchCateogoryPromise.then(data => {
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('searchBlock');
 
-
     const title = document.createElement('h2');
-    title.classList.add('card-title','fw-bolder');
+    title.classList.add('card-title', 'fw-bolder');
     title.textContent = elements.name;
 
-
     let imageElement = document.createElement('img');
-    imageElement.classList.add('img-thumbnail','position-absolute');
+    imageElement.classList.add('img-thumbnail', 'position-absolute');
     imageElement.src = elements.icons[0].url;
 
     // Use Bootstrap clickable class for the container
     searchContainer.classList.add('clickable');
     searchContainer.onclick = () => {
       window.location.href = `specificGenre.html?id=${elements.id}`;
-    }
+    };
 
     // Use Bootstrap background color utility class
     const randomColor = getRandomColor();
