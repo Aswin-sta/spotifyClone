@@ -1,7 +1,6 @@
-import { getData, refreshAccessToken } from '../js/get.js';
+import { getData} from '../js/get.js';
 import { CategoryResponseType } from '../type/getSearchResponse.js';
 async function main() {
-  await refreshAccessToken(localStorage.getItem('refresh_token'));
   const searchCategoryPromise = getData(
     'https://api.spotify.com/v1/browse/categories?country=IN'
   );

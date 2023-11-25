@@ -7,10 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getData, refreshAccessToken } from "../js/get.js";
+import { getData } from "../js/get.js";
 import { changeSource } from "../js/player.js";
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    yield refreshAccessToken(localStorage.getItem("refresh_token"));
     function isPlaylistTrack(track) {
         return 'track' in track && typeof track.track.preview_url === 'string';
     }

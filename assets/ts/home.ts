@@ -35,28 +35,28 @@ const apiEndpoints: Record<string, string> = {
     onClickHandler?: () => void
   ): void {
     const itemTile = document.createElement("div") as HTMLDivElement;
-    itemTile.classList.add("itemTile");
+    itemTile.classList.add('itemTile', 'col-2m','mr-3','d-md-block' ,'d-block');
    
     const albumImageWrapper = document.createElement("div") as HTMLDivElement;
-    albumImageWrapper.classList.add("albumImageWrapper");
+    albumImageWrapper.classList.add('albumImageWrapper','position-relative');
    
     const albumImage = document.createElement("img") as HTMLImageElement;
-    albumImage.classList.add("albumImage");
+    albumImage.classList.add('albumImage','w-100','h-100','d-block');
     albumImage.src = data.images[0].url;
    
     const albumTitle = document.createElement("h4") as HTMLHeadingElement;
-    albumTitle.classList.add("songTitle");
+    albumTitle.classList.add('songTitle','d-none', 'd-md-block');
     albumTitle.textContent = data.name;
    
     const playButton = document.createElement("img") as HTMLImageElement;
     playButton.src = "./assets/imgs/spotify-play-button.png";
     playButton.alt = "Play";
-    playButton.classList.add("spotify-play-button");
+    playButton.classList.add('spotify-play-button','position-absolute');
    
     albumImageWrapper.append(albumImage, playButton);
    
     const artistTitle = document.createElement("p") as HTMLParagraphElement;
-    artistTitle.classList.add("albumTitle");
+    artistTitle.classList.add('albumTitle','d-none', 'd-md-block');
    
     if (data.artists && data.artists.length > 0) {
       artistTitle.textContent = data.artists[0].name;
