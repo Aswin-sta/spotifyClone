@@ -7,10 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getData, refreshAccessToken } from '../js/get.js';
+import { getData } from '../js/get.js';
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield refreshAccessToken(localStorage.getItem('refresh_token'));
         const searchCategoryPromise = getData('https://api.spotify.com/v1/browse/categories?country=IN');
         searchCategoryPromise.then((data) => {
             const categoryData = data.categories.items;

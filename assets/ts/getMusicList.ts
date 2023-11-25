@@ -1,13 +1,7 @@
-import { getData, refreshAccessToken } from "../js/get.js";
+import { getData } from "../js/get.js";
 import { changeSource } from "../js/player.js";
 
 (async () => {
-  
-
-
-await refreshAccessToken(localStorage.getItem("refresh_token"));
-
-
 function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
   return 'track' in track && typeof track.track.preview_url === 'string';
 }
