@@ -22,11 +22,12 @@
 .song .songDetails {
   padding: 1% 0% 1% 0%;
   font-size: 14px;
+  padding-top: 22px;
 }
 .song .songNumber {
   font-size: 15px;
-  padding-top: 20px;
-  width: 40px;
+  padding-top: 3%;
+  margin-right: -4%;
 }
 .song img {
   height: 10%;
@@ -37,6 +38,9 @@
 .song .nameAndArtists {
   padding-top: 10px;
 }
+.song .artistName {
+  width: 90%;
+}
 .song .albumName {
   padding-top: 25px;
 }
@@ -44,8 +48,7 @@
   font-size: 14px;
 }
 .song span {
-  text-align: center;
-  padding-top: 20px;
+  padding-top: 22px;
 }
 .song:hover {
   background-color: #383737;

@@ -1,19 +1,36 @@
 import { getData, refreshAccessToken } from "./get.js";
+import { userDataPromise } from "./profile.js";
+const userData = await userDataPromise;
 
 await refreshAccessToken(localStorage.getItem("refresh_token"));
-const topTracksPromise = getData("https://api.spotify.com/v1/me/top/tracks");
-console.log(topTracksPromise);
+const id = new URLSearchParams(window.location.search).get("playlist_id");
+const playlistItemPromise = getData(
+  `https://api.spotify.com/v1/playlists/${id}`
+);
 
-topTracksPromise.then((data) => {
-  data.items.forEach((track, songNumber) => {
-    console.log(track);
-    createSongElement(track, songNumber);
+playlistItemPromise.then((playlistItem) => {
+  console.log(playlistItem);
+  const playlistImage = document.getElementById("playlistPhoto");
+  if (playlistItem.images && playlistItem.images.length > 0) {
+    playlistImage.src = playlistItem.images[0].url;
+  } else {
+    playlistImage.src = "./assets/imgs/music-icon.png";
+  }
+  const playlistName = document.getElementById("playlistName");
+  playlistName.textContent = playlistItem.name;
+  const profilePicture = document.getElementById("profilePicture");
+  profilePicture.src = userData.images[0].url;
+  const profileName = document.getElementById("profileName");
+  profileName.textContent = userData.display_name;
+  playlistItem.tracks.items.forEach((song, songNumber) => {
+    console.log(song);
+    createSongElement(song, songNumber);
     songNumber++;
   });
 });
 
-function createSongElement(track, songNumber) {
-  const topTracksList = document.getElementById("topTracksList");
+function createSongElement(song, songNumber) {
+  const playlistTracksList = document.getElementById("playlistTracksList");
 
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
@@ -30,12 +47,10 @@ function createSongElement(track, songNumber) {
 
   const albumImage = document.createElement("img");
   albumImage.classList.add("col-1", "d-none", "d-sm-inline-block");
-  albumImage.src = track.album.images[2].url;
-  albumImage.alt = "Album Cover";
-
+  albumImage.src = song.track.album.images[2].url;
   const songName = document.createElement("h3");
   songName.classList.add("songName");
-  songName.textContent = track.name;
+  songName.textContent = song.track.name;
 
   const artists = document.createElement("a");
   artists.href = "#";
@@ -45,7 +60,9 @@ function createSongElement(track, songNumber) {
     "d-md-inline-block",
     "text-truncate"
   );
-  artists.textContent = track.artists.map((artist) => artist.name).join(", ");
+  artists.textContent = song.track.artists
+    .map((artist) => artist.name)
+    .join(", ");
 
   const detailsLeft = document.createElement("div");
   detailsLeft.classList.add("nameAndArtists", "col-5");
@@ -62,13 +79,13 @@ function createSongElement(track, songNumber) {
   );
   const album = document.createElement("a");
   album.href = "#";
-  album.textContent = track.album.name;
+  album.textContent = song.track.album.name;
 
   albumName.append(album);
 
   const duration = document.createElement("span");
   duration.classList.add("col-2");
-  duration.textContent = formatDuration(track.duration_ms);
+  duration.textContent = formatDuration(song.track.duration_ms);
 
   songRow.append(number);
   songRow.append(albumImage);
@@ -80,7 +97,7 @@ function createSongElement(track, songNumber) {
 
   songContainer.append(songBootstrapContainer);
 
-  topTracksList.append(songContainer);
+  playlistTracksList.append(songContainer);
 }
 
 function formatDuration(durationInMs) {

@@ -13,3 +13,35 @@ try {
 } catch (error) {
   console.error("Error fetching user data:", error);
 }
+
+const playlistPromise = getData("https://api.spotify.com/v1/me/playlists");
+console.log(playlistPromise);
+
+playlistPromise.then((data) => {
+  data.items.forEach((playlist) => {
+    console.log(playlist);
+    const playlistTileList = document.getElementById("playlistTileList");
+    const playlistTile = document.createElement("div");
+    playlistTile.classList.add("playlistTile");
+    const playlistImageDiv = document.createElement("div");
+    const playlistImage = document.createElement("img");
+    if (playlist.images && playlist.images.length > 0) {
+      playlistImage.src = playlist.images[0].url;
+    } else {
+      playlistImage.src = "./assets/imgs/music-icon.png";
+    }
+    playlistImageDiv.append(playlistImage);
+    const playlistName = document.createElement("h4");
+    playlistName.textContent = playlist.name;
+    const playlistOwner = document.createElement("p");
+    playlistOwner.textContent = `By ${playlist.owner.display_name}`;
+
+    playlistTile.append(playlistImageDiv, playlistName, playlistOwner);
+    playlistTile.onclick = () => {
+      window.location.href = `myplaylist.html?playlist_id=${playlist.id}`;
+    };
+    playlistTileList.append(playlistTile);
+  });
+});
+
+export { userDataPromise };

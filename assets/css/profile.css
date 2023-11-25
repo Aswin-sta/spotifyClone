@@ -3,6 +3,7 @@
   margin-top: 0;
   padding-top: 15%;
   background-image: linear-gradient(gray, #2c2828);
+  border-radius: 7px;
 }
 .profileWrapper .image img {
   height: 100%;
@@ -18,7 +19,7 @@
 }
 .profileWrapper .text p {
   font-size: 15px;
-  font-weight: 100;
+  font-weight: 600;
   margin-bottom: -5px;
 }
 .profileWrapper .text h1 {
@@ -32,7 +33,7 @@
   margin: 40px 0px 20px 30px;
 }
 .editDots #dots {
-  background-color: #191414;
+  background-color: #121212;
   border: none;
   color: lightgray;
   font-weight: 700;
