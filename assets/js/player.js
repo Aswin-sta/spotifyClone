@@ -1,7 +1,7 @@
 const musicPlayer = document.getElementById("musicPlayer");
 const playPauseButton = document.getElementById("playPause");
 const playPauseDiv = document.getElementById("playPauseDiv");
-const progress = document.querySelector(".progress");
+const progress = document.querySelector("#progress");
 
 const playerSongTitle = document.querySelector("#playerSongTitle");
 const playerSongAlbum = document.querySelector("#playerSongAlbum");
