@@ -7,19 +7,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getData, refreshAccessToken } from '../js/get.js';
+import { getData } from '../js/get.js';
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield refreshAccessToken(localStorage.getItem('refresh_token'));
         const searchCategoryPromise = getData('https://api.spotify.com/v1/browse/categories?country=IN');
         searchCategoryPromise.then((data) => {
             const categoryData = data.categories.items;
-            //console.log(categoryData);
             const searchSection = document.querySelector('section.searchDisplay');
             if (searchSection) {
                 categoryData.forEach((element) => {
                     const searchContainer = document.createElement('div');
-                    searchContainer.classList.add('col-5', 'col-sm-5', 'col-md-4', 'col-lg-3', 'searchBlock', 'd-inline-flex', 'mb-5', 'ml-3', 'overflow-hidden');
+                    searchContainer.classList.add('col-6', 'col-md-4', 'col-lg-3', 'searchBlock', 'd-inline-flex', 'mb-2', 'ml-3', 'overflow-hidden');
                     const title = document.createElement('h2');
                     title.classList.add('fw-bolder', 'p-2', 'text-sm', 'text-md', 'text-lg');
                     title.textContent = element.name;
