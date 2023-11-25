@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/profileplaylist.css" />
 
     <script type="module" src="./assets/js/side-div.js" async></script>
-    <script type="module" src="./assets/js/home.js" defer></script>
+    <script type="module" src="./assets/ts/home.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
     <script type="module" src="./assets/js/toptracks.js" defer></script>
     <script type="module" src="./assets/js/profile.js" defer></script>
@@ -105,8 +105,16 @@
                   >
                     <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
                   </a>
-                  <button id="leftArrow" class="d-none d-md-block"></button>
-                  <button id="rightArrow" class="d-none d-md-block"></button>
+                  <button
+                    id="leftArrow"
+                    class="d-none d-md-block"
+                    onclick="history.back()"
+                  ></button>
+                  <button
+                    id="rightArrow"
+                    class="d-none d-md-block"
+                    onclick="history.forward()"
+                  ></button>
                 </div>
                 <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
               </nav>
