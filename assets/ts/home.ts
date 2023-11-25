@@ -1,4 +1,4 @@
-import { getData,refreshAccessToken } from "../js/get.js";
+import { getDataFromCache } from "../js/get.js";
  
 const clientId: string = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret: string = "98598afa94de4a93b71b39e1efd13a80";
@@ -78,9 +78,8 @@ const apiEndpoints: Record<string, string> = {
   (async ()=>{
  
   // Refresh Access Token
-  await refreshAccessToken(localStorage.getItem("refresh_token")!);
  
-  const newReleasesPromise:Promise<{ albums: { items: SpotifyData[] } }> = getData(apiEndpoints.newRelease);
+  const newReleasesPromise:Promise<{ albums: { items: SpotifyData[] } }> = getDataFromCache(apiEndpoints.newRelease,"newReleasesPromise",36000);
   const newReleasesData:{ albums: { items: SpotifyData[] } } = await newReleasesPromise;
   console.log(newReleasesData);
   const newReleaseContainer:HTMLDivElement = document.querySelector(".newReleases")!;
@@ -92,7 +91,7 @@ const apiEndpoints: Record<string, string> = {
   });
  
   // Fetch and render romantic playlists
-  const romanticPromise:Promise<{ playlists:{ items: SpotifyData[] } } >  = getData(apiEndpoints.romantic);
+  const romanticPromise:Promise<{ playlists:{ items: SpotifyData[] } } >  = getDataFromCache(apiEndpoints.romantic,"newRomanticPromise",36000);
   const romanticData:{ playlists:{ items: SpotifyData[] } }  = await romanticPromise;
   console.log(romanticData);
   const romanticContainer:HTMLDivElement = document.querySelector(".romantic")!;
@@ -104,7 +103,7 @@ const apiEndpoints: Record<string, string> = {
   });
  
   // Fetch and render top Indian songs
-  const indiantopPromise:Promise<{ tracks: {album:SpotifyData}[] }  > = getData(apiEndpoints.indiantop);
+  const indiantopPromise:Promise<{ tracks: {album:SpotifyData}[] }  > = getDataFromCache(apiEndpoints.indiantop,"indianTopPromise",36000);
   const indiantopData:{ tracks:{album: SpotifyData}[] } = await indiantopPromise;
   console.log(indiantopData);
   const top10Container:HTMLDivElement = document.querySelector(".topTen")!;
@@ -117,7 +116,7 @@ const apiEndpoints: Record<string, string> = {
   });
  
   // Fetch and render Anirudh's albums
-  const anirudhAlbumsPromise:Promise<{ items: SpotifyData[] }> = getData(apiEndpoints.anirudh);
+  const anirudhAlbumsPromise:Promise<{ items: SpotifyData[] }> = getDataFromCache(apiEndpoints.anirudh,"newAnirudhPromise",36000);
   const anirudhData:{ items: SpotifyData[] }  = await anirudhAlbumsPromise;
   console.log(anirudhData);
   const anirudhContainer:HTMLDivElement= document.querySelector(".anirudhMania")!;

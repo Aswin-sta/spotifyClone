@@ -1,7 +1,7 @@
 const musicPlayer = document.getElementById("musicPlayer");
 const playPauseButton = document.getElementById("playPause");
 const playPauseDiv = document.getElementById("playPauseDiv");
-const progress = document.querySelector(".progress");
+const progress = document.querySelector("#progress");
 
 const playerSongTitle = document.querySelector("#playerSongTitle");
 const playerSongAlbum = document.querySelector("#playerSongAlbum");
@@ -60,6 +60,17 @@ function playOnLoad() {
   musicPlayer.play();
   playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
 }
+
+var slider = document.querySelector("#slider");
+var fill = document.querySelector(".bar .fill");
+
+function setBar() {
+  fill.style.width = slider.value + "%";
+  console.log(slider.value);
+  musicPlayer.volume = slider.value / 100;
+}
+
+slider.addEventListener("input", setBar);
 
 window.addEventListener("load", playOnLoad);
 
