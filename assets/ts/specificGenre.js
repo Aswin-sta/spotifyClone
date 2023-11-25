@@ -27,7 +27,7 @@ import { getData } from '../js/get.js';
     if (mainContainer) {
         playlistData.playlists.items.forEach((playlist) => {
             const playlistCard = document.createElement('div');
-            playlistCard.classList.add('playlistCard', 'col-md-3', 'col-sm-12', 'mb-4', 'rounded', 'mr-md-4', 'mr-sm-4', 'shadow', 'p-3');
+            playlistCard.classList.add('playlistCard', 'col-md-2m', 'col-sm-12', 'mb-4', 'rounded', 'mr-md-4', 'mr-sm-4', 'shadow', 'p-3');
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
             const imgElement = document.createElement('img');

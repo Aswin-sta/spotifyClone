@@ -4,9 +4,15 @@ let shuffleState = false;
 let isPlaying = false; // Initialize the playback state
 document.getElementById("shuffle").addEventListener("click", toggleShuffle);
 document.getElementById("skipBackward").addEventListener("click", skipBackward);
-document.getElementById("playPause").addEventListener("click", togglePlayPause);
+const playPauseButton = document.querySelector("#playPause");
 document.getElementById("skipForward").addEventListener("click", skipForward);
 document.getElementById("repeat").addEventListener("click", toggleRepeat);
+
+const playerSongTitle = document.querySelector("#playerSongTitle");
+const playerSongAlbum = document.querySelector("#playerSongAlbum");
+const playerAlbumArt = document.querySelector("#playerAlbumArt");
+
+playPauseButton.addEventListener("click", togglePlayPause);
 
 window.onSpotifyWebPlaybackSDKReady = () => {
   const player = new Spotify.Player({
@@ -25,62 +31,23 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   player.connect();
 };
 
-async function handleApiResponse(response) {
-  if (!response.ok) {
-    console.error(`Error: ${response.statusText}`);
-    throw new Error(`API request failed with status: ${response.status}`);
-  }
-  return response.json();
-}
-
 function togglePlayPause() {
   if (isPlaying) {
     pauseSong();
+    console.log("paused");
   } else {
-    playSong(); // You can pass the trackUri if needed
+    resumePlayback();
   }
 }
 function toggleRepeat() {
   // Implement repeat logic using the Spotify Web Playback SDK
 }
 
-async function playSong(trackUri) {
-  if (!spotifyDeviceId) {
-    console.error("No valid Spotify device ID available");
-    return;
-  }
-
+async function playSong(trackUri, trackName, trackAlbum, trackImage) {
   try {
-    if (!trackUri) {
-      console.log(
-        "No track URI provided. Trying to play from recommendations..."
-      );
-
-      // Fetch a list of recommended tracks
-      const recommendationsResponse = await fetch(
-        "https://api.spotify.com/v1/me/player/recently-played",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      const recommendationsData = await recommendationsResponse.json();
-      console.log(recommendationsData);
-
-      if (recommendationsData && recommendationsData.items.length > 0) {
-        // Get the URI of the first recommended track
-        const recommendedTrackUri = recommendationsData.items[0].track.uri;
-
-        // Play the recommended track
-        await playSong(recommendedTrackUri);
-        return; // Exit the function after playing the recommended track
-      } else {
-        console.error("No recommendations available");
-        return;
-      }
+    if (!spotifyDeviceId) {
+      console.error("No valid Spotify device ID available");
+      return;
     }
 
     // If trackUri is present, proceed to play the provided track
@@ -95,9 +62,18 @@ async function playSong(trackUri) {
         body: JSON.stringify({ uris: [trackUri] }),
       }
     );
+    sessionStorage.setItem("nowPlaying", trackUri);
+    sessionStorage.setItem("music_name", trackName);
+    sessionStorage.setItem("music_album", trackAlbum);
+    sessionStorage.setItem("music_image", trackImage);
 
-    await handleApiResponse(response);
     console.log("Song played successfully");
+    playerSongAlbum.innerHTML = trackAlbum;
+    playerAlbumArt.src = trackImage;
+    playerSongTitle.innerHTML = trackName;
+    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+    isPlaying = true;
+    console.log(playPauseButton);
   } catch (error) {
     console.error("Error playing song", error.message);
 
@@ -113,9 +89,31 @@ async function playSong(trackUri) {
   }
 }
 
-// Add a delay function if needed
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+async function resumePlayback() {
+  try {
+    if (!spotifyDeviceId) {
+      console.error("No valid Spotify device ID available");
+      return;
+    }
+
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    isPlaying = true;
+    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change to pause icon
+    await handleApiResponse(response);
+    console.log("Playback resumed successfully");
+
+    // Assuming playPauseButton is correctly referencing your button element
+  } catch (error) {
+    console.error("Error resuming playback", error.message);
+  }
 }
 
 async function skipForward() {
@@ -131,6 +129,7 @@ async function skipForward() {
     );
 
     await handleApiResponse(response);
+    resumePlayback();
   } catch (error) {
     console.error("Error skipping forward", error.message);
   }
@@ -147,7 +146,7 @@ async function skipBackward() {
         },
       }
     );
-
+    resumePlayback();
     await handleApiResponse(response);
   } catch (error) {
     console.error("Error skipping backward", error.message);
@@ -174,3 +173,91 @@ async function toggleShuffle() {
     console.error("Error toggling shuffle", error.message);
   }
 }
+
+async function pauseSong() {
+  try {
+    if (!spotifyDeviceId) {
+      console.error("No valid Spotify device ID available");
+      return;
+    }
+
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/pause?device_id=${spotifyDeviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    playPauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Change to play icon
+    isPlaying = false;
+    await handleApiResponse(response);
+    console.log("Song paused successfully");
+
+    // Assuming playPauseButton is correctly referencing your button element
+  } catch (error) {
+    console.error("Error pausing song", error.message);
+  }
+}
+
+async function playNextInQueueOrAlbum() {
+  try {
+    if (!spotifyDeviceId) {
+      console.error("No valid Spotify device ID available");
+      return;
+    }
+    const albumUri = new URLSearchParams(window.location.search).get("id");
+    const type = new URLSearchParams(window.location.search).get("type");
+    const requestBody = albumUri
+      ? { command: "next", context_uri: albumUri }
+      : { command: "next" };
+
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+
+    await handleApiResponse(response);
+
+    if (albumUri) {
+      console.log(`Switched to the next song in the album and started playing`);
+    } else {
+      console.log(
+        `Switched to the next track in the queue and started playing`
+      );
+    }
+  } catch (error) {
+    console.error("Error playing the next song", error.message);
+  }
+}
+
+async function handleApiResponse(response) {
+  if (response.ok || response.status === 204) {
+    // If the response status is OK (200-299) or No Content (204), everything is fine
+    console.log("API request successful");
+  } else {
+    // If the response status is not OK, handle the error
+    const errorData = await response.json(); // Assuming the error response is in JSON format
+    console.error(
+      `API request failed with status ${response.status}:`,
+      errorData
+    );
+    throw new Error(errorMessage);
+  }
+}
+
+// function LoadCurrentSongDetails() {
+//   playerSongAlbum.innerHTML = sessionStorage.getItem("music_album");
+//   playerAlbumArt.src = sessionStorage.getItem("music_image");
+//   playerSongTitle.innerHTML = sessionStorage.getItem("music_name");
+// }
+
+export { playSong };

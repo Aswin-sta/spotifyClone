@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { getData } from "../js/get.js";
-import { changeSource } from "../js/player.js";
+import { playSong } from "../js/player.js";
 (() => __awaiter(void 0, void 0, void 0, function* () {
     function isPlaylistTrack(track) {
         return 'track' in track && typeof track.track.uri === 'string';
@@ -80,6 +80,7 @@ import { changeSource } from "../js/player.js";
             // );
             songListTrack.append(trackNo, trackName, trackDuration);
             songListTrack.onclick = () => {
+                var _a;
                 let sourceUrl;
                 let sourceName;
                 if ('track' in track) {
@@ -93,14 +94,14 @@ import { changeSource } from "../js/player.js";
                     sourceName = track.name;
                 }
                 if (sourceUrl && sourceName) {
-                    changeSource(sourceUrl);
+                    playSong(sourceUrl, sourceName, data.name, ((_a = data.images[0]) === null || _a === void 0 ? void 0 : _a.url) || "");
                 }
             };
             // songListTrack.onclick = () => {
             //   const sourceUrl =
             //     type === "playlist" ? track.track.uri : track.uri;
             //   const sourceName = type === "playlist" ? track.track.name : track.name;
-            //   changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
+            //   playSong(sourceUrl, sourceName, data.name, data.images[0].url);
             // };
             albumSongList.append(songListTrack);
         });

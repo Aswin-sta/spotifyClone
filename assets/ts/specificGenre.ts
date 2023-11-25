@@ -35,7 +35,7 @@ import { specificGenreResponseType } from '../type/specificGenreResponse.js';
       const playlistCard: HTMLDivElement = document.createElement('div');
       playlistCard.classList.add(
         'playlistCard',
-        'col-md-3',
+        'col-md-2m',
         'col-sm-12',
         'mb-4',
         'rounded',

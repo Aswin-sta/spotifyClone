@@ -1,5 +1,5 @@
 import { getData } from "../js/get.js";
-import { changeSource } from "../js/player.js";
+import { playSong } from "../js/player.js";
 
 (async () => {
 function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
@@ -137,7 +137,7 @@ newReleasesPromise.then((data:spotifyData) => {
       }
     
       if (sourceUrl && sourceName) {
-        changeSource(sourceUrl);
+        playSong(sourceUrl, sourceName, data.name, data.images[0]?.url || "");
       }
     };
     
@@ -148,7 +148,7 @@ newReleasesPromise.then((data:spotifyData) => {
     //   const sourceUrl =
     //     type === "playlist" ? track.track.uri : track.uri;
     //   const sourceName = type === "playlist" ? track.track.name : track.name;
-    //   changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
+    //   playSong(sourceUrl, sourceName, data.name, data.images[0].url);
     // };
     
 
