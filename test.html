@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spotify Web Playback SDK Quick Start</title>
+  </head>
+  <body>
+    <h1>Spotify Web Playback SDK Quick Start</h1>
+    <button id="togglePlay">Toggle Play</button>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+      let spotifyDeviceId;
+
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const token = localStorage.getItem("access_token");
+        const player = new Spotify.Player({
+          name: "Web Playback SDK Quick Start Player",
+          getOAuthToken: (cb) => {
+            cb(token);
+          },
+          volume: 0.5,
+        });
+
+        // Ready
+        player.addListener("ready", ({ device_id }) => {
+          console.log("Ready with Device ID", device_id);
+          spotifyDeviceId = device_id;
+        });
+
+        // Not Ready
+        player.addListener("not_ready", ({ device_id }) => {
+          console.log("Device ID has gone offline", device_id);
+        });
+
+        player.addListener("initialization_error", ({ message }) => {
+          console.error(message);
+        });
+
+        player.addListener("authentication_error", ({ message }) => {
+          console.error(message);
+        });
+
+        player.addListener("account_error", ({ message }) => {
+          console.error(message);
+        });
+
+        document.getElementById("togglePlay").onclick = function () {
+          player.togglePlay();
+          playSong(
+            token,
+            "spotify:track:4xhsWYTOGcal8zt0J161CU",
+            spotifyDeviceId
+          );
+        };
+
+        player.on("player_state_changed", (state) => {
+          if (
+            state.paused &&
+            state.position === 0 &&
+            state.restrictions.disallow_resuming_reasons &&
+            state.restrictions.disallow_resuming_reasons[0] === "not_paused"
+          ) {
+            console.log("finished");
+            playSong(
+              token,
+              "spotify:track:4xhsWYTOGcal8zt0J161CU",
+              spotifyDeviceId
+            );
+          }
+        });
+
+        player.connect();
+      };
+
+      // Function to play a specific song
+      function playSong(token, trackUri, spotifyDeviceId) {
+        // Ensure that a valid Spotify device ID is available
+        if (spotifyDeviceId) {
+          // Send a play request to Spotify using the Web Playback SDK
+          fetch(
+            `https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`,
+            {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ uris: [trackUri] }),
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Song played successfully", data);
+            })
+            .catch((error) => console.error("Error playing song", error));
+        } else {
+          console.error("No valid Spotify device ID available");
+        }
+      }
+
+      // Example usage:
+      // Assuming you have obtained the Spotify access token and have a track URI
+
+    </script>
+  </body>
+</html>

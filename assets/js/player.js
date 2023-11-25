@@ -1,77 +1,176 @@
-const musicPlayer = document.getElementById("musicPlayer");
-const playPauseButton = document.getElementById("playPause");
-const playPauseDiv = document.getElementById("playPauseDiv");
-const progress = document.querySelector("#progress");
+const token = localStorage.getItem("access_token");
+let spotifyDeviceId;
+let shuffleState = false;
+let isPlaying = false; // Initialize the playback state
+document.getElementById("shuffle").addEventListener("click", toggleShuffle);
+document.getElementById("skipBackward").addEventListener("click", skipBackward);
+document.getElementById("playPause").addEventListener("click", togglePlayPause);
+document.getElementById("skipForward").addEventListener("click", skipForward);
+document.getElementById("repeat").addEventListener("click", toggleRepeat);
 
-const playerSongTitle = document.querySelector("#playerSongTitle");
-const playerSongAlbum = document.querySelector("#playerSongAlbum");
-const playerAlbumArt = document.querySelector("#playerAlbumArt");
+window.onSpotifyWebPlaybackSDKReady = () => {
+  const player = new Spotify.Player({
+    name: "Web Playback SDK Quick Start Player",
+    getOAuthToken: (cb) => {
+      cb(token);
+    },
+    volume: 0.5,
+  });
 
-playPauseDiv.addEventListener("click", togglePlayPause);
+  player.addListener("ready", ({ device_id }) => {
+    console.log("Ready with Device ID", device_id);
+    spotifyDeviceId = device_id;
+  });
+
+  player.connect();
+};
+
+async function handleApiResponse(response) {
+  if (!response.ok) {
+    console.error(`Error: ${response.statusText}`);
+    throw new Error(`API request failed with status: ${response.status}`);
+  }
+  return response.json();
+}
 
 function togglePlayPause() {
-  if (musicPlayer.paused) {
-    musicPlayer.play();
-    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+  if (isPlaying) {
+    pauseSong();
   } else {
-    musicPlayer.pause();
-    playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+    playSong(); // You can pass the trackUri if needed
+  }
+}
+function toggleRepeat() {
+  // Implement repeat logic using the Spotify Web Playback SDK
+}
+
+async function playSong(trackUri) {
+  if (!spotifyDeviceId) {
+    console.error("No valid Spotify device ID available");
+    return;
+  }
+
+  try {
+    if (!trackUri) {
+      console.log(
+        "No track URI provided. Trying to play from recommendations..."
+      );
+
+      // Fetch a list of recommended tracks
+      const recommendationsResponse = await fetch(
+        "https://api.spotify.com/v1/me/player/recently-played",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const recommendationsData = await recommendationsResponse.json();
+      console.log(recommendationsData);
+
+      if (recommendationsData && recommendationsData.items.length > 0) {
+        // Get the URI of the first recommended track
+        const recommendedTrackUri = recommendationsData.items[0].track.uri;
+
+        // Play the recommended track
+        await playSong(recommendedTrackUri);
+        return; // Exit the function after playing the recommended track
+      } else {
+        console.error("No recommendations available");
+        return;
+      }
+    }
+
+    // If trackUri is present, proceed to play the provided track
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/play?device_id=${spotifyDeviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uris: [trackUri] }),
+      }
+    );
+
+    await handleApiResponse(response);
+    console.log("Song played successfully");
+  } catch (error) {
+    console.error("Error playing song", error.message);
+
+    if (error.status === 502) {
+      console.log(
+        "Retrying to play the original track after 502 Bad Gateway..."
+      );
+
+      // Retry playing the original track after a delay or implement your retry logic
+      // await delay(3000); // Add a delay if needed
+      // await playSong(trackUri);
+    }
   }
 }
 
-function updateProgress() {
-  const percent = (musicPlayer.currentTime / musicPlayer.duration) * 100;
-  progress.style.width = percent + "%";
-  sessionStorage.setItem("music_timestamp", musicPlayer.currentTime.toString());
+// Add a delay function if needed
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-musicPlayer.addEventListener("timeupdate", updateProgress);
+async function skipForward() {
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/next?device_id=${spotifyDeviceId}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-function changeSource(newSource, trackName, trackAlbum, trackImage) {
-  const audioSource = document.getElementById("audioSource");
-  audioSource.src = newSource;
-  musicPlayer.load(); // Reload the audio element to apply the new source
-  musicPlayer.play(); // Start playing the new source
-  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-  playerSongTitle.innerHTML = trackName;
-  playerSongAlbum.innerHTML = trackAlbum;
-  playerAlbumArt.src = trackImage;
-  sessionStorage.setItem("music_name", trackName);
-  sessionStorage.setItem("music_album", trackAlbum);
-  sessionStorage.setItem("music_image", trackImage);
-  sessionStorage.setItem("music_src", newSource);
+    await handleApiResponse(response);
+  } catch (error) {
+    console.error("Error skipping forward", error.message);
+  }
 }
 
-function playOnLoad() {
-  const storedMusicSrc = sessionStorage.getItem("music_src");
-  const storedImage = sessionStorage.getItem("music_image");
-  const storedName = sessionStorage.getItem("music_name");
-  const storedAlbum = sessionStorage.getItem("music_album");
-  const storedTimestamp =
-    parseFloat(sessionStorage.getItem("music_timestamp")) || 0;
+async function skipBackward() {
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/previous?device_id=${spotifyDeviceId}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-  const audioSource = document.getElementById("audioSource");
-  audioSource.src = storedMusicSrc;
-  playerSongAlbum.innerHTML = storedAlbum;
-  playerAlbumArt.src = storedImage;
-  playerSongTitle.innerHTML = storedName;
-  musicPlayer.load();
-  musicPlayer.currentTime = storedTimestamp;
-  musicPlayer.play();
-  playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+    await handleApiResponse(response);
+  } catch (error) {
+    console.error("Error skipping backward", error.message);
+  }
 }
 
-var slider = document.querySelector("#slider");
-var fill = document.querySelector(".bar .fill");
+async function toggleShuffle() {
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/player/shuffle?state=${!shuffleState}&device_id=${spotifyDeviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-function setBar() {
-  fill.style.width = slider.value + "%";
-  console.log(slider.value);
-  musicPlayer.volume = slider.value / 100;
+    await handleApiResponse(response);
+
+    shuffleState = !shuffleState;
+    console.log(`Shuffle state: ${shuffleState ? "enabled" : "disabled"}`);
+  } catch (error) {
+    console.error("Error toggling shuffle", error.message);
+  }
 }
-
-slider.addEventListener("input", setBar);
-
-window.addEventListener("load", playOnLoad);
-
-export { changeSource };

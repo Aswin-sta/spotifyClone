@@ -11,10 +11,10 @@ import { getData } from "../js/get.js";
 import { changeSource } from "../js/player.js";
 (() => __awaiter(void 0, void 0, void 0, function* () {
     function isPlaylistTrack(track) {
-        return 'track' in track && typeof track.track.preview_url === 'string';
+        return 'track' in track && typeof track.track.uri === 'string';
     }
     function isAlbumTrack(track) {
-        return typeof track.preview_url === 'string';
+        return typeof track.uri === 'string';
     }
     //url search parameters
     const id = new URLSearchParams(window.location.search).get("id");
@@ -80,26 +80,25 @@ import { changeSource } from "../js/player.js";
             // );
             songListTrack.append(trackNo, trackName, trackDuration);
             songListTrack.onclick = () => {
-                var _a;
                 let sourceUrl;
                 let sourceName;
                 if ('track' in track) {
                     const playlistTrack = track;
-                    sourceUrl = type === "playlist" ? playlistTrack.track.preview_url : undefined;
+                    sourceUrl = type === "playlist" ? playlistTrack.track.uri : undefined;
                     sourceName = type === "playlist" ? playlistTrack.track.name : undefined;
                 }
                 else {
                     const albumTrack = track;
-                    sourceUrl = track.preview_url;
+                    sourceUrl = track.uri;
                     sourceName = track.name;
                 }
                 if (sourceUrl && sourceName) {
-                    changeSource(sourceUrl, sourceName, data.name, ((_a = data.images[0]) === null || _a === void 0 ? void 0 : _a.url) || "");
+                    changeSource(sourceUrl);
                 }
             };
             // songListTrack.onclick = () => {
             //   const sourceUrl =
-            //     type === "playlist" ? track.track.preview_url : track.preview_url;
+            //     type === "playlist" ? track.track.uri : track.uri;
             //   const sourceName = type === "playlist" ? track.track.name : track.name;
             //   changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
             // };

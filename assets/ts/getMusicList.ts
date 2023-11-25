@@ -3,11 +3,11 @@ import { changeSource } from "../js/player.js";
 
 (async () => {
 function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
-  return 'track' in track && typeof track.track.preview_url === 'string';
+  return 'track' in track && typeof track.track.uri === 'string';
 }
 
 function isAlbumTrack(track: any): track is spotifyDataAlbumList {
-  return typeof track.preview_url === 'string';
+  return typeof track.uri === 'string';
 }
 
 //url search parameters
@@ -37,14 +37,14 @@ interface spotifyDataPlaylist{
   track:{
     duration_ms:number;
     name:string;
-    preview_url:string;
+    uri:string;
   }
 }
 
 interface spotifyDataAlbumList{
     duration_ms:number;
     name:string;
-    preview_url:string;
+    uri:string;
 }
 
 interface spotifyData{
@@ -128,16 +128,16 @@ newReleasesPromise.then((data:spotifyData) => {
     
       if ('track' in track) {
         const playlistTrack = track as spotifyDataPlaylist;
-        sourceUrl = type === "playlist" ? playlistTrack.track.preview_url : undefined;
+        sourceUrl = type === "playlist" ? playlistTrack.track.uri : undefined;
         sourceName = type === "playlist" ? playlistTrack.track.name : undefined;
       } else {
         const albumTrack = track as spotifyDataAlbumList;
-        sourceUrl = track.preview_url;
+        sourceUrl = track.uri;
         sourceName = track.name;
       }
     
       if (sourceUrl && sourceName) {
-        changeSource(sourceUrl, sourceName, data.name, data.images[0]?.url || "");
+        changeSource(sourceUrl);
       }
     };
     
@@ -146,7 +146,7 @@ newReleasesPromise.then((data:spotifyData) => {
     
     // songListTrack.onclick = () => {
     //   const sourceUrl =
-    //     type === "playlist" ? track.track.preview_url : track.preview_url;
+    //     type === "playlist" ? track.track.uri : track.uri;
     //   const sourceName = type === "playlist" ? track.track.name : track.name;
     //   changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
     // };
