@@ -24,11 +24,11 @@ import { getData, refreshAccessToken } from '../js/get.js';
         genreTitleElement.innerHTML = genreData.name;
     }
     const mainContainer = document.getElementById('mainContainer');
-    mainContainer.classList.add('container', 'd-flex', 'flex-wrap', 'text-white', 'justify-content-start');
+    mainContainer.classList.add('container', 'd-md-flex', 'd-sm-block', 'flex-wrap', 'text-white', 'justify-content-start');
     if (mainContainer) {
         playlistData.playlists.items.forEach((playlist) => {
             const playlistCard = document.createElement('div');
-            playlistCard.classList.add('playlistCard', 'col-sm-2', 'col-md-5', 'col-lg-2', 'mb-4', 'rounded', 'mr-md-4', 'mr-sm-4', 'shadow', 'p-3');
+            playlistCard.classList.add('playlistCard', 'col-md-3', 'col-sm-12', 'mb-4', 'rounded', 'mr-md-4', 'mr-sm-4', 'shadow', 'p-3');
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('imgContainer', 'position-relative', 'rounded', 'overflow-hidden');
             const imgElement = document.createElement('img');
@@ -40,8 +40,8 @@ import { getData, refreshAccessToken } from '../js/get.js';
             playButton.classList.add('spotifyPlayButton', 'position-absolute');
             imgContainer.appendChild(imgElement);
             imgContainer.appendChild(playButton);
-            const playlistTitleElement = document.createElement('h3');
-            playlistTitleElement.classList.add('playlistTitleElement', 'text-truncate', 'mt-3', 'fw-bold');
+            const playlistTitleElement = document.createElement('h6');
+            playlistTitleElement.classList.add('playlistTitleElement', 'text-truncate', 'mt-3', 'font-weight-bold');
             playlistTitleElement.innerHTML = playlist.name;
             const descriptionElement = document.createElement('p');
             descriptionElement.classList.add('decriptionElement', 'small', 'mb-0', 'text-truncate');

@@ -24,7 +24,8 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
   const mainContainer = document.getElementById('mainContainer') as HTMLDivElement;
   mainContainer.classList.add(
     'container',
-    'd-flex',
+    'd-md-flex',
+    'd-sm-block',
     'flex-wrap',
     'text-white',
     'justify-content-start'
@@ -35,9 +36,8 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       const playlistCard: HTMLDivElement = document.createElement('div');
       playlistCard.classList.add(
         'playlistCard',
-        'col-sm-2',
-        'col-md-5',
-        'col-lg-2',
+        'col-md-3',
+        'col-sm-12',
         'mb-4', 
         'rounded',
         'mr-md-4',
@@ -62,12 +62,12 @@ import { specificGenreResponseType } from '../types/specificGenreResponse.js';
       imgContainer.appendChild(imgElement);
       imgContainer.appendChild(playButton);
 
-      const playlistTitleElement: HTMLHeadingElement = document.createElement('h3');
+      const playlistTitleElement: HTMLHeadingElement = document.createElement('h6');
       playlistTitleElement.classList.add(
         'playlistTitleElement',
         'text-truncate',
         'mt-3',
-        'fw-bold'
+        'font-weight-bold',
       );
       playlistTitleElement.innerHTML = playlist.name;
 
