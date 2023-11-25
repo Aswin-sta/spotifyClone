@@ -27,11 +27,13 @@
 .profile {
   display: flex;
 }
-/* hr {
+hr {
   width: 95%;
   margin-left: 20px;
   border: 1px solid gray;
-} */
+  margin-bottom: -3%;
+  margin-top: -7px;
+}
 .profile .profilePicture {
   border-radius: 50%;
   height: 5%;
@@ -41,10 +43,10 @@
   cursor: pointer;
 }
 .editDots {
-  margin: 40px 0px 20px 30px;
+  margin: 40px 0px 10px 30px;
 }
 .editDots #dots {
-  background-color: #191414;
+  background-color: #121212;
   border: none;
   color: lightgray;
   font-weight: 700;
@@ -81,8 +83,8 @@
 }
 .song .songNumber {
   font-size: 15px;
-  padding-top: 20px;
-  width: 0;
+  padding-top: 3%;
+  margin-right: -4%;
 }
 .song img {
   height: 10%;
@@ -93,6 +95,9 @@
 .song .nameAndArtists {
   padding-top: 10px;
 }
+.song .artistName {
+  width: 90%;
+}
 .song .albumName {
   padding-top: 25px;
 }
@@ -101,8 +106,41 @@
 }
 .song span {
   text-align: center;
-  padding-top: 22px;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #a7a7a7;
 }
 .song:hover {
   background-color: #383737;
+}
+/* .playlistRow,
+.list {
+  display: flex;
+}
+.list img {
+  height: 15%;
+  width: 15%;
+} */
+.playlistRow .playButton {
+  height: 6%;
+  width: 6%;
+  margin: 3% -2% 0% 3%;
+}
+.title {
+  margin-left: 40px;
+}
+.title p {
+  color: #a7a7a7;
+  font-size: 13px;
+  margin-top: 5%;
+}
+.title .time {
+  filter: brightness(0) saturate(100%) invert(70%) sepia(0%) saturate(100%)
+    hue-rotate(0deg);
+  height: 20px;
+  vertical-align: bottom;
+  margin-top: 5%;
+}
+.title .number {
+  margin-right: -4%;
 }

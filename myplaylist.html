@@ -121,20 +121,62 @@
                           <p>Playlist</p>
                           <h1 id="playlistName" class="playlistName"></h1>
                           <div class="profile">
-                            <img id="profilePicture" class="profilePicture" />
-                            <p id="profileName" class="profileName"></p>
+                            <img
+                              id="profilePicture"
+                              class="profilePicture d-none d-sm-inline-block"
+                            />
+                            <p
+                              id="profileName"
+                              class="profileName d-none d-sm-inline-block"
+                            ></p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="editDots">
-                    <button id="dots" title="More options for QWERTY">
-                      . . .
-                    </button>
+
+                  <div class="playlistRow">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <img
+                          id="playButton"
+                          class="playButton col-1 d-none d-sm-inline-block"
+                          src="./assets/imgs/spotify-play-button.png"
+                        />
+                        <div class="editDots col d-none d-sm-inline-block">
+                          <button id="dots" title="More options for QWERTY">
+                            . . .
+                          </button>
+                        </div>
+                        <!-- <div class="list col-2">
+                          <p>List</p>
+                          <img src="./assets/imgs/list.png" />
+                        </div> -->
+                      </div>
+                    </div>
                   </div>
-                  <hr />
-                  <div id="playlistTracksList" class="playlistTracksList"></div>
+                  <div playlistList>
+                    <div class="title">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <p class="number col-1">#</p>
+                          <p class="titlename col-6">Title</p>
+                          <p class="album col-3 d-none d-md-inline-block">
+                            Album
+                          </p>
+                          <img
+                            class="time col-2"
+                            src="./assets/imgs/spotify-duration.svg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                    <div
+                      id="playlistTracksList"
+                      class="playlistTracksList"
+                    ></div>
+                  </div>
                 </section>
               </section>
               <div class="bottomBar">
