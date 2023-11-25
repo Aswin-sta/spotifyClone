@@ -1,41 +1,54 @@
 import { getData, refreshAccessToken } from "./get.js";
+async function main() {
+  try {
+    await refreshAccessToken(localStorage.getItem("refresh_token"));
 
-await refreshAccessToken(localStorage.getItem("refresh_token"));
-const q = new URLSearchParams(window.location.search).get("q");
-const searchResultPromise = getData(
-  `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
-);
-searchResultPromise.then((data) => {
-  if (data.tracks && data.tracks.items.length > 0) {
-    data.tracks.items.forEach((track) => {
-      createSongElement(track);
-    });
-  } else {
-    searchList.innerHTML = "<p>No tracks found.</p>";
+    const q = new URLSearchParams(window.location.search).get("q");
+    const searchResultPromise = getData(
+      `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
+    );
+
+    const data = await searchResultPromise;
+    const searchList = document.getElementById("searchList");
+
+    if (data.tracks && data.tracks.items.length > 0) {
+      data.tracks.items.forEach((track) => {
+        const songContainer = createSongElement(track);
+        searchList.appendChild(songContainer);
+      });
+    } else {
+      searchList.innerHTML = "<p>No tracks found.</p>";
+    }
+  } catch (error) {
+    console.error("Error fetching search results:", error);
   }
-});
+}
+
 function createSongElement(track) {
-  const searchList = document.getElementById("searchList");
+  const { album, name, artists, duration_ms } = track;
 
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
 
   const albumImage = document.createElement("img");
-  albumImage.src = track.album.images[2].url;
+  albumImage.src = album.images[2].url;
   albumImage.alt = "Album Cover";
 
   const songDetails = document.createElement("div");
   songDetails.classList.add("songDetails");
 
-  const songName = document.createElement("h3");
-  songName.textContent = track.name;
-
-  const artists = document.createElement("p");
-  artists.textContent = track.artists.map((artist) => artist.name).join(", ");
-
   const detailsLeft = document.createElement("div");
+
+  const songName = document.createElement("h3");
+  songName.textContent = name;
+
+  const artistNames = artists.map((artist) => artist.name).join(", ");
+
+  const artistsPara = document.createElement("p");
+  artistsPara.textContent = artistNames;
+
   detailsLeft.appendChild(songName);
-  detailsLeft.appendChild(artists);
+  detailsLeft.appendChild(artistsPara);
 
   const duration = document.createElement("span");
   duration.textContent = formatDuration(track.duration_ms);
@@ -46,7 +59,7 @@ function createSongElement(track) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
-  searchList.appendChild(songContainer);
+  return songContainer;
 }
 
 function formatDuration(durationInMs) {
@@ -54,3 +67,6 @@ function formatDuration(durationInMs) {
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+
+
+main();

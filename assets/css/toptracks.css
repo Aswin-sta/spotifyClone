@@ -20,6 +20,7 @@
   font-size: 1rem;
 }
 .song .songDetails {
+  padding: 1% 0% 1% 0%;
   font-size: 14px;
 }
 .song .songNumber {
