@@ -12,21 +12,37 @@ import { getData } from '../js/get.js';
 import { changeIframeContent } from "../js/changeIframeContent.js";
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const searchCategoryPromise = getData('https://api.spotify.com/v1/browse/categories?country=IN');
-        searchCategoryPromise.then((data) => {
+        // Display the loading skeleton while waiting for data
+        const skeletonContainer = document.querySelector('.skeletonContainer');
+        if (skeletonContainer)
+            skeletonContainer.style.display = 'block';
+        try {
+            const data = yield getData('https://api.spotify.com/v1/browse/categories?country=IN');
             const categoryData = data.categories.items;
-            //console.log(categoryData);
             const searchSection = document.querySelector('section.searchDisplay');
             if (searchSection) {
+                const loadImagePromises = [];
                 categoryData.forEach((element) => {
                     const searchContainer = document.createElement('div');
                     searchContainer.classList.add('col-5', 'col-sm-5', 'col-md-4', 'col-lg-3', 'searchBlock', 'd-inline-flex', 'mb-5', 'ml-3', 'overflow-hidden');
                     const title = document.createElement('h2');
                     title.classList.add('fw-bolder', 'p-2', 'text-sm', 'text-md', 'text-lg');
                     title.textContent = element.name;
-                    let imageElement = document.createElement('img');
+                    const imageElement = document.createElement('img');
                     imageElement.classList.add('img-thumbnail', 'position-absolute', 'img-fluid');
                     imageElement.src = element.icons[0].url;
+                    const loadImagePromise = new Promise((resolve) => {
+                        const handleLoad = () => {
+                            resolve();
+                        };
+                        // In case of an error loading the image
+                        const handleError = () => {
+                            resolve();
+                        };
+                        imageElement.addEventListener('load', handleLoad);
+                        imageElement.addEventListener('error', handleError);
+                    });
+                    loadImagePromises.push(loadImagePromise);
                     searchContainer.append(title, imageElement);
                     searchContainer.classList.add('clickable');
                     searchContainer.onclick = () => {
@@ -37,8 +53,18 @@ function main() {
                     searchContainer.style.backgroundColor = randomColor;
                     searchSection.appendChild(searchContainer);
                 });
+                // Wait for all images to load before hiding the skeleton container
+                yield Promise.all(loadImagePromises);
             }
-        });
+        }
+        catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        finally {
+            // Hide the loading skeleton after data is loaded
+            if (skeletonContainer)
+                skeletonContainer.style.display = 'none';
+        }
     });
 }
 // Function to generate random colours
