@@ -26,6 +26,11 @@ playlistPromise.then((data) => {
     playlistOwner.textContent = `By ${playlist.owner.display_name}`;
     playlistTextWrapper.append(playlistName, playlistOwner);
     playlistItem.append(playlistImage, playlistTextWrapper);
+    playlistItem.addEventListener("click", () => {
+      sessionStorage.setItem("id", playlist.id);
+      document.getElementById("heroSection").src = "myplaylist-1.html";
+    });
+
     playlistWrapper.append(playlistItem);
   });
 });

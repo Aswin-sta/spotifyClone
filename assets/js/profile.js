@@ -37,7 +37,8 @@ playlistPromise.then((data) => {
 
     playlistTile.append(playlistImageDiv, playlistName, playlistOwner);
     playlistTile.onclick = () => {
-      window.location.href = `myplaylist.html?playlist_id=${playlist.id}`;
+      document.location.href = "myplaylist-1.html";
+      sessionStorage.setItem("id", playlist.id);
     };
     playlistTileList.append(playlistTile);
   });
