@@ -52,6 +52,8 @@ function createItemTile(container, data, onClickHandler) {
     }
     container.append(itemTile);
 }
+// const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+//   if (skeletonContainer) skeletonContainer.style.display = 'block';
 // Fetch and render new releases
 (() => __awaiter(void 0, void 0, void 0, function* () {
     // Refresh Access Token
@@ -103,6 +105,10 @@ function createItemTile(container, data, onClickHandler) {
             sessionStorage.setItem("type", album.type);
         });
     });
+    // Hide the skeleton container after data is loaded
+    const skeletonContainer = document.querySelector('.skeletonContainer');
+    if (skeletonContainer)
+        skeletonContainer.style.display = 'none';
 }))();
 (_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     changeIframeContent("profile-1.html");

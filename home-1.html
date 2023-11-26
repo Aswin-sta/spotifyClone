@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
+    <link rel="stylesheet" href="./assets/css/skeletonStyle.css" />
 
     <script type="module" src="./assets/ts/home.js" async></script>
 
@@ -55,6 +56,35 @@
           <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
         </nav>
         <section class="homeWrapper pt-6 pt-md-5">
+          <div class="skeletonContainer">
+            <div class="row">
+              <h2 class="skeleton-loader mt-5"></h2>
+              <div class="d-flex justify-content-evenly">
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+              </div>
+            </div>
+            <div class="row">
+              <h2 class="skeleton-loader"></h2>
+              <div class="d-flex justify-content-evenly">
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+              </div>
+            </div>
+            <div class="row">
+              <h2 class="skeleton-loader"></h2>
+              <div class="d-flex justify-content-evenly">
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+                <div class="card-skeleton-loader"></div>
+              </div>
+            </div>
+          </div>
           <div class="row row-cols-1">
             <h2>New Releases</h2>
             <div class="itemWrapper newReleases"></div>
