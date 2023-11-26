@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/myplaylist.css" />
+    <link rel="stylesheet" href="./assets/css/editplaylist.css" />
 
     <script type="module" src="./assets/js/side-div.js" async></script>
     <script type="module" src="./assets/js/home.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
     <script type="module" src="./assets/js/myPlaylist.js" defer></script>
+    <script type="module" src="./assets/js/editplaylist.js" defer></script>
     <script src="./assets/js/button.js" defer></script>
     <link
       rel="stylesheet"
@@ -183,6 +185,42 @@
                       id="playlistTracksList"
                       class="playlistTracksList"
                     ></div>
+                  </div>
+                  <div id="overlay" class="overlay"></div>
+                  <div id="playlistEdit" class="playlistEdit">
+                    <h2>Edit Details</h2>
+                    <div class="playlistDetails">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="playlistImage col-4">
+                            <img id="playlistImage" />
+                          </div>
+                          <div class="nameAndDescription col">
+                            <input
+                              id="name"
+                              class="name row"
+                              type="text"
+                              value=""
+                            />
+                            <textarea
+                              id="desc"
+                              class="desc row"
+                              rows="6"
+                              cols="50"
+                              placeholder="Add an optional description"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="save">
+                      <button id="save">Save</button>
+                    </div>
+                    <p>
+                      By proceeding, you agree to give Spotify access to the
+                      image you choose to upload. Please <br />make sure you
+                      have the right to upload the image.
+                    </p>
                   </div>
                 </section>
               </section>

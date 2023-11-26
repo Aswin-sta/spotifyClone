@@ -91,3 +91,7 @@ function formatDuration(durationInMs) {
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+
+if (window.location.href === "http://127.0.0.1:5500/profile.html") {
+  getTopTracks(4);
+}
