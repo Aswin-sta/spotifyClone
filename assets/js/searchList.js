@@ -1,11 +1,11 @@
-import { getData, refreshAccessToken } from "./get.js";
+import { getData } from "./get.js";
 async function main() {
   try {
-    await refreshAccessToken(localStorage.getItem("refresh_token"));
+ 
 
     const q = sessionStorage.getItem("searchQuery");
     const searchResultPromise = getData(
-      `https://api.spotify.com/v1/search?query=${searchItem}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
+      `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
     );
 
     const data = await searchResultPromise;

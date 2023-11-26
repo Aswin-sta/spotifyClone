@@ -42,14 +42,14 @@
 /* Height for medium screens */
 @media (min-width: 577px) and (max-width: 768px) {
   .searchBlock {
-    height: 150px; /
+    height: 180px; /
   }
 }
 
 /* Height for large screens */
 @media (min-width: 769px) and (max-width: 992px) {
   .searchBlock {
-    height: 180px; 
+    height: 210px; 
   }
 }
 
@@ -71,7 +71,7 @@
   border-radius: 50px;
   background-color: #242424;
   color: #b3b3b3;
-  width: 30vw; 
+  width: 35vw; 
   height: 40px;
   padding-left: 20%;
 }

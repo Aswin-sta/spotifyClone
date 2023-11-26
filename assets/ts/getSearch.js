@@ -20,13 +20,13 @@ function main() {
             if (searchSection) {
                 categoryData.forEach((element) => {
                     const searchList = document.getElementById("searchList");
-                    searchList.classList.add('ml-3');
+                    searchList.classList.add('ml-1');
                     const searchContainerWrapper = document.createElement('div');
                     const searchContainer = document.createElement('div');
-                    searchContainerWrapper.classList.add('col-6', 'col-sm-6', 'col-md-4', 'col-lg-3', 'searchBlock', 'mb-1', 'overflow-hidden');
+                    searchContainerWrapper.classList.add('col-6', 'col-sm-6', 'col-md-3', 'col-lg-3', 'searchBlock', 'mb-2', 'overflow-hidden');
                     searchContainer.classList.add('searchBlockTile', 'overflow-hidden', 'position-relative');
                     const title = document.createElement('h2');
-                    title.classList.add('fw-bolder', 'p-2');
+                    title.classList.add('text-white', 'font-weight-bold', 'p-2');
                     title.textContent = element.name;
                     let imageElement = document.createElement('img');
                     imageElement.classList.add('img-thumbnail', 'position-absolute', 'img-fluid');
@@ -34,8 +34,7 @@ function main() {
                     searchContainer.append(title, imageElement);
                     searchContainer.classList.add('clickable');
                     searchContainer.onclick = () => {
-                        document.location.href = "specificGenre-1.html";
-                        sessionStorage.setItem("id", element.id);
+                        window.location.href = `specificGenre.html?id=${element.id}`;
                     };
                     const randomColor = getRandomColor();
                     searchContainer.style.backgroundColor = randomColor;
@@ -72,3 +71,4 @@ main();
 (_c = document.querySelector("#navSearchButton")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
     changeIframeContent("searchpage-1.html");
 });
+///
