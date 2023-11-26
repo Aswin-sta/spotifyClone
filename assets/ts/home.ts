@@ -139,3 +139,11 @@ const apiEndpoints: Record<string, string> = {
   document.querySelector("#loginLink")?.addEventListener('click',()=>{
     changeIframeContent("profile-1.html")
   })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })

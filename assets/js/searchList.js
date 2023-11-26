@@ -67,5 +67,15 @@ function formatDuration(durationInMs) {
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+document.querySelector("#loginLink")?.addEventListener("click", () => {
+  changeIframeContent("profile-1.html");
+});
 
+document.querySelector("#navHomeButton")?.addEventListener("click", () => {
+  changeIframeContent("home-1.html");
+});
+
+document.querySelector("#navSearchButton")?.addEventListener("click", () => {
+  changeIframeContent("searchpage-1.html");
+});
 main();

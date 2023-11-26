@@ -1,5 +1,6 @@
 import { getData} from '../js/get.js';
 import { CategoryResponseType } from '../type/getSearchResponse.js';
+import { changeIframeContent } from "../js/changeIframeContent.js";
 async function main() {
   const searchCategoryPromise = getData(
     'https://api.spotify.com/v1/browse/categories?country=IN'
@@ -58,3 +59,15 @@ if (searchBar) {
 }
  
 main();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })

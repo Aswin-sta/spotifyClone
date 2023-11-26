@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
+var _a, _b, _c;
 import { getDataFromCache } from "../js/get.js";
 import { changeIframeContent } from "../js/changeIframeContent.js";
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
@@ -106,4 +106,10 @@ function createItemTile(container, data, onClickHandler) {
 }))();
 (_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     changeIframeContent("profile-1.html");
+});
+(_b = document.querySelector("#navHomeButton")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+    changeIframeContent("home-1.html");
+});
+(_c = document.querySelector("#navSearchButton")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
+    changeIframeContent("searchpage-1.html");
 });

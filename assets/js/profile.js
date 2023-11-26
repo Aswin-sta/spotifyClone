@@ -1,5 +1,5 @@
 import { getData } from "./get.js";
-
+import { changeIframeContent } from "../js/changeIframeContent.js";
 const userDataPromise = getData("https://api.spotify.com/v1/me");
 console.log(userDataPromise);
 
@@ -42,5 +42,15 @@ playlistPromise.then((data) => {
     playlistTileList.append(playlistTile);
   });
 });
+document.querySelector("#loginLink")?.addEventListener("click", () => {
+  changeIframeContent("profile-1.html");
+});
 
+document.querySelector("#navHomeButton")?.addEventListener("click", () => {
+  changeIframeContent("home-1.html");
+});
+
+document.querySelector("#navSearchButton")?.addEventListener("click", () => {
+  changeIframeContent("searchpage-1.html");
+});
 export { userDataPromise };

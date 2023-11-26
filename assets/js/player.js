@@ -97,11 +97,11 @@ async function resumePlayback() {
         },
       }
     );
-    isPlaying = true;
-    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change to pause icon
+
     await handleApiResponse(response);
     console.log("Playback resumed successfully");
-
+    isPlaying = true;
+    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Change to pause icon
     // Assuming playPauseButton is correctly referencing your button element
   } catch (error) {
     console.error("Error resuming playback", error.message);
@@ -182,11 +182,11 @@ async function pauseSong() {
         },
       }
     );
-    playPauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Change to play icon
-    isPlaying = false;
+
     await handleApiResponse(response);
     console.log("Song paused successfully");
-
+    playPauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Change to play icon
+    isPlaying = false;
     // Assuming playPauseButton is correctly referencing your button element
   } catch (error) {
     console.error("Error pausing song", error.message);

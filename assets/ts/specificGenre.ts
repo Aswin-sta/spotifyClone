@@ -1,5 +1,6 @@
 import { getData } from '../js/get.js';
 import { specificGenreResponseType } from '../type/specificGenreResponse.js';
+import { changeIframeContent } from "../js/changeIframeContent.js";
 (async () => {
  
   const categoryId =  sessionStorage.getItem("id");
@@ -86,4 +87,16 @@ import { specificGenreResponseType } from '../type/specificGenreResponse.js';
     });
   }
 })();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })
  
