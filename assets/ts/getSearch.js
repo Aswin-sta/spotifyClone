@@ -19,10 +19,14 @@ function main() {
             const searchSection = document.querySelector('section.searchDisplay');
             if (searchSection) {
                 categoryData.forEach((element) => {
+                    const searchList = document.getElementById("searchList");
+                    searchList.classList.add('ml-3');
+                    const searchContainerWrapper = document.createElement('div');
                     const searchContainer = document.createElement('div');
-                    searchContainer.classList.add('col-5', 'col-sm-5', 'col-md-4', 'col-lg-3', 'searchBlock', 'd-inline-flex', 'mb-5', 'ml-3', 'overflow-hidden');
+                    searchContainerWrapper.classList.add('col-6', 'col-sm-6', 'col-md-4', 'col-lg-3', 'searchBlock', 'mb-4', 'overflow-hidden');
+                    searchContainer.classList.add('searchBlockTile', 'overflow-hidden', 'position-relative');
                     const title = document.createElement('h2');
-                    title.classList.add('fw-bolder', 'p-2', 'text-sm', 'text-md', 'text-lg');
+                    title.classList.add('fw-bolder', 'p-2');
                     title.textContent = element.name;
                     let imageElement = document.createElement('img');
                     imageElement.classList.add('img-thumbnail', 'position-absolute', 'img-fluid');
@@ -35,7 +39,8 @@ function main() {
                     };
                     const randomColor = getRandomColor();
                     searchContainer.style.backgroundColor = randomColor;
-                    searchSection.appendChild(searchContainer);
+                    searchContainerWrapper.append(searchContainer);
+                    searchList.appendChild(searchContainerWrapper);
                 });
             }
         });

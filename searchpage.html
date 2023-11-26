@@ -18,10 +18,7 @@
     <script type="module" src="./assets/js/side-div.js" async></script>
     <script type="module" src="assets/ts/getSearch.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
       rel="stylesheet"
@@ -51,7 +48,7 @@
                     </a>
                   </li>
                   <li class="col-md-12 col-lg-12 col-sm-6 col-6">
-                    <a href="searchpage.html" class="d-flex align-items-center">
+                    <a href="" class="d-flex align-items-center">
                       <img src="./assets/imgs/search.svg" alt="Search" />
                       <span class="ml-2">Search</span>
                     </a>
@@ -94,19 +91,14 @@
                   >
                     <!-- <img src="./assets/imgs/home.svg" alt="Search" /> -->
                   </a>
-                  <a
-                    href="searchpage.html"
-                    id="navSearchButton"
-                    class="d-flex align-items-center d-md-none mx-3"
-                  >
-                    <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
-                  </a>
                   <!-- search bar here -->
                   <button id="leftArrow" class="d-none d-md-block"></button>
                   <button id="rightArrow" class="d-none d-md-block"></button>
-                  <div class="search">
+
+                  <div class="search input-group d-none d-sm-inline-block pb-2">
                     <input
                       type="text"
+                      id="searchInput"
                       class="searchInput"
                       placeholder="What do you want to listen to?"
                     />
@@ -117,8 +109,17 @@
                 /></a>
               </nav>
               <section class="homeWrapper">
-                <section class="searchDisplay">
-                  <h1 class="text-white fw-bolder px-3 pb-3">Browse All</h1>
+                <section class="searchDisplay container py-5">
+                  <div class="search d-block d-sm-none pt-2">
+                    <input
+                      type="text"
+                      id="searchInput"
+                      class="searchInput w-100"
+                      placeholder="What do you want to listen to?"
+                    />
+                  </div>
+                  <h1 class="text-white fw-bolder pt-5">Browse All</h1>
+                  <div class="row" id="searchList"></div>
                 </section>
               </section>
               <div class="bottomBar">
