@@ -5,10 +5,11 @@ async function main() {
 
     const q = sessionStorage.getItem("searchQuery");
     const searchResultPromise = getData(
-      `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
+      `https://api.spotify.com/v1/search?query=${searchItem}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
     );
 
     const data = await searchResultPromise;
+    console.log(data);
     const searchList = document.getElementById("searchList");
 
     if (data.tracks && data.tracks.items.length > 0) {
@@ -23,9 +24,9 @@ async function main() {
     console.error("Error fetching search results:", error);
   }
 }
-
+let currentlyPlayingAudio = null;
 function createSongElement(track) {
-  const { album, name, artists, duration_ms } = track;
+  const { album, name, artists, duration_ms, preview_url } = track;
 
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
@@ -59,7 +60,33 @@ function createSongElement(track) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
+  songContainer.addEventListener("mouseenter", () => {
+    playPreview(track.preview_url);
+  });
+
+  songContainer.addEventListener("mouseleave", () => {
+    if (currentlyPlayingAudio) {
+      currentlyPlayingAudio.pause();
+      currentlyPlayingAudio.currentTime = 0; 
+      currentlyPlayingAudio = null;
+    }
+  });
   return songContainer;
+}
+function playPreview(previewUrl) {
+  if (previewUrl) {
+
+    if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
+      currentlyPlayingAudio.pause();
+      currentlyPlayingAudio.currentTime = 0; 
+    }
+
+    const audio = new Audio(previewUrl);
+    audio.play();
+    currentlyPlayingAudio = audio;
+  } else {
+    console.log("No preview available for this track.");
+  }
 }
 
 function formatDuration(durationInMs) {
