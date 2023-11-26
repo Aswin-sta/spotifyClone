@@ -1,6 +1,6 @@
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
-const redirectUri = "spotify-clone-theta-bay.vercel.app/main.html";
+const redirectUri = "https://spotify-clone-theta-bay.vercel.app/main.html";
 const scope =
   "user-read-private user-read-email user-top-read user-library-read user-library-modify streaming playlist-read-private playlist-modify-public playlist-modify-private";
 
