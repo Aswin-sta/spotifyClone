@@ -20,7 +20,7 @@ async function main() {
          searchContainerWrapper.classList.add('col-6',
          'col-sm-6',
          'col-md-4',
-         'col-lg-3','searchBlock','mb-4'
+         'col-lg-3','searchBlock','mb-1'
          ,'overflow-hidden');
 
          searchContainer.classList.add('searchBlockTile','overflow-hidden','position-relative')

@@ -23,7 +23,7 @@ function main() {
                     searchList.classList.add('ml-3');
                     const searchContainerWrapper = document.createElement('div');
                     const searchContainer = document.createElement('div');
-                    searchContainerWrapper.classList.add('col-6', 'col-sm-6', 'col-md-4', 'col-lg-3', 'searchBlock', 'mb-4', 'overflow-hidden');
+                    searchContainerWrapper.classList.add('col-6', 'col-sm-6', 'col-md-4', 'col-lg-3', 'searchBlock', 'mb-1', 'overflow-hidden');
                     searchContainer.classList.add('searchBlockTile', 'overflow-hidden', 'position-relative');
                     const title = document.createElement('h2');
                     title.classList.add('fw-bolder', 'p-2');
