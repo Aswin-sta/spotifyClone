@@ -1,14 +1,15 @@
 @import url(./main.css);
 #searchList {
   width: 90%;
-  margin-inline: 50px;
+  margin-inline: 20px;
   background-color: var(--spotify-grey-);
   padding: 20px;
   gap: 20px;
   cursor: pointer;
 }
 #searchList h1 {
-  padding-block: 50px;
+  padding-top: 40px;
+  padding-bottom: 30px;
   color: white;
 }
 .song {
@@ -16,7 +17,6 @@
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  font-size: medium;
   border-radius: 5px;
 }
 
@@ -32,7 +32,6 @@
   justify-content: space-between;
   align-items: center;
   color: white;
-  font-size: small;
 }
 .song:hover {
   background-color:#383737;
@@ -42,4 +41,6 @@ h3,
 p,
 span {
   margin: 0;
+  font-size: medium;
+
 }
