@@ -92,6 +92,4 @@ function formatDuration(durationInMs) {
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
 
-if (window.location.href === "http://127.0.0.1:5500/profile.html") {
-  getTopTracks(4);
-}
+getTopTracks(4);
