@@ -13,12 +13,20 @@ async function main() {
     const searchSection: HTMLElement | null = document.querySelector('section.searchDisplay');
     if (searchSection) {
       categoryData.forEach((element) => {
+        const searchList = document.getElementById("searchList") as HTMLElement;
+        searchList.classList.add('ml-3');
+        const searchContainerWrapper: HTMLDivElement = document.createElement('div');
         const searchContainer: HTMLDivElement = document.createElement('div');
-         searchContainer.classList.add('col-5','col-sm-5', 'col-md-4', 'col-lg-3','searchBlock','d-inline-flex','mb-5','ml-3','overflow-hidden');
+         searchContainerWrapper.classList.add('col-6',
+         'col-sm-6',
+         'col-md-4',
+         'col-lg-3','searchBlock','mb-4'
+         ,'overflow-hidden');
 
+         searchContainer.classList.add('searchBlockTile','overflow-hidden','position-relative')
 
         const title: HTMLHeadingElement = document.createElement('h2');
-        title.classList.add('fw-bolder','p-2','text-sm', 'text-md', 'text-lg');
+        title.classList.add('fw-bolder','p-2');
         title.textContent = element.name;
  
         let imageElement: HTMLImageElement = document.createElement('img');
@@ -33,12 +41,12 @@ async function main() {
         };
         const randomColor: string = getRandomColor();
         searchContainer.style.backgroundColor = randomColor;
-        searchSection.appendChild(searchContainer);
+        searchContainerWrapper.append(searchContainer)
+        searchList.appendChild(searchContainerWrapper);
       });
     }
   });
 }
- 
 // Function to generate random colours
 function getRandomColor(): string {
   const red: number = Math.floor(Math.random() * 256);
