@@ -3,119 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/searchList.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      integrity="..."
+      crossorigin="anonymous"
+    />
+
+    <title>spotify</title>
+    <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/top-nav.css" />
-    <link rel="stylesheet" href="./assets/css/side-nav.css" />
+    <link rel="stylesheet" href="./assets/css/searchpage.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/searchpage.css" />
+    <link rel="stylesheet" href="./assets/css/new.css" />
+    <link rel="stylesheet" href="assets/css/searchList.css" />
+
+    <script type="module" src="./assets/ts/getSearch.js" async></script>
     <script type="module" src="./assets/js/searchList.js" defer></script>
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,300,401,400&f[]=excon@400,900,700,500,300,100,1&f[]=outfit@1,400,900,800,300,500,600,200,100,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="wrapper">
-      <nav>
-        <div>
-          <button id="leftArrow">
-            <!-- <img src="./assets/imgs/leftarrrow.png" /> -->
-          </button>
-          <button id="rightArrow">
-            <!-- <img src="./assets/imgs/rightarrow.png" /> -->
-          </button>
-          <div class="search">
-            <input
-              type="text"
-              class="searchInput"
-              placeholder="What do you want to listen to?"
-            />
+    <div
+      class="container-fluid col-md-12"
+      style="min-height: 100vh; max-height: 100vh"
+    >
+      <div class="row wrapper">
+        <nav class="navbar position-fixed sticky-top pt-3">
+          <div>
+            <p
+              id="navHomeButton"
+              class="d-flex align-items-center d-md-none mx-3"
+            ></p>
+            <button id="leftArrow" class="d-none d-md-block"></button>
+            <button id="rightArrow" class="d-none d-md-block"></button>
+
+            <div class="search input-group d-none d-sm-inline-block pb-2">
+              <input
+                type="text"
+                id="searchInput"
+                class="searchInput"
+                placeholder="What do you want to listen to?"
+              />
+            </div>
           </div>
-        </div>
-        <button id="loginLink" href="profile.html">
-          <img src="./assets/imgs/user.png" />
-        </button>
-      </nav>
-      <section class="homeWrapper pt-6 pt-md-5">
-        <div id="searchList">
-          <h1>Songs</h1>
-        </div>
-      </section>
-      <div class="bottomBar">
-        <div class="footerTop">
-          <div class="companyWrapper">
-            <p class="header">Company</p>
-            <p>
-              <a href="https://www.spotify.com/in-en/about-us/contact/"
-                >About</a
-              >
-            </p>
-            <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
-            <p><a href="https://newsroom.spotify.com/">For the Record</a></p>
+          <a id="loginLink" href="profile.html"
+            ><img src="./assets/imgs/user.png"
+          /></a>
+        </nav>
+        <section class="homeWrapper pt-6 pt-md-5">
+          <div id="searchList">
+            <h1 class="py-4 fw-bold">Songs</h1>
           </div>
-          <div class="communitiesWrapper">
-            <p class="header">Communities</p>
-            <p><a href="https://artists.spotify.com/home">For Artists</a></p>
-            <p><a href="https://developer.spotify.com/">Developers</a></p>
-            <p><a href="https://ads.spotify.com/en-IN/">Advertising</a></p>
-            <p>
-              <a href="https://investors.spotify.com/home/default.aspx"
-                >Investors</a
-              >
-            </p>
-            <p><a href="https://spotifyforvendors.com/">Vendors</a></p>
+        </section>
+        <div class="bottomBar">
+          <div class="footerTop">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col companyWrapper">
+                  <p class="header">Company</p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/about-us/contact/"
+                      >About</a
+                    >
+                  </p>
+                  <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
+                  <p>
+                    <a href="https://newsroom.spotify.com/">For the Record</a>
+                  </p>
+                </div>
+                <div class="col communitiesWrapper">
+                  <p class="header">Communities</p>
+                  <p>
+                    <a href="https://artists.spotify.com/home">For Artists</a>
+                  </p>
+                  <p>
+                    <a href="https://developer.spotify.com/">Developers</a>
+                  </p>
+                  <p>
+                    <a href="https://ads.spotify.com/en-IN/">Advertising</a>
+                  </p>
+                  <p>
+                    <a href="https://investors.spotify.com/home/default.aspx"
+                      >Investors</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://spotifyforvendors.com/">Vendors</a>
+                  </p>
+                </div>
+                <div class="col usefulLinksWrapper">
+                  <p class="header">Useful links</p>
+                  <p>
+                    <a href="https://support.spotify.com/in-en/">Support</a>
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/download/windows/"
+                      >Free Mobile App</a
+                    >
+                  </p>
+                </div>
+                <div class="col socialWrapper">
+                  <button>
+                    <img src="./assets/imgs/instagram.png" />
+                  </button>
+                  <button><img src="./assets/imgs/twitter.png" /></button>
+                  <button>
+                    <img src="./assets/imgs/facebook.png" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="usefulLinksWrapper">
-            <p class="header">Useful links</p>
-            <p><a href="https://support.spotify.com/in-en/">Support</a></p>
-            <p>
-              <a href="https://www.spotify.com/in-en/download/windows/"
-                >Free Mobile App</a
-              >
-            </p>
-          </div>
-          <div class="socialWrapper">
-            <button><img src="./assets/imgs/instagram.png" /></button>
-            <button><img src="./assets/imgs/twitter.png" /></button>
-            <button><img src="./assets/imgs/facebook.png" /></button>
-          </div>
-        </div>
-        <hr />
-        <div class="footerBottom">
-          <div class="navbar">
-            <p><a href="https://www.spotify.com/in-en/legal/">Legal</a></p>
-            <p>
-              <a href="https://www.spotify.com/in-en/privacy">Privacy Center</a>
-            </p>
-            <p>
-              <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
-                >Privacy Policy</a
-              >
-            </p>
-            <p>
-              <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
-                >Cookies</a
-              >
-            </p>
-            <p>
-              <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
-                >About Ads</a
-              >
-            </p>
-            <p>
-              <a href="https://www.spotify.com/in-en/accessibility"
-                >Accessibility</a
-              >
-            </p>
-          </div>
-          <div class="copyright">
-            <p>© 2023 Spotify AB</p>
+          <hr />
+          <div class="footerBottom">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col navbar">
+                  <p>
+                    <a href="https://www.spotify.com/in-en/legal/">Legal</a>
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/privacy"
+                      >Privacy Center</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                      >Privacy Policy</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                      >Cookies</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                      >About Ads</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/accessibility"
+                      >Accessibility</a
+                    >
+                  </p>
+                </div>
+                <div class="col copyright">
+                  <p>© 2023 Spotify AB</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

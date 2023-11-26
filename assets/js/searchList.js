@@ -3,9 +3,9 @@ async function main() {
   try {
  
 
-    const q = sessionStorage.getItem("searchQuery");
+    const searchQuery = sessionStorage.getItem("searchQuery");
     const searchResultPromise = getData(
-      `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
+      `https://api.spotify.com/v1/search?query=${searchQuery}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
     );
 
     const data = await searchResultPromise;
@@ -51,23 +51,29 @@ function createSongElement(track) {
   detailsLeft.appendChild(songName);
   detailsLeft.appendChild(artistsPara);
 
+  const detailsRight = document.createElement("div");
   const duration = document.createElement("span");
-  duration.textContent = formatDuration(track.duration_ms);
+  duration.textContent = formatDuration(duration_ms);
+  duration.classList.add("duration");
 
+  const playIcon = document.createElement("i");
+  playIcon.classList.add("fas", "fa-headphones-alt","previewIcon",'p-2'); 
+
+  detailsRight.append(playIcon,duration)
   songDetails.appendChild(detailsLeft);
-  songDetails.appendChild(duration);
+  songDetails.appendChild(detailsRight);
 
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
-  songContainer.addEventListener("mouseenter", () => {
-    playPreview(track.preview_url);
+  playIcon.addEventListener("mouseenter", () => {
+    playPreview(preview_url);
   });
 
-  songContainer.addEventListener("mouseleave", () => {
+  playIcon.addEventListener("mouseleave", () => {
     if (currentlyPlayingAudio) {
       currentlyPlayingAudio.pause();
-      currentlyPlayingAudio.currentTime = 0; 
+      currentlyPlayingAudio.currentTime = 0;
       currentlyPlayingAudio = null;
     }
   });
@@ -75,10 +81,9 @@ function createSongElement(track) {
 }
 function playPreview(previewUrl) {
   if (previewUrl) {
-
     if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
       currentlyPlayingAudio.pause();
-      currentlyPlayingAudio.currentTime = 0; 
+      currentlyPlayingAudio.currentTime = 0;
     }
 
     const audio = new Audio(previewUrl);
