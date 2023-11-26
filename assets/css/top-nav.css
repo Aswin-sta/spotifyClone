@@ -1,5 +1,5 @@
 @import url(./main.css);
-#heroSection nav {
+nav {
   justify-content: space-between;
   display: flex;
   align-items: center;
@@ -10,12 +10,12 @@
   background-color: var(--spotify-grey);
 }
 
-#heroSection nav div {
+nav div {
   display: flex;
 }
 
-#heroSection nav div button,
-#heroSection nav div a {
+nav div button,
+nav div a {
   width: 38px;
   height: 38px;
   border: none;

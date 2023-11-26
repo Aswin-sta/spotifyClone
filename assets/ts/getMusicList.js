@@ -17,8 +17,8 @@ import { playSong } from "../js/player.js";
         return typeof track.uri === 'string';
     }
     //url search parameters
-    const id = new URLSearchParams(window.location.search).get("id");
-    const type = new URLSearchParams(window.location.search).get("type");
+    const id = sessionStorage.getItem("id");
+    const type = sessionStorage.getItem("type");
     //musiclist api
     const newReleasesPromise = getData("https://api.spotify.com/v1/" + type + "s/" + id);
     //function to convert ms to min:sec format

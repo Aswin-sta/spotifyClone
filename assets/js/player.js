@@ -2,34 +2,26 @@ const token = localStorage.getItem("access_token");
 let spotifyDeviceId;
 let shuffleState = false;
 let isPlaying = false; // Initialize the playback state
-document.getElementById("shuffle").addEventListener("click", toggleShuffle);
-document.getElementById("skipBackward").addEventListener("click", skipBackward);
-const playPauseButton = document.querySelector("#playPause");
-document.getElementById("skipForward").addEventListener("click", skipForward);
-document.getElementById("repeat").addEventListener("click", toggleRepeat);
+parent.document
+  .getElementById("shuffle")
+  .addEventListener("click", toggleShuffle);
+parent.document
+  .getElementById("skipBackward")
+  .addEventListener("click", skipBackward);
+const playPauseButton = parent.document.querySelector("#playPause");
+parent.document
+  .getElementById("skipForward")
+  .addEventListener("click", skipForward);
+parent.document
+  .getElementById("repeat")
+  .addEventListener("click", toggleRepeat);
 
-const playerSongTitle = document.querySelector("#playerSongTitle");
-const playerSongAlbum = document.querySelector("#playerSongAlbum");
-const playerAlbumArt = document.querySelector("#playerAlbumArt");
+const playerSongTitle = parent.document.querySelector("#playerSongTitle");
+const playerSongAlbum = parent.document.querySelector("#playerSongAlbum");
+const playerAlbumArt = parent.document.querySelector("#playerAlbumArt");
 
 playPauseButton.addEventListener("click", togglePlayPause);
-
-window.onSpotifyWebPlaybackSDKReady = () => {
-  const player = new Spotify.Player({
-    name: "Web Playback SDK Quick Start Player",
-    getOAuthToken: (cb) => {
-      cb(token);
-    },
-    volume: 0.5,
-  });
-
-  player.addListener("ready", ({ device_id }) => {
-    console.log("Ready with Device ID", device_id);
-    spotifyDeviceId = device_id;
-  });
-
-  player.connect();
-};
+spotifyDeviceId = localStorage.getItem("spotifyDeviceId");
 
 function togglePlayPause() {
   if (isPlaying) {

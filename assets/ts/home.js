@@ -59,7 +59,9 @@ function createItemTile(container, data, onClickHandler) {
     const newReleaseContainer = document.querySelector(".newReleases");
     newReleasesData.albums.items.forEach((album) => {
         createItemTile(newReleaseContainer, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
     // Fetch and render romantic playlists
@@ -69,7 +71,9 @@ function createItemTile(container, data, onClickHandler) {
     const romanticContainer = document.querySelector(".romantic");
     romanticData.playlists.items.forEach((playlist) => {
         createItemTile(romanticContainer, playlist, () => {
-            window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", playlist.id);
+            sessionStorage.setItem("type", playlist.type);
         });
     });
     // Fetch and render top Indian songs
@@ -80,7 +84,9 @@ function createItemTile(container, data, onClickHandler) {
     indiantopData.tracks.forEach((track) => {
         const album = track.album;
         createItemTile(top10Container, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
     // Fetch and render Anirudh's albums
@@ -90,7 +96,9 @@ function createItemTile(container, data, onClickHandler) {
     const anirudhContainer = document.querySelector(".anirudhMania");
     anirudhData.items.forEach((album) => {
         createItemTile(anirudhContainer, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
 }))();

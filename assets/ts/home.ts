@@ -86,7 +86,9 @@ const apiEndpoints: Record<string, string> = {
  
   newReleasesData.albums.items.forEach((album) => {
     createItemTile(newReleaseContainer, album, () => {
-      window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+      document.location.href = "musiclist-1.html"
+      sessionStorage.setItem("id",album.id);
+      sessionStorage.setItem("type",album.type);
     });
   });
  
@@ -98,7 +100,9 @@ const apiEndpoints: Record<string, string> = {
  
   romanticData.playlists.items.forEach((playlist) => {
     createItemTile(romanticContainer, playlist, () => {
-      window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+      document.location.href = "musiclist-1.html"
+      sessionStorage.setItem("id",playlist.id);
+      sessionStorage.setItem("type",playlist.type);
     });
   });
  
@@ -111,7 +115,9 @@ const apiEndpoints: Record<string, string> = {
   indiantopData.tracks.forEach((track) => {
     const album:SpotifyData = track.album;
     createItemTile(top10Container, album, () => {
-      window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+      document.location.href = "musiclist-1.html"
+      sessionStorage.setItem("id",album.id);
+      sessionStorage.setItem("type",album.type);
     });
   });
  
@@ -123,7 +129,9 @@ const apiEndpoints: Record<string, string> = {
  
   anirudhData.items.forEach((album) => {
     createItemTile(anirudhContainer, album, () => {
-      window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+      document.location.href = "musiclist-1.html"
+      sessionStorage.setItem("id",album.id);
+      sessionStorage.setItem("type",album.type);
     });
   });
   })();

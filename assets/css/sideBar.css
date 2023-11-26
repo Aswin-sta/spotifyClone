@@ -11,6 +11,7 @@
   box-sizing: border-box;
   padding: 0% 8%;
   background-color: var(--spotify-grey);
+  margin-block: auto;
   margin: 0.5%;
   overflow-y: scroll;
 }
@@ -35,7 +36,7 @@
   text-decoration: none;
 }
 
-#topSideDiv li a {
+#topSideDiv li p {
   display: flex;
   align-items: center;
   padding-block: auto;

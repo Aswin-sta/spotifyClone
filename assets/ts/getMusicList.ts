@@ -11,8 +11,8 @@ function isAlbumTrack(track: any): track is spotifyDataAlbumList {
 }
 
 //url search parameters
-const id = new URLSearchParams(window.location.search).get("id");
-const type = new URLSearchParams(window.location.search).get("type");
+const id = sessionStorage.getItem("id");
+const type = sessionStorage.getItem("type");
 
 //musiclist api
 const newReleasesPromise:any = getData(
@@ -137,6 +137,7 @@ newReleasesPromise.then((data:spotifyData) => {
       }
     
       if (sourceUrl && sourceName) {
+        console.log("played");
         playSong(sourceUrl, sourceName, data.name, data.images[0]?.url || "");
       }
     };
