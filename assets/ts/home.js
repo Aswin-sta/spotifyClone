@@ -7,7 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a, _b, _c;
 import { getDataFromCache } from "../js/get.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const apiEndpoints = {
@@ -59,7 +61,9 @@ function createItemTile(container, data, onClickHandler) {
     const newReleaseContainer = document.querySelector(".newReleases");
     newReleasesData.albums.items.forEach((album) => {
         createItemTile(newReleaseContainer, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
     // Fetch and render romantic playlists
@@ -69,7 +73,9 @@ function createItemTile(container, data, onClickHandler) {
     const romanticContainer = document.querySelector(".romantic");
     romanticData.playlists.items.forEach((playlist) => {
         createItemTile(romanticContainer, playlist, () => {
-            window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", playlist.id);
+            sessionStorage.setItem("type", playlist.type);
         });
     });
     // Fetch and render top Indian songs
@@ -80,7 +86,9 @@ function createItemTile(container, data, onClickHandler) {
     indiantopData.tracks.forEach((track) => {
         const album = track.album;
         createItemTile(top10Container, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
     // Fetch and render Anirudh's albums
@@ -90,7 +98,18 @@ function createItemTile(container, data, onClickHandler) {
     const anirudhContainer = document.querySelector(".anirudhMania");
     anirudhData.items.forEach((album) => {
         createItemTile(anirudhContainer, album, () => {
-            window.location.href = `musiclist.html?id=${album.id}&type=${album.type}`;
+            document.location.href = "musiclist-1.html";
+            sessionStorage.setItem("id", album.id);
+            sessionStorage.setItem("type", album.type);
         });
     });
 }))();
+(_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+    changeIframeContent("profile-1.html");
+});
+(_b = document.querySelector("#navHomeButton")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+    changeIframeContent("home-1.html");
+});
+(_c = document.querySelector("#navSearchButton")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
+    changeIframeContent("searchpage-1.html");
+});

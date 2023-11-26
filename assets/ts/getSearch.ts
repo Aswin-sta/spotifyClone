@@ -1,5 +1,6 @@
 import { getData} from '../js/get.js';
 import { CategoryResponseType } from '../type/getSearchResponse.js';
+import { changeIframeContent } from "../js/changeIframeContent.js";
 async function main() {
   const searchCategoryPromise = getData(
     'https://api.spotify.com/v1/browse/categories?country=IN'
@@ -28,7 +29,8 @@ async function main() {
         
         searchContainer.classList.add('clickable');
         searchContainer.onclick = () => {
-          window.location.href = `specificGenre.html?id=${element.id}`;
+          document.location.href = "specificGenre-1.html";
+          sessionStorage.setItem("id", element.id);
         };
         const randomColor: string = getRandomColor();
         searchContainer.style.backgroundColor = randomColor;
@@ -50,9 +52,22 @@ const searchBar: HTMLInputElement | null = document.querySelector('.searchInput'
 if (searchBar) {
   searchBar.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
-      window.location.href = `searchList.html?q=${searchBar.value}`;
+      document.location.href = "searchList-1.html";
+      sessionStorage.setItem("searchQuery", searchBar.value);
     }
   });
 }
  
 main();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })

@@ -1,8 +1,9 @@
 import { getData } from '../js/get.js';
 import { specificGenreResponseType } from '../type/specificGenreResponse.js';
+import { changeIframeContent } from "../js/changeIframeContent.js";
 (async () => {
  
-  const categoryId = new URLSearchParams(window.location.search).get('id');
+  const categoryId =  sessionStorage.getItem("id");
   const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
   console.log(genreUrl);
  
@@ -35,7 +36,7 @@ import { specificGenreResponseType } from '../type/specificGenreResponse.js';
       const playlistCard: HTMLDivElement = document.createElement('div');
       playlistCard.classList.add(
         'playlistCard',
-        'col-md-3',
+        'col-md-2m',
         'col-sm-12',
         'mb-4',
         'rounded',
@@ -79,9 +80,23 @@ import { specificGenreResponseType } from '../type/specificGenreResponse.js';
       mainContainer.appendChild(playlistCard);
  
       playlistCard.onclick = () => {
-        window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+        document.location.href = "musiclist-1.html";
+        sessionStorage.setItem("id",playlist.id);
+        sessionStorage.setItem("type",playlist.type);
       };
     });
   }
 })();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })
  

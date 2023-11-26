@@ -7,19 +7,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a, _b, _c;
 import { getData } from "../js/get.js";
-import { changeSource } from "../js/player.js";
+import { playSong } from "../js/player.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 (() => __awaiter(void 0, void 0, void 0, function* () {
     function isPlaylistTrack(track) {
-        return 'track' in track && typeof track.track.preview_url === 'string';
+        return 'track' in track && typeof track.track.uri === 'string';
     }
     function isAlbumTrack(track) {
-        return typeof track.preview_url === 'string';
+        return typeof track.uri === 'string';
     }
     //url search parameters
-    const id = new URLSearchParams(window.location.search).get("id");
-    const type = new URLSearchParams(window.location.search).get("type");
-    //musiclist api
+    const id = sessionStorage.getItem("id");
+    const type = sessionStorage.getItem("type");
+    //musiclist api  
     const newReleasesPromise = getData("https://api.spotify.com/v1/" + type + "s/" + id);
     //function to convert ms to min:sec format
     function timeConvertion(duration_ms) {
@@ -85,25 +87,35 @@ import { changeSource } from "../js/player.js";
                 let sourceName;
                 if ('track' in track) {
                     const playlistTrack = track;
-                    sourceUrl = type === "playlist" ? playlistTrack.track.preview_url : undefined;
+                    sourceUrl = type === "playlist" ? playlistTrack.track.uri : undefined;
                     sourceName = type === "playlist" ? playlistTrack.track.name : undefined;
                 }
                 else {
                     const albumTrack = track;
-                    sourceUrl = track.preview_url;
+                    sourceUrl = track.uri;
                     sourceName = track.name;
                 }
                 if (sourceUrl && sourceName) {
-                    changeSource(sourceUrl, sourceName, data.name, ((_a = data.images[0]) === null || _a === void 0 ? void 0 : _a.url) || "");
+                    console.log("played");
+                    playSong(sourceUrl, sourceName, data.name, ((_a = data.images[0]) === null || _a === void 0 ? void 0 : _a.url) || "");
                 }
             };
             // songListTrack.onclick = () => {
             //   const sourceUrl =
-            //     type === "playlist" ? track.track.preview_url : track.preview_url;
+            //     type === "playlist" ? track.track.uri : track.uri;
             //   const sourceName = type === "playlist" ? track.track.name : track.name;
-            //   changeSource(sourceUrl, sourceName, data.name, data.images[0].url);
+            //   playSong(sourceUrl, sourceName, data.name, data.images[0].url);
             // };
             albumSongList.append(songListTrack);
         });
     });
 }))();
+(_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+    changeIframeContent("profile-1.html");
+});
+(_b = document.querySelector("#navHomeButton")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+    changeIframeContent("home-1.html");
+});
+(_c = document.querySelector("#navSearchButton")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
+    changeIframeContent("searchpage-1.html");
+});

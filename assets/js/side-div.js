@@ -1,4 +1,5 @@
 import { getData } from "./get.js";
+import { changeIframeContent } from "./changeIframeContent.js";
 
 const playlist = "https://api.spotify.com/v1/me/playlists";
 
@@ -27,4 +28,13 @@ playlistPromise.then((data) => {
     playlistItem.append(playlistImage, playlistTextWrapper);
     playlistWrapper.append(playlistItem);
   });
+});
+document.getElementById("sidebarSearch").addEventListener("click", () => {
+  console.log("cloc");
+  changeIframeContent("searchpage-1.html");
+});
+
+// Sidebar Home click event
+document.getElementById("sidebarHome").addEventListener("click", () => {
+  changeIframeContent("home-1.html");
 });

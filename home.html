@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
-
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script type="module" src="./assets/js/side-div.js" async></script>
     <script type="module" src="./assets/ts/home.js" async></script>
     <script type="module" src="./assets/js/player.js" async></script>
@@ -251,12 +251,12 @@
           </div>
         </div>
         <div
-          class="container-fluid col-md-12 bg-secondary p-0"
+          class="container col-md-12 bg-secondary pl-2 pt-0"
           style="max-height: 13vh; min-height: 13vh; position: fixed; bottom: 0"
           ;
         >
           <div class="row spotifyPlayer">
-            <div class="col-2 p-0" id="playerSongInfo">
+            <div class="col-md-2m col-2 p-2" id="playerSongInfo">
               <img id="playerAlbumArt" src="./assets/imgs/album.png" />
               <div>
                 <p id="playerSongTitle">
@@ -276,11 +276,7 @@
                 >
                   <i class="fas fa-random"></i>
                 </button>
-                <button
-                  class="controlButton"
-                  id="skipBackward"
-                  onclick="skipBackward()"
-                >
+                <button class="controlButton" id="skipBackward">
                   <i class="fas fa-step-backward"></i>
                 </button>
                 <div id="playPauseDiv">
@@ -288,11 +284,7 @@
                     <i class="fas fa-play"></i>
                   </button>
                 </div>
-                <button
-                  class="controlButton"
-                  id="skipForward"
-                  onclick="skipForward()"
-                >
+                <button class="controlButton" id="skipForward">
                   <i class="fas fa-step-forward"></i>
                 </button>
                 <button

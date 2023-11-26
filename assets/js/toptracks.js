@@ -1,6 +1,5 @@
-import { getData, refreshAccessToken } from "./get.js";
-
-await refreshAccessToken(localStorage.getItem("refresh_token"));
+import { getData } from "./get.js";
+import { playSong } from "../js/player.js";
 const topTracksPromise = getData("https://api.spotify.com/v1/me/top/tracks");
 console.log(topTracksPromise);
 
@@ -45,7 +44,8 @@ function createSongElement(track, songNumber) {
     "d-md-inline-block",
     "text-truncate"
   );
-  artists.textContent = track.artists.map((artist) => artist.name).join(", ");
+  const artist = track.artists.map((artist) => artist.name).join(", ");
+  artists.textContent = artist;
 
   const detailsLeft = document.createElement("div");
   detailsLeft.classList.add("nameAndArtists", "col-5");
@@ -75,6 +75,9 @@ function createSongElement(track, songNumber) {
   songRow.append(detailsLeft);
   songRow.append(albumName);
   songRow.append(duration);
+  songRow.addEventListener("click", () => {
+    playSong(track.uri, track.name, artist, track.album.images[0].url || "");
+  });
 
   songBootstrapContainer.append(songRow);
 

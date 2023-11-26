@@ -1,12 +1,6 @@
 @import url(./main.css);
-#heroSection {
-  background-color: var(--spotify-grey) !important;
-}
-.homeWrapper {
-  padding: 3% 3%;
 
-  overflow: hidden;
-}
+
 .itemWrapper {
   display: flex;
   overflow-x: scroll;

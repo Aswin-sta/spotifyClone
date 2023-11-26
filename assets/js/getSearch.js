@@ -1,8 +1,8 @@
-import { getData, refreshAccessToken } from './get.js';
+import { getData, refreshAccessToken } from "./get.js";
 
-await refreshAccessToken(localStorage.getItem('refresh_token'));
+await refreshAccessToken(localStorage.getItem("refresh_token"));
 const searchCateogoryPromise = getData(
-  'https://api.spotify.com/v1/browse/categories?country=IN'
+  "https://api.spotify.com/v1/browse/categories?country=IN"
 );
 
 // searchCateogoryPromise.then(data => {
@@ -30,29 +30,28 @@ const searchCateogoryPromise = getData(
 //     searchContainer.style.backgroundColor = randomColor;
 //   });
 // });
-searchCateogoryPromise.then(data => {
+searchCateogoryPromise.then((data) => {
   const categoryData = [...data.categories.items];
   console.log(categoryData);
-  const searchSection = document.querySelector('section.searchDisplay');
-  categoryData.forEach(elements => {
-    const searchContainer = document.createElement('div');
-    searchContainer.classList.add('searchBlock');
+  const searchSection = document.querySelector("section.searchDisplay");
+  categoryData.forEach((elements) => {
+    const searchContainer = document.createElement("div");
+    searchContainer.classList.add("searchBlock");
 
-
-    const title = document.createElement('h2');
-    title.classList.add('card-title','fw-bolder');
+    const title = document.createElement("h2");
+    title.classList.add("card-title", "fw-bolder");
     title.textContent = elements.name;
 
-
-    let imageElement = document.createElement('img');
-    imageElement.classList.add('img-thumbnail','position-absolute');
+    let imageElement = document.createElement("img");
+    imageElement.classList.add("img-thumbnail", "position-absolute");
     imageElement.src = elements.icons[0].url;
 
     // Use Bootstrap clickable class for the container
-    searchContainer.classList.add('clickable');
+    searchContainer.classList.add("clickable");
     searchContainer.onclick = () => {
-      window.location.href = `specificGenre.html?id=${elements.id}`;
-    }
+      document.location.href = "specificGenre-1.html";
+      sessionStorage.setItem("id", elements.id);
+    };
 
     // Use Bootstrap background color utility class
     const randomColor = getRandomColor();
@@ -73,9 +72,9 @@ function getRandomColor() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
-const searchBar = document.querySelector('.searchInput');
-searchBar.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
+const searchBar = document.querySelector(".searchInput");
+searchBar.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
     window.location.href = `searchList.html?q=${searchBar.value}`;
   }
 });

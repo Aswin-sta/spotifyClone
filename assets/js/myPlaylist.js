@@ -1,8 +1,7 @@
-import { getData, refreshAccessToken } from "./get.js";
+import { getData } from "./get.js";
 import { userDataPromise } from "./profile.js";
 const userData = await userDataPromise;
 
-await refreshAccessToken(localStorage.getItem("refresh_token"));
 const id = new URLSearchParams(window.location.search).get("playlist_id");
 const playlistItemPromise = getData(
   `https://api.spotify.com/v1/playlists/${id}`

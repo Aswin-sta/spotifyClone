@@ -1,7 +1,7 @@
 @import url(./main.css);
 .searchDisplay {
   padding-block: 100px;
-  background-color: #0e0e0e;
+  background-color: var(--spotify-grey);
   cursor: pointer;
 }
 .searchBlock {
