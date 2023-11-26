@@ -2,7 +2,7 @@ import { getData } from '../js/get.js';
 import { specificGenreResponseType } from '../type/specificGenreResponse.js';
 (async () => {
  
-  const categoryId = new URLSearchParams(window.location.search).get('id');
+  const categoryId =  sessionStorage.getItem("id");
   const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
   console.log(genreUrl);
  

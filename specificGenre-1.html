@@ -13,16 +13,13 @@
     <title>spotify</title>
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/top-nav.css" />
-    <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
-    <link rel="stylesheet" href="./assets/css/specificGenre.css" />
 
-    <script type="module" src="./assets/js/side-div.js" async></script>
-    <script type="module" src="./assets/ts/home.js" async></script>
-    <script type="module" src="./assets/js/player.js" async></script>
     <script type="module" src="./assets/ts/specificGenre.js" async></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -33,130 +30,140 @@
     />
   </head>
   <body>
-    <nav class="navbar position-fixed sticky-top navbar-expand-md col-md-9">
-      <div>
-        <a
-          href="home.html"
-          id="navHomeButton"
-          class="d-flex align-items-center d-md-none mx-3"
-        >
-          <!-- <img src="./assets/imgs/home.svg" alt="Search" /> -->
-        </a>
-        <a
-          href="searchpage.html"
-          id="navSearchButton"
-          class="d-flex align-items-center d-md-none mx-3"
-        >
-          <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
-        </a>
-        <button id="leftArrow" class="d-none d-md-block"></button>
-        <button id="rightArrow" class="d-none d-md-block"></button>
-      </div>
-      <a id="loginLink" href="profile.html"
-        ><img src="./assets/imgs/user.png"
-      /></a>
-    </nav>
-    <section class="homeWrapper">
-      <h2 id="genreTitleElement"></h2>
-      <section class="">
-        <div id="mainContainer"></div>
-      </section>
-    </section>
-    <div class="bottomBar">
-      <div class="footerTop">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col companyWrapper">
-              <p class="header">Company</p>
-              <p>
-                <a href="https://www.spotify.com/in-en/about-us/contact/"
-                  >About</a
-                >
-              </p>
-              <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
-              <p>
-                <a href="https://newsroom.spotify.com/">For the Record</a>
-              </p>
-            </div>
-            <div class="col communitiesWrapper">
-              <p class="header">Communities</p>
-              <p>
-                <a href="https://artists.spotify.com/home">For Artists</a>
-              </p>
-              <p>
-                <a href="https://developer.spotify.com/">Developers</a>
-              </p>
-              <p>
-                <a href="https://ads.spotify.com/en-IN/">Advertising</a>
-              </p>
-              <p>
-                <a href="https://investors.spotify.com/home/default.aspx"
-                  >Investors</a
-                >
-              </p>
-              <p>
-                <a href="https://spotifyforvendors.com/">Vendors</a>
-              </p>
-            </div>
-            <div class="col usefulLinksWrapper">
-              <p class="header">Useful links</p>
-              <p>
-                <a href="https://support.spotify.com/in-en/">Support</a>
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/download/windows/"
-                  >Free Mobile App</a
-                >
-              </p>
-            </div>
-            <div class="col socialWrapper">
-              <button>
-                <img src="./assets/imgs/instagram.png" />
-              </button>
-              <button><img src="./assets/imgs/twitter.png" /></button>
-              <button>
-                <img src="./assets/imgs/facebook.png" />
-              </button>
+    <div
+      class="container-fluid col-md-12"
+      style="min-height: 100vh; max-height: 100vh"
+    >
+      <div class="row wrapper">
+        <nav class="navbar position-fixed sticky-top">
+          <div>
+            <a
+              href="home.html"
+              id="navHomeButton"
+              class="d-flex align-items-center d-md-none mx-3"
+            >
+              <!-- <img src="./assets/imgs/home.svg" alt="Search" /> -->
+            </a>
+            <a
+              href="searchpage.html"
+              id="navSearchButton"
+              class="d-flex align-items-center d-md-none mx-3"
+            >
+              <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
+            </a>
+            <button id="leftArrow" class="d-none d-md-block"></button>
+            <button id="rightArrow" class="d-none d-md-block"></button>
+          </div>
+          <a id="loginLink" 
+            ><img src="./assets/imgs/user.png"
+          /></a>
+        </nav>
+        <section class="homeWrapper pt-6 pt-md-5">
+          <h2 id="genreTitleElement"></h2>
+          <section class="">
+            <div id="mainContainer"></div>
+          </section>
+        </section>
+        <div class="bottomBar">
+          <div class="footerTop">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col companyWrapper">
+                  <p class="header">Company</p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/about-us/contact/"
+                      >About</a
+                    >
+                  </p>
+                  <p><a href="https://www.lifeatspotify.com/">Jobs</a></p>
+                  <p>
+                    <a href="https://newsroom.spotify.com/">For the Record</a>
+                  </p>
+                </div>
+                <div class="col communitiesWrapper">
+                  <p class="header">Communities</p>
+                  <p>
+                    <a href="https://artists.spotify.com/home">For Artists</a>
+                  </p>
+                  <p>
+                    <a href="https://developer.spotify.com/">Developers</a>
+                  </p>
+                  <p>
+                    <a href="https://ads.spotify.com/en-IN/">Advertising</a>
+                  </p>
+                  <p>
+                    <a href="https://investors.spotify.com/home/default.aspx"
+                      >Investors</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://spotifyforvendors.com/">Vendors</a>
+                  </p>
+                </div>
+                <div class="col usefulLinksWrapper">
+                  <p class="header">Useful links</p>
+                  <p>
+                    <a href="https://support.spotify.com/in-en/">Support</a>
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/download/windows/"
+                      >Free Mobile App</a
+                    >
+                  </p>
+                </div>
+                <div class="col socialWrapper">
+                  <button>
+                    <img src="./assets/imgs/instagram.png" />
+                  </button>
+                  <button><img src="./assets/imgs/twitter.png" /></button>
+                  <button>
+                    <img src="./assets/imgs/facebook.png" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <hr />
-      <div class="footerBottom">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col navbar">
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/">Legal</a>
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/privacy"
-                  >Privacy Center</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
-                  >Privacy Policy</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
-                  >Cookies</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
-                  >About Ads</a
-                >
-              </p>
-              <p>
-                <a href="https://www.spotify.com/in-en/accessibility"
-                  >Accessibility</a
-                >
-              </p>
-            </div>
-            <div class="col copyright">
-              <p>© 2023 Spotify AB</p>
+          <hr />
+          <div class="footerBottom">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col navbar">
+                  <p>
+                    <a href="https://www.spotify.com/in-en/legal/">Legal</a>
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/privacy"
+                      >Privacy Center</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                      >Privacy Policy</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                      >Cookies</a
+                    >
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                      >About Ads</a
+                    >
+                  </p>
+                  <p>
+                    <a href="https://www.spotify.com/in-en/accessibility"
+                      >Accessibility</a
+                    >
+                  </p>
+                </div>
+                <div class="col copyright">
+                  <p>© 2023 Spotify AB</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

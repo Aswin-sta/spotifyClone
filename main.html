@@ -45,17 +45,14 @@
                 />
                 <ul class="row w-100 px-2">
                   <li class="col-md-12 col-lg-12 col-sm-6 col-6">
-                    <p
-                      onclick="changeIframeContent('home-1.html')"
-                      class="d-flex align-items-center"
-                    >
+                    <p id="sidebarHome" class="d-flex align-items-center">
                       <img src="./assets/imgs/home.svg" alt="Home" />
                       <span class="ml-2">Home</span>
                     </p>
                   </li>
                   <li class="col-md-12 col-lg-12 col-sm-6 col-6">
                     <p
-                      onclick="changeIframeContent('searchpage-1.html')"
+                      id="sidebarSearch"
                       target="heroSection"
                       class="d-flex align-items-center"
                     >
@@ -170,31 +167,5 @@
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script type="module" src="./assets/js/side-div.js" async></script>
   <script type="module" src="./assets/js/player.js" async></script>
-  <script>
-    const token = localStorage.getItem("access_token");
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const player = new Spotify.Player({
-        name: "Web Playback SDK Quick Start Player",
-        getOAuthToken: (cb) => {
-          cb(token);
-        },
-        volume: 0.5,
-      });
-
-      player.addListener("ready", ({ device_id }) => {
-        console.log("Ready with Device ID", device_id);
-        localStorage.setItem("spotifyDeviceId", device_id);
-      });
-
-      player.connect();
-    };
-
-    function changeIframeContent(newSrc) {
-      // Get the iframe element by its id
-      var iframe = document.getElementById("heroSection");
-
-      // Change the src attribute to the new source
-      iframe.src = newSrc;
-    }
-  </script>
+  <script type="module" src="./assets/js/main.js" async></script>
 </html>

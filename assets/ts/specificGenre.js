@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { getData } from '../js/get.js';
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    const categoryId = new URLSearchParams(window.location.search).get('id');
+    const categoryId = sessionStorage.getItem("id");
     const genreUrl = `https://api.spotify.com/v1/browse/categories/${categoryId}`;
     console.log(genreUrl);
     const [genreData, playlistData] = yield Promise.all([
