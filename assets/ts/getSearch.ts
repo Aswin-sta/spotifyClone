@@ -37,7 +37,8 @@ async function main() {
         
         searchContainer.classList.add('clickable');
         searchContainer.onclick = () => {
-          window.location.href = `specificGenre.html?id=${element.id}`;
+          document.location.href = "specificGenre-1.html";
+          sessionStorage.setItem("id",element.id)
         };
         const randomColor: string = getRandomColor();
         searchContainer.style.backgroundColor = randomColor;
