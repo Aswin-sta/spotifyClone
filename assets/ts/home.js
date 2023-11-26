@@ -7,7 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a;
 import { getDataFromCache } from "../js/get.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 const apiEndpoints = {
@@ -102,3 +104,6 @@ function createItemTile(container, data, onClickHandler) {
         });
     });
 }))();
+(_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+    changeIframeContent("profile-1.html");
+});

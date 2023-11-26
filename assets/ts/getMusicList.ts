@@ -14,7 +14,7 @@ function isAlbumTrack(track: any): track is spotifyDataAlbumList {
 const id = sessionStorage.getItem("id");
 const type = sessionStorage.getItem("type");
 
-//musiclist api
+//musiclist api  
 const newReleasesPromise:any = getData(
   "https://api.spotify.com/v1/" + type + "s/" + id
 );

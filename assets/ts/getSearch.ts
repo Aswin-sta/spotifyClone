@@ -51,7 +51,8 @@ const searchBar: HTMLInputElement | null = document.querySelector('.searchInput'
 if (searchBar) {
   searchBar.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
-      window.location.href = `searchList.html?q=${searchBar.value}`;
+      document.location.href = "searchList-1.html";
+      sessionStorage.setItem("searchQuery", searchBar.value);
     }
   });
 }

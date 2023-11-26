@@ -48,7 +48,9 @@ import { getData } from '../js/get.js';
             playlistCard.append(imgContainer, playlistTitleElement, descriptionElement);
             mainContainer.appendChild(playlistCard);
             playlistCard.onclick = () => {
-                window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+                document.location.href = "musiclist-1.html";
+                sessionStorage.setItem("id", playlist.id);
+                sessionStorage.setItem("type", playlist.type);
             };
         });
     }

@@ -1,5 +1,5 @@
 import { getDataFromCache } from "../js/get.js";
- 
+import { changeIframeContent } from "../js/changeIframeContent.js";
 const clientId: string = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret: string = "98598afa94de4a93b71b39e1efd13a80";
  
@@ -135,3 +135,7 @@ const apiEndpoints: Record<string, string> = {
     });
   });
   })();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
