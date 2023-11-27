@@ -19,6 +19,7 @@
     <script type="module" src="./assets/js/side-div.js" async></script>
     <script type="module" src="./assets/ts/getMusicList.js" defer></script>
     <script type="module" src="./assets/js/player.js" defer></script>
+    <script src="./assets/js/button.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -102,8 +103,16 @@
                   >
                     <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
                   </a>
-                  <button id="leftArrow" class="d-none d-md-block"></button>
-                  <button id="rightArrow" class="d-none d-md-block"></button>
+                  <button
+                    id="leftArrow"
+                    class="d-none d-md-block"
+                    onclick="navigate('backward')"
+                  ></button>
+                  <button
+                    id="rightArrow"
+                    class="d-none d-md-block"
+                    onclick="navigate('forward')"
+                  ></button>
                 </div>
                 <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
               </nav>

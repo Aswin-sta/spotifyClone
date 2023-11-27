@@ -1,15 +1,19 @@
 import { getData } from "./get.js";
 import { playSong } from "../js/player.js";
-const topTracksPromise = getData("https://api.spotify.com/v1/me/top/tracks");
-console.log(topTracksPromise);
 
-topTracksPromise.then((data) => {
-  data.items.forEach((track, songNumber) => {
-    console.log(track);
-    createSongElement(track, songNumber);
-    songNumber++;
+const getTopTracks = (limit) => {
+  const topTracksPromise = getData(
+    `https://api.spotify.com/v1/me/top/tracks?limit=${limit}`
+  );
+  console.log(topTracksPromise);
+  topTracksPromise.then((data) => {
+    data.items.forEach((track, songNumber) => {
+      console.log(track);
+      createSongElement(track, songNumber);
+      songNumber++;
+    });
   });
-});
+};
 
 function createSongElement(track, songNumber) {
   const topTracksList = document.getElementById("topTracksList");
@@ -91,3 +95,5 @@ function formatDuration(durationInMs) {
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+
+getTopTracks(4);
