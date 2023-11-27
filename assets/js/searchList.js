@@ -1,4 +1,5 @@
 import { getData } from "./get.js";
+import { playSong } from "../js/player.js";
 async function main() {
   try {
     const searchQuery = sessionStorage.getItem("searchQuery");
