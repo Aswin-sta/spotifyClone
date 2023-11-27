@@ -6,6 +6,9 @@ async function main() {
     'https://api.spotify.com/v1/browse/categories?country=IN'
   );
  
+  const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'block';
+
   searchCategoryPromise.then((data: CategoryResponseType) => {
     const categoryData = data.categories.items;
     //console.log(categoryData);
@@ -47,6 +50,7 @@ async function main() {
       });
     }
   });
+  if (skeletonContainer) skeletonContainer.style.display = 'none';
 }
 // Function to generate random colours
 function getRandomColor(): string {

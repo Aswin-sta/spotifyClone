@@ -13,6 +13,9 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const searchCategoryPromise = getData('https://api.spotify.com/v1/browse/categories?country=IN');
+        const skeletonContainer = document.querySelector('.skeletonContainer');
+        if (skeletonContainer)
+            skeletonContainer.style.display = 'block';
         searchCategoryPromise.then((data) => {
             const categoryData = data.categories.items;
             //console.log(categoryData);
@@ -44,6 +47,8 @@ function main() {
                 });
             }
         });
+        if (skeletonContainer)
+            skeletonContainer.style.display = 'none';
     });
 }
 // Function to generate random colours

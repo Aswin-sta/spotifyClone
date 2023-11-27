@@ -53,8 +53,13 @@ function createItemTile(container, data, onClickHandler) {
     container.append(itemTile);
 }
 // Fetch and render new releases
+const skeletonContainer = document.querySelector('.skeletonContainer');
+if (skeletonContainer)
+    skeletonContainer.style.display = 'block';
+const homeContainer = document.querySelector('#homeContainer');
+if (homeContainer)
+    homeContainer.style.display = 'none';
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    // Refresh Access Token
     const newReleasesPromise = getDataFromCache(apiEndpoints.newRelease, "newReleasesPromise", 36000);
     const newReleasesData = yield newReleasesPromise;
     console.log(newReleasesData);
@@ -103,6 +108,12 @@ function createItemTile(container, data, onClickHandler) {
             sessionStorage.setItem("type", album.type);
         });
     });
+    const skeletonContainer = document.querySelector('.skeletonContainer');
+    if (skeletonContainer)
+        skeletonContainer.style.display = 'none';
+    const homeContainer = document.querySelector('#homeContainer');
+    if (homeContainer)
+        homeContainer.style.display = 'block';
 }))();
 (_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     changeIframeContent("profile-1.html");
