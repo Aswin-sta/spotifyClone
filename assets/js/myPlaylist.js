@@ -3,11 +3,14 @@ import { userDataPromise } from "./profile.js";
 import { playSong } from "../js/player.js";
 const userData = await userDataPromise;
 
+const skeletonContainer = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'block';
+  const playlistPage = document.querySelector('.playlistPage');
+  if (playlistPage) playlistPage.style.display = 'none';
 const id = sessionStorage.getItem("id");
 const playlistItemPromise = getData(
   `https://api.spotify.com/v1/playlists/${id}`
 );
-
 playlistItemPromise.then((playlistItem) => {
   console.log(playlistItem);
   const playlistImage = document.getElementById("playlistPhoto");
@@ -27,6 +30,11 @@ playlistItemPromise.then((playlistItem) => {
     createSongElement(song, songNumber);
     songNumber++;
   });
+
+  const skeletonContainer = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'none';
+  const playlistPage = document.querySelector('.playlistPage');
+  if (playlistPage) playlistPage.style.display = 'block';
 });
 
 function createSongElement(song, songNumber) {

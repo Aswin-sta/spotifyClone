@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
     <link rel="stylesheet" href="./assets/css/editplaylist.css" />
+    <link rel="stylesheet" href="./assets/css/top-nav.css" />
+    <link rel="stylesheet" href="./assets/css/skeleton.css" />
 
     <script type="module" src="./assets/js/myPlaylist.js" async></script>
     <script type="module" src="./assets/js/editplaylist.js" async></script>
@@ -55,6 +57,23 @@
           <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
         </nav>
         <section class="homeWrapper pt-6 pt-md-5">
+          <div class="skeletonContainer">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-6 banner-skeleton-loader"></div>
+                <div class="col-6 p-5">
+                  <div class="row pb-3 skeleton-loader"><br /><br /></div>
+                  <div class="row skeleton-loader"></div>
+                </div>
+              </div>
+            </div>
+            <hr class="" />
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+          </div>
           <section class="playlistPage">
             <div class="playlistDetailsWrapper">
               <div class="container-fluid">
