@@ -64,6 +64,10 @@ function createSongElement(track) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
+  songContainer.addEventListener("click", () => {
+    playSong(track.uri, name, artistNames, album.images[0].url || "");
+  });
+
   playIcon.addEventListener("mouseenter", () => {
     playPreview(preview_url);
   });
