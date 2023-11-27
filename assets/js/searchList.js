@@ -1,9 +1,9 @@
 import { getData } from "./get.js";
+import { playSong } from "../js/player.js";
 async function main() {
   try {
- 
 
-    const searchQuery = sessionStorage.getItem("searchQuery");
+    const q = sessionStorage.getItem("searchQuery");
     const searchResultPromise = getData(
       `https://api.spotify.com/v1/search?query=${searchQuery}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
     );
@@ -66,6 +66,7 @@ function createSongElement(track) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
+
   playIcon.addEventListener("mouseenter", () => {
     playPreview(preview_url);
   });
@@ -76,7 +77,20 @@ function createSongElement(track) {
       currentlyPlayingAudio.currentTime = 0;
       currentlyPlayingAudio = null;
     }
+
+ 
+  songContainer.addEventListener("click", () => {
+    playSong(track.uri, name, artistNames, album.images[0].url || "");
+
   });
+
+  // songContainer.addEventListener("mouseleave", () => {
+  //   if (currentlyPlayingAudio) {
+  //     currentlyPlayingAudio.pause();
+  //     currentlyPlayingAudio.currentTime = 0;
+  //     currentlyPlayingAudio = null;
+  //   }
+  // });
   return songContainer;
 }
 function playPreview(previewUrl) {

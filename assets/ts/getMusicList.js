@@ -18,7 +18,7 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
     function isAlbumTrack(track) {
         return typeof track.uri === 'string';
     }
-    //url search parameters
+    //session storage search parameters
     const id = sessionStorage.getItem("id");
     const type = sessionStorage.getItem("type");
     //musiclist api  
@@ -32,8 +32,6 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
         return `${minutes}:${formattedSeconds}`;
     }
     newReleasesPromise.then((data) => {
-        console.log("data");
-        console.log(data);
         //bannerImage
         const bannerImage = document.createElement("img");
         bannerImage.className = "bannerImgImg";
@@ -64,7 +62,7 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
             let playlistTrack;
             let albumTrack;
             const trackName = document.createElement("p");
-            trackName.className = "titleTitleName col-lg-10 col-md-10 col-xl-10 col-xxl-10 col-sm-10 col-8";
+            trackName.className = "titleTitleName col-lg-9 col-md-9 col-xl-9 col-xxl-9 col-sm-9 col-6";
             if ('track' in track) {
                 playlistTrack = track;
                 trackName.textContent = type === "playlist" ? playlistTrack.track.name : "";
@@ -73,14 +71,140 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
                 albumTrack = track;
                 trackName.textContent = albumTrack.name || "";
             }
-            // trackName.textContent = type === "playlist" ? track.track.name : track.name;
+            const trackOptions = document.createElement('p');
+            trackOptions.innerHTML = "⋮";
+            trackOptions.className = "titleSpotifyMoreOptions col-1";
             const trackDuration = document.createElement("p");
             trackDuration.className = "titleSpotifyDuration col-1";
             trackDuration.textContent = timeConvertion(type === "playlist" ? (playlistTrack === null || playlistTrack === void 0 ? void 0 : playlistTrack.track.duration_ms) || 0 : (albumTrack === null || albumTrack === void 0 ? void 0 : albumTrack.duration_ms) || 0);
-            // trackDuration.textContent = timeConvertion(
-            //   type === "playlist" ? track.track.duration_ms : track.duration_ms
-            // );
-            songListTrack.append(trackNo, trackName, trackDuration);
+            const submenu = document.createElement("div");
+            submenu.className = "submenu";
+            const innerDiv1 = document.createElement("div");
+            innerDiv1.className = "submenu-inner";
+            const paragraph1 = document.createElement("p");
+            paragraph1.textContent = "Add to Queue";
+            paragraph1.classList.add("addToQueue");
+            innerDiv1.append(paragraph1);
+            const innerDiv2 = document.createElement("div");
+            innerDiv2.className = "submenu-inner";
+            const paragraph2 = document.createElement("p");
+            paragraph2.textContent = "  Save to Playlist";
+            paragraph2.classList.add("SaveToPlaylist");
+            innerDiv2.append(paragraph2);
+            if ('track' in track) {
+                playlistTrack = track;
+                innerDiv1.id = type === "playlist" ? playlistTrack.track.id : "";
+                innerDiv2.id = type === "playlist" ? playlistTrack.track.id : "";
+            }
+            else {
+                albumTrack = track;
+                innerDiv1.id = albumTrack.id || "";
+                innerDiv2.id = albumTrack.id || "";
+            }
+            submenu.append(innerDiv1, innerDiv2);
+            songListTrack.append(trackNo, trackName, trackOptions, submenu, trackDuration);
+            let submenuTimeout;
+            trackOptions.addEventListener("click", function (event) {
+                event.stopPropagation(); // Prevent the click event from reaching the document click event listener
+                // Hide all other submenus
+                const allSubmenus = document.querySelectorAll('.submenu');
+                allSubmenus.forEach((otherSubmenu) => {
+                    if (otherSubmenu !== submenu) {
+                        otherSubmenu.style.display = 'none';
+                        otherSubmenu.style.opacity = '0';
+                    }
+                });
+                submenu.style.display = "block";
+                submenu.style.opacity = '1';
+                submenuTimeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                }, 3000);
+            });
+            // Event listener to clear the timeout when the mouse enters the submenu
+            submenu.addEventListener("mouseenter", function () {
+                clearTimeout(submenuTimeout);
+            });
+            // Event listener to hide the submenu when the mouse leaves
+            submenu.addEventListener("mouseleave", function () {
+                submenu.style.display = 'none';
+            });
+            //add to queue
+            function addItemToPlaybackQueue(trackId) {
+                const uris = [`spotify:track:${trackId}`];
+                const deviceId = localStorage.getItem('spotifyDeviceId');
+                const accessToken = localStorage.getItem('access_token');
+                const trackdata = {
+                    uris: uris
+                };
+                if (deviceId) {
+                    trackdata.device_id = deviceId;
+                }
+                console.log('Track Data:', trackdata); // Log the trackdata before making the request
+                fetch('https://api.spotify.com/v1/me/player/queue', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(trackdata)
+                })
+                    .then(response => {
+                    console.log('Response Status:', response.status); // Log the response status
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                    .then(queueData => {
+                    console.log('Success:', queueData);
+                })
+                    .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+            innerDiv1.addEventListener('click', function () {
+                console.log("inner Div 1 pressed");
+                const trackId = innerDiv1.id;
+                addItemToPlaybackQueue(trackId);
+            });
+            //add to favourite playlist:POST method
+            const playlistId = '4OC3L8EvBkI5sROoAICgQw';
+            const apiUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+            function addTrackToPlaylist(trackId) {
+                const uris = [`spotify:track:${trackId}`];
+                const position = 0;
+                const accessToken = localStorage.getItem('access_token');
+                const trackdata = {
+                    uris: uris,
+                    position: position
+                };
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(trackdata)
+                })
+                    .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                    .then(trackdata => {
+                    console.log('Success:', trackdata);
+                })
+                    .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+            innerDiv2.addEventListener('click', function () {
+                console.log("inner Div 2 pressed");
+                const trackId = innerDiv2.id;
+                addTrackToPlaylist(trackId);
+            });
+            //play the song
             songListTrack.onclick = () => {
                 var _a;
                 let sourceUrl;
@@ -100,12 +224,6 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
                     playSong(sourceUrl, sourceName, data.name, ((_a = data.images[0]) === null || _a === void 0 ? void 0 : _a.url) || "");
                 }
             };
-            // songListTrack.onclick = () => {
-            //   const sourceUrl =
-            //     type === "playlist" ? track.track.uri : track.uri;
-            //   const sourceName = type === "playlist" ? track.track.name : track.name;
-            //   playSong(sourceUrl, sourceName, data.name, data.images[0].url);
-            // };
             albumSongList.append(songListTrack);
         });
     });

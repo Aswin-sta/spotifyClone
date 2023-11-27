@@ -1,8 +1,9 @@
 import { getData } from "./get.js";
 import { userDataPromise } from "./profile.js";
+import { playSong } from "../js/player.js";
 const userData = await userDataPromise;
 
-const id = new URLSearchParams(window.location.search).get("playlist_id");
+const id = sessionStorage.getItem("id");
 const playlistItemPromise = getData(
   `https://api.spotify.com/v1/playlists/${id}`
 );
@@ -91,7 +92,14 @@ function createSongElement(song, songNumber) {
   songRow.append(detailsLeft);
   songRow.append(albumName);
   songRow.append(duration);
-
+  songRow.addEventListener("click", () => {
+    playSong(
+      song.track.uri,
+      song.track.name,
+      song.track.album.name,
+      song.track.album.images[0].url || ""
+    );
+  });
   songBootstrapContainer.append(songRow);
 
   songContainer.append(songBootstrapContainer);
