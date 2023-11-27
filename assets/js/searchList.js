@@ -1,5 +1,5 @@
 import { getData } from "./get.js";
-import { playSong } from "../js/player.js";
+import { pauseSong, playSong, resumePlayback } from "../js/player.js";
 async function main() {
   try {
     const searchQuery = sessionStorage.getItem("searchQuery");
@@ -71,6 +71,7 @@ function createSongElement(track) {
 
   playIcon.addEventListener("mouseenter", () => {
     playPreview(preview_url);
+    pauseSong();
   });
 
   playIcon.addEventListener("mouseleave", () => {
@@ -78,6 +79,7 @@ function createSongElement(track) {
       currentlyPlayingAudio.pause();
       currentlyPlayingAudio.currentTime = 0;
       currentlyPlayingAudio = null;
+      resumePlayback();
     }
   });
   return songContainer;

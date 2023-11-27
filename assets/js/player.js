@@ -252,4 +252,4 @@ async function handleApiResponse(response) {
 //   playerSongTitle.innerHTML = sessionStorage.getItem("music_name");
 // }
 
-export { playSong };
+export { playSong, resumePlayback, pauseSong };
