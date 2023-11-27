@@ -17,8 +17,9 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
+    <link rel="stylesheet" href="./assets/css/skeleton.css" />
 
-    <script type="module" src="./assets/ts/getMusicList.js" async></script>
+    <script type="module" src="./assets/ts/getMusicList.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -55,6 +56,49 @@
           <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
         </nav>
         <section class="homeWrapper pt-6 pt-md-5">
+          <!-- skeleton container -->
+          <div class="skeletonContainer">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-6 banner-skeleton-loader"></div>
+                <div class="col-6 p-5">
+                  <div class="row pb-3"><h4>Playlist</h4></div>
+                  <div class="row skeleton-loader"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="playListTrackHeader">
+              <!-- playListHeaders -->
+              <div class="titleHash col-lg-1 col-md-1 col-1">
+                <p>#</p>
+              </div>
+              <div class="titleTitle col-lg-10 col-md-10 col-sm-1 col-6">
+                <p>Title</p>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                <img
+                  src="./assets/imgs/spotify-duration.svg"
+                  alt=""
+                  class="titleSpotifyDurationIcon"
+                />
+              </div>
+            </div>
+            <hr class="" />
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+          </div>
+          <!--  -->
+          <div id="dataContainer">
+            <div
+            id="customAlert"
+            class="custom-alert"
+            style="background-color: rgb(33, 33, 33)"
+          >
+            <p id="alertMessage"></p>
+          </div>
           <div class="container-fluid" id="playListHeader">
             <div class="row align-items-center">
               <div
@@ -131,7 +175,8 @@
             <div class="row" id="playListTrackLists">
               <!-- playList -->
             </div>
-          </div>
+          </div>/div>
+          
         </section>
         <div class="bottomBar">
           <div class="footerTop">
