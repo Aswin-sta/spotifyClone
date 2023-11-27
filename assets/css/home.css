@@ -1,0 +1,74 @@
+@import url(./main.css);
+.wrapper {
+  background-color: var(--spotify-grey) !important;
+}
+.homeWrapper {
+  padding: 3% 3%;
+
+  overflow: hidden;
+}
+.itemWrapper {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.itemTile {
+  padding: 1.5%;
+  box-sizing: border-box;
+  background-color: var(--spotify-light-grey);
+  border-radius: 10px;
+}
+
+.albumImage {
+  border-radius: 10px;
+}
+
+.spotify-play-button {
+  margin-top: 13px;
+  height: 50px;
+  width: 50px;
+  opacity: 0;
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  transform: translateY(15px);
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add opacity to the transition */
+}
+.itemTile:hover {
+  background-color: var(--spotify-light-grey-hover);
+}
+.itemTile:hover .spotify-play-button {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.songTitle {
+  max-width: 15ch;
+  margin-top: 10%;
+  color: white;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1em;
+  overflow: hidden;
+}
+
+.albumTitle {
+  color: #817b7b;
+  padding-top: 2px;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  font-weight: bold;
+  max-height: 3em;
+  overflow: hidden;
+  margin-bottom: 1px;
+  line-height: 1.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.homeWrapper h2 {
+  margin-block: 2%;
+  color: aliceblue;
+}

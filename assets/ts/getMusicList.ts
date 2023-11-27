@@ -10,7 +10,7 @@ function isAlbumTrack(track: any): track is spotifyDataAlbumList {
   return typeof track.uri === 'string';
 }
 
-//url search parameters
+//session storage search parameters
 const id = sessionStorage.getItem("id");
 const type = sessionStorage.getItem("type");
 
@@ -29,6 +29,9 @@ function timeConvertion(duration_ms:number):string {
   return `${minutes}:${formattedSeconds}`;
 }
 
+
+//interfaces for ts convertion
+
 interface spotifyDataImg{
   url:string;
 }
@@ -38,6 +41,7 @@ interface spotifyDataPlaylist{
     duration_ms:number;
     name:string;
     uri:string;
+    id:string;
   }
 }
 
@@ -45,6 +49,7 @@ interface spotifyDataAlbumList{
     duration_ms:number;
     name:string;
     uri:string;
+    id:string;
 }
 
 interface spotifyData{
@@ -56,8 +61,7 @@ interface spotifyData{
 }
 
 newReleasesPromise.then((data:spotifyData) => {
-  console.log("data");
-  console.log(data);
+  
 
   //bannerImage
   const bannerImage:HTMLImageElement = document.createElement("img");
@@ -87,6 +91,7 @@ newReleasesPromise.then((data:spotifyData) => {
     songListTrack.className = "songListTrack row";
     songListTrack.id = `Track-${Number(index + 1)}`;
 
+
     const trackNo:HTMLParagraphElement = document.createElement("p");
     trackNo.className = "titleHash col-1 ";
     trackNo.textContent = `${Number(index + 1)}`;
@@ -96,7 +101,8 @@ newReleasesPromise.then((data:spotifyData) => {
     let albumTrack: spotifyDataAlbumList | undefined;
 
     const trackName:HTMLParagraphElement= document.createElement("p");
-    trackName.className ="titleTitleName col-lg-10 col-md-10 col-xl-10 col-xxl-10 col-sm-10 col-8";
+    trackName.className ="titleTitleName col-lg-9 col-md-9 col-xl-9 col-xxl-9 col-sm-9 col-6";
+
     if ('track' in track) {
       playlistTrack = track as spotifyDataPlaylist;
       trackName.textContent = type === "playlist" ? playlistTrack.track.name : "";
@@ -104,7 +110,11 @@ newReleasesPromise.then((data:spotifyData) => {
       albumTrack = track as spotifyDataAlbumList;
       trackName.textContent = albumTrack.name || "";
     }
-    // trackName.textContent = type === "playlist" ? track.track.name : track.name;
+
+
+    const trackOptions:HTMLParagraphElement=document.createElement('p');
+    trackOptions.innerHTML="⋮";
+    trackOptions.className="titleSpotifyMoreOptions col-1";
     
 
     const trackDuration:HTMLParagraphElement = document.createElement("p");
@@ -112,16 +122,178 @@ newReleasesPromise.then((data:spotifyData) => {
     trackDuration.textContent = timeConvertion(
       type === "playlist" ? playlistTrack?.track.duration_ms || 0 : albumTrack?.duration_ms || 0
     );
-    // trackDuration.textContent = timeConvertion(
-    //   type === "playlist" ? track.track.duration_ms : track.duration_ms
-    // );
 
+   
+
+    const submenu: HTMLDivElement = document.createElement("div");
+    submenu.className = "submenu";
+    
+    const innerDiv1: HTMLDivElement = document.createElement("div");
+    innerDiv1.className = "submenu-inner";
     
     
     
+    const paragraph1: HTMLParagraphElement = document.createElement("p");
+    paragraph1.textContent = "Add to Queue";
+    paragraph1.classList.add("addToQueue");
+    
+    innerDiv1.append(paragraph1);
+    
+    const innerDiv2: HTMLDivElement = document.createElement("div");
+    innerDiv2.className = "submenu-inner"; 
+    
+    const paragraph2: HTMLParagraphElement = document.createElement("p");
+    paragraph2.textContent = "  Save to Playlist";
+    paragraph2.classList.add("SaveToPlaylist"); 
+    
+    innerDiv2.append(paragraph2);
 
-    songListTrack.append(trackNo, trackName, trackDuration);
+    if ('track' in track) {
+      playlistTrack = track as spotifyDataPlaylist;
+      innerDiv1.id=type === "playlist" ? playlistTrack.track.id : "";
+      innerDiv2.id=type === "playlist" ? playlistTrack.track.id : "";
+    } else {
+      albumTrack = track as spotifyDataAlbumList;
+      innerDiv1.id= albumTrack.id || "";
+      innerDiv2.id= albumTrack.id || "";
+    }
+    
+    submenu.append(innerDiv1, innerDiv2);
+    
 
+    
+    
+
+    songListTrack.append(trackNo, trackName, trackOptions,submenu,trackDuration);
+
+
+    let submenuTimeout:number;
+
+    trackOptions.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevent the click event from reaching the document click event listener
+    
+      // Hide all other submenus
+      const allSubmenus = document.querySelectorAll('.submenu') as NodeListOf<HTMLDivElement>;
+      allSubmenus.forEach((otherSubmenu) => {
+        if (otherSubmenu !== submenu) {
+          otherSubmenu.style.display = 'none';
+          otherSubmenu.style.opacity = '0';
+        }
+      });
+    
+      submenu.style.display = "block";
+      submenu.style.opacity = '1';
+      submenuTimeout = setTimeout(() => {
+        submenu.style.display = 'none';
+      }, 3000);
+    });
+    
+    // Event listener to clear the timeout when the mouse enters the submenu
+    submenu.addEventListener("mouseenter", function () {
+      clearTimeout(submenuTimeout);
+    });
+    
+    // Event listener to hide the submenu when the mouse leaves
+    submenu.addEventListener("mouseleave", function () {
+      submenu.style.display = 'none';
+    });
+    
+
+    //add to queue
+    function addItemToPlaybackQueue(trackId: string): void {
+      const uris: string[] = [`spotify:track:${trackId}`];
+      const deviceId: string | null = localStorage.getItem('spotifyDeviceId');
+      const accessToken: string = localStorage.getItem('access_token')!;
+    
+      const trackdata: any = {
+        uris: uris
+      };
+    
+      if (deviceId) {
+        trackdata.device_id = deviceId;
+      }
+    
+      console.log('Track Data:', trackdata); // Log the trackdata before making the request
+    
+      fetch('https://api.spotify.com/v1/me/player/queue', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(trackdata)
+      })
+        .then(response => {
+          console.log('Response Status:', response.status); // Log the response status
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+    
+          return response.json();
+        })
+        .then(queueData => {
+          console.log('Success:', queueData);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    
+    innerDiv1.addEventListener('click', function() {
+      console.log("inner Div 1 pressed");
+      const trackId: string = innerDiv1.id;
+      addItemToPlaybackQueue(trackId);
+    });
+    
+
+
+    //add to favourite playlist:POST method
+    const playlistId: string = '4OC3L8EvBkI5sROoAICgQw';
+    const apiUrl: string = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+
+    function addTrackToPlaylist(trackId: string):void {
+      const uris: string[] = [`spotify:track:${trackId}`];
+      const position: number = 0;
+      const accessToken: string = localStorage.getItem('access_token')!;
+
+      const trackdata: any = {
+        uris: uris,
+        position: position
+      };
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(trackdata)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(trackdata => {
+          console.log('Success:', trackdata);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }  
+    
+    innerDiv2.addEventListener('click', function() {
+      console.log("inner Div 2 pressed");
+      const trackId :string= innerDiv2.id;
+      addTrackToPlaylist(trackId);
+    });
+
+
+
+
+  //play the song
     songListTrack.onclick = () => {
       let sourceUrl: string | undefined;
       let sourceName: string | undefined;
@@ -141,19 +313,7 @@ newReleasesPromise.then((data:spotifyData) => {
         playSong(sourceUrl, sourceName, data.name, data.images[0]?.url || "");
       }
     };
-    
-    
-
-    
-    // songListTrack.onclick = () => {
-    //   const sourceUrl =
-    //     type === "playlist" ? track.track.uri : track.uri;
-    //   const sourceName = type === "playlist" ? track.track.name : track.name;
-    //   playSong(sourceUrl, sourceName, data.name, data.images[0].url);
-    // };
-    
-
-    
+        
 
     albumSongList.append(songListTrack);
   });
