@@ -1,5 +1,6 @@
 import { getData } from "./get.js";
 import { changeSource } from "./player.js";
+import { playSong } from "../js/player.js";
 
 const id = new URLSearchParams(window.location.search).get("id");
 const type = new URLSearchParams(window.location.search).get("type");
