@@ -1,0 +1,45 @@
+/* Skeleton loader styles */
+.skeleton-loader {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px; /* Adjust the max-width as needed */
+  height: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3a3535 25%, #403e3e 50%, #1d1919 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+  border-radius: 50px;
+  margin: 2px;
+}
+
+.image-skeleton-loader {
+  width: 80px;
+  height: 50px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3a3535 25%, #403e3e 50%, #1d1919 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.card-skeleton-loader {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3a3535 25%, #403e3e 50%, #1d1919 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+  border-radius: 20px;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

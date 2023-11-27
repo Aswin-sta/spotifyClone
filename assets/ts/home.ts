@@ -74,10 +74,13 @@ const apiEndpoints: Record<string, string> = {
   }
  
   // Fetch and render new releases
+  const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'block';
+  const homeContainer: HTMLElement | null = document.querySelector('#homeContainer');
+  if (homeContainer) homeContainer.style.display = 'none';
  
   (async ()=>{
- 
-  // Refresh Access Token
+
  
   const newReleasesPromise:Promise<{ albums: { items: SpotifyData[] } }> = getDataFromCache(apiEndpoints.newRelease,"newReleasesPromise",36000);
   const newReleasesData:{ albums: { items: SpotifyData[] } } = await newReleasesPromise;
@@ -134,6 +137,10 @@ const apiEndpoints: Record<string, string> = {
       sessionStorage.setItem("type",album.type);
     });
   });
+  const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'none';
+  const homeContainer: HTMLElement | null = document.querySelector('#homeContainer');
+  if (homeContainer) homeContainer.style.display = 'block';
   })();
 
   document.querySelector("#loginLink")?.addEventListener('click',()=>{
