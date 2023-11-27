@@ -1,9 +1,12 @@
 import { getData } from "../js/get.js";
 import { playSong } from "../js/player.js";
 import { changeIframeContent } from "../js/changeIframeContent.js";
-
+const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'block';
+  const dataContainer: HTMLElement | null = document.querySelector('#dataContainer');
+  if (dataContainer) dataContainer.style.display = 'none';
 (async () => {
-function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
+  function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
   return 'track' in track && typeof track.track.uri === 'string';
 }
 
@@ -62,8 +65,11 @@ interface spotifyData{
 }
 
 newReleasesPromise.then((data:spotifyData) => {
+  const skeletonContainer: HTMLElement | null = document.querySelector('.skeletonContainer');
+  if (skeletonContainer) skeletonContainer.style.display = 'none';
+  const dataContainer: HTMLElement | null = document.querySelector('#dataContainer');
+  if (dataContainer) dataContainer.style.display = 'block';
   
-
   //bannerImage
   const bannerImage:HTMLImageElement = document.createElement("img");
   bannerImage.className = "bannerImgImg";
@@ -241,12 +247,36 @@ newReleasesPromise.then((data:spotifyData) => {
         });
     }
     
-    innerDiv1.addEventListener('click', function() {
+    innerDiv1.addEventListener('click', function (event) {
       console.log("inner Div 1 pressed");
       const trackId: string = innerDiv1.id;
       addItemToPlaybackQueue(trackId);
+      event.stopPropagation(); // Stop the event from reaching the outer row
     });
     
+
+    //alert message
+    function showFadingAlert(message: string, isError: boolean = false): void {
+      const customAlert = document.getElementById('customAlert');
+      const alertMessage = document.getElementById('alertMessage');
+    
+      if (customAlert && alertMessage) {
+        alertMessage.textContent = message;
+    
+        if (isError) {
+          customAlert.style.backgroundColor = '#f44336'; 
+        } else {
+          customAlert.style.backgroundColor = '#4CAF50'; 
+        }
+    
+        customAlert.style.display = 'block';
+    
+        // Fade out after 3 seconds
+        setTimeout(() => {
+          customAlert.style.display = 'none';
+        }, 3000);
+      }
+    }
 
 
     //add to favourite playlist:POST method
@@ -279,18 +309,21 @@ newReleasesPromise.then((data:spotifyData) => {
         })
         .then(trackdata => {
           console.log('Success:', trackdata);
+           showFadingAlert('Track added to playlist successfully!');
         })
         .catch(error => {
           console.error('Error:', error);
+          showFadingAlert('Error adding track to playlist. Please try again.', true);
         });
     }  
     
-    innerDiv2.addEventListener('click', function() {
+    innerDiv2.addEventListener('click', function (event) {
       console.log("inner Div 2 pressed");
-      const trackId :string= innerDiv2.id;
+      const trackId: string = innerDiv2.id;
       addTrackToPlaylist(trackId);
+      event.stopPropagation(); // Stop the event from reaching the outer row
     });
-
+    
 
 
 
@@ -319,6 +352,7 @@ newReleasesPromise.then((data:spotifyData) => {
     albumSongList.append(songListTrack);
   });
 });
+
 })();
 
   document.querySelector("#loginLink")?.addEventListener('click',()=>{

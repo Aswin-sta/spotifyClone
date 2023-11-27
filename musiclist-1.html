@@ -17,11 +17,10 @@
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/bottom-player.css" />
     <link rel="stylesheet" href="./assets/css/new.css" />
-    <link rel="stylesheet" href="./assets/css/editplaylist.css" />
-    <link rel="stylesheet" href="./assets/css/myplaylist.css" />
 
-    <script type="module" src="./assets/js/editplaylist.js" defer></script>
-    <script type="module" src="./assets/ts/getMusicList.js" async></script>
+    <link rel="stylesheet" href="./assets/css/skeleton.css" />
+
+    <script type="module" src="./assets/ts/getMusicList.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -58,6 +57,33 @@
           <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
         </nav>
         <section class="homeWrapper pt-6 pt-md-5">
+          <!-- skeleton container -->
+          <div class="skeletonContainer">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-6 banner-skeleton-loader"></div>
+                <div class="col-6 p-5">
+                  <div class="row pb-3 skeleton-loader"><br><br></div>
+                  <div class="row skeleton-loader"></div>
+                </div>
+              </div>
+            </div>
+            <hr class="" />
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+            <div class="track-tile"></div>
+          </div>
+          <!--  -->
+          <div id="dataContainer">
+            <div
+            id="customAlert"
+            class="custom-alert"
+            style="background-color: rgb(33, 33, 33)"
+          >
+            <p id="alertMessage"></p>
+          </div>
           <div class="container-fluid" id="playListHeader">
             <div class="row align-items-center">
               <div
@@ -134,38 +160,9 @@
             <div class="row" id="playListTrackLists">
               <!-- playList -->
             </div>
-          </div>
-          <div id="overlay" class="overlay"></div>
-          <div id="playlistEdit" class="playlistEdit">
-            <h2>Edit Details</h2>
-            <div class="playlistDetails">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="playlistImage col-4">
-                    <img id="playlistImage" />
-                  </div>
-                  <div class="nameAndDescription col">
-                    <input id="name" class="name row" type="text" value="" />
-                    <textarea
-                      id="desc"
-                      class="desc row"
-                      rows="6"
-                      cols="50"
-                      placeholder="Add an optional description"
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="save">
-              <button id="save">Save</button>
-            </div>
-            <p>
-              By proceeding, you agree to give Spotify access to the image you
-              choose to upload. Please <br />make sure you have the right to
-              upload the image.
-            </p>
-          </div>
+
+          </div>/div>
+       
         </section>
         <div class="bottomBar">
           <div class="footerTop">

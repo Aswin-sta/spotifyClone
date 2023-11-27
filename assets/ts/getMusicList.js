@@ -11,6 +11,12 @@ var _a, _b, _c;
 import { getData } from "../js/get.js";
 import { playSong } from "../js/player.js";
 import { changeIframeContent } from "../js/changeIframeContent.js";
+const skeletonContainer = document.querySelector('.skeletonContainer');
+if (skeletonContainer)
+    skeletonContainer.style.display = 'block';
+const dataContainer = document.querySelector('#dataContainer');
+if (dataContainer)
+    dataContainer.style.display = 'none';
 (() => __awaiter(void 0, void 0, void 0, function* () {
     function isPlaylistTrack(track) {
         return 'track' in track && typeof track.track.uri === 'string';
@@ -32,6 +38,12 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
         return `${minutes}:${formattedSeconds}`;
     }
     newReleasesPromise.then((data) => {
+        const skeletonContainer = document.querySelector('.skeletonContainer');
+        if (skeletonContainer)
+            skeletonContainer.style.display = 'none';
+        const dataContainer = document.querySelector('#dataContainer');
+        if (dataContainer)
+            dataContainer.style.display = 'block';
         //bannerImage
         const bannerImage = document.createElement("img");
         bannerImage.className = "bannerImgImg";
@@ -162,11 +174,31 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
                     console.error('Error:', error);
                 });
             }
-            innerDiv1.addEventListener('click', function () {
+            innerDiv1.addEventListener('click', function (event) {
                 console.log("inner Div 1 pressed");
                 const trackId = innerDiv1.id;
                 addItemToPlaybackQueue(trackId);
+                event.stopPropagation(); // Stop the event from reaching the outer row
             });
+            //alert message
+            function showFadingAlert(message, isError = false) {
+                const customAlert = document.getElementById('customAlert');
+                const alertMessage = document.getElementById('alertMessage');
+                if (customAlert && alertMessage) {
+                    alertMessage.textContent = message;
+                    if (isError) {
+                        customAlert.style.backgroundColor = '#f44336';
+                    }
+                    else {
+                        customAlert.style.backgroundColor = '#4CAF50';
+                    }
+                    customAlert.style.display = 'block';
+                    // Fade out after 3 seconds
+                    setTimeout(() => {
+                        customAlert.style.display = 'none';
+                    }, 3000);
+                }
+            }
             //add to favourite playlist:POST method
             const playlistId = '4OC3L8EvBkI5sROoAICgQw';
             const apiUrl = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
@@ -194,15 +226,18 @@ import { changeIframeContent } from "../js/changeIframeContent.js";
                 })
                     .then(trackdata => {
                     console.log('Success:', trackdata);
+                    showFadingAlert('Track added to playlist successfully!');
                 })
                     .catch(error => {
                     console.error('Error:', error);
+                    showFadingAlert('Error adding track to playlist. Please try again.', true);
                 });
             }
-            innerDiv2.addEventListener('click', function () {
+            innerDiv2.addEventListener('click', function (event) {
                 console.log("inner Div 2 pressed");
                 const trackId = innerDiv2.id;
                 addTrackToPlaylist(trackId);
+                event.stopPropagation(); // Stop the event from reaching the outer row
             });
             //play the song
             songListTrack.onclick = () => {
