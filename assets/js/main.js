@@ -14,6 +14,17 @@ const setupPlayer = () => {
       localStorage.setItem("spotifyDeviceId", device_id);
     });
 
+
+    var slider = document.querySelector("#slider");
+    var fill = document.querySelector(".bar .fill");
+    
+    
+    slider.addEventListener("input", ()=>{
+      player.setVolume((slider.value)/100).then(() => {
+        fill.style.width = slider.value + "%";
+        console.log('Volume updated!');
+      });
+    });
     player.connect();
   };
 };

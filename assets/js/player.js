@@ -5,13 +5,13 @@ let isPlaying = false; // Initialize the playback state
 parent.document
   .getElementById("shuffle")
   .addEventListener("click", toggleShuffle);
-parent.document
-  .getElementById("skipBackward")
-  .addEventListener("click", skipBackward);
+// parent.document
+//   .getElementById("skipBackward")
+//   .addEventListener("click", skipBackward);
 const playPauseButton = parent.document.querySelector("#playPause");
-parent.document
-  .getElementById("skipForward")
-  .addEventListener("click", skipForward);
+// parent.document
+//   .getElementById("skipForward")
+//   .addEventListener("click", skipForward);
 parent.document
   .getElementById("repeat")
   .addEventListener("click", toggleRepeat);
@@ -108,42 +108,42 @@ async function resumePlayback() {
   }
 }
 
-async function skipForward() {
-  try {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/player/next?device_id=${spotifyDeviceId}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+// async function skipForward() {
+//   try {
+//     const response = await fetch(
+//       `https://api.spotify.com/v1/me/player/next?device_id=${spotifyDeviceId}`,
+//       {
+//         method: "POST",
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       }
+//     );
 
-    await handleApiResponse(response);
-    resumePlayback();
-  } catch (error) {
-    console.error("Error skipping forward", error.message);
-  }
-}
+//     await handleApiResponse(response);
+//     resumePlayback();
+//   } catch (error) {
+//     console.error("Error skipping forward", error.message);
+//   }
+// }
 
-async function skipBackward() {
-  try {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/player/previous?device_id=${spotifyDeviceId}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    resumePlayback();
-    await handleApiResponse(response);
-  } catch (error) {
-    console.error("Error skipping backward", error.message);
-  }
-}
+// async function skipBackward() {
+//   try {
+//     const response = await fetch(
+//       `https://api.spotify.com/v1/me/player/previous?device_id=${spotifyDeviceId}`,
+//       {
+//         method: "POST",
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       }
+//     );
+//     resumePlayback();
+//     await handleApiResponse(response);
+//   } catch (error) {
+//     console.error("Error skipping backward", error.message);
+//   }
+// }
 
 async function toggleShuffle() {
   try {
