@@ -1,6 +1,6 @@
 import { getData } from "./get.js";
 
-const id = new URLSearchParams(window.location.search).get("playlist_id");
+const id = sessionStorage.getItem("id");
 const playlistItemPromise = getData(
   `https://api.spotify.com/v1/playlists/${id}`
 );
@@ -71,4 +71,5 @@ changeDetails.addEventListener("click", () => {
     });
   playlistEditModal.style.display = "none";
   overlay.style.display = "none";
+  document.location.href = "myplaylist-1.html";
 });
