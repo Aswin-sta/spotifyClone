@@ -1,6 +1,5 @@
-import { getData, refreshAccessToken } from "./get.js";
-
-await refreshAccessToken(localStorage.getItem("refresh_token"));
+import { getData } from "./get.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 const userDataPromise = getData("https://api.spotify.com/v1/me");
 console.log(userDataPromise);
 
@@ -38,10 +37,21 @@ playlistPromise.then((data) => {
 
     playlistTile.append(playlistImageDiv, playlistName, playlistOwner);
     playlistTile.onclick = () => {
-      window.location.href = `myplaylist.html?playlist_id=${playlist.id}`;
+      document.location.href = "myplaylist-1.html";
+      sessionStorage.setItem("id", playlist.id);
     };
     playlistTileList.append(playlistTile);
   });
 });
+document.querySelector("#loginLink")?.addEventListener("click", () => {
+  changeIframeContent("profile-1.html");
+});
 
+document.querySelector("#navHomeButton")?.addEventListener("click", () => {
+  changeIframeContent("home-1.html");
+});
+
+document.querySelector("#navSearchButton")?.addEventListener("click", () => {
+  changeIframeContent("searchpage-1.html");
+});
 export { userDataPromise };

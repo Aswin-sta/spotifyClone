@@ -1,8 +1,8 @@
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
-const redirectUri = "http://127.0.0.1:5500/main.html";
+const redirectUri = "https://spotify-clone-omega-flame.vercel.app/main.html";
 const scope =
-  "user-read-private user-read-email user-top-read user-library-read user-library-modify streaming playlist-read-private"; // Add the scopes you need
+  "user-read-private user-read-email user-top-read user-library-read user-library-modify streaming playlist-read-private playlist-modify-public playlist-modify-private";
 
 const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
 window.location.href = authorizationUrl;
@@ -13,7 +13,7 @@ function getAuthorizationCode() {
 }
 
 // Function to exchange authorization code for access and refresh tokens
-function exchangeCodeForTokens(authorizationCode) {
+async function exchangeCodeForTokens(authorizationCode) {
   const tokenUrl = "https://accounts.spotify.com/api/token";
   const data = new URLSearchParams();
   data.append("grant_type", "authorization_code");
@@ -50,7 +50,7 @@ async function main() {
 
   if (authorizationCode) {
     // You have the authorization code, proceed to exchange it for tokens
-    exchangeCodeForTokens(authorizationCode).then((tokens) => {
+    await exchangeCodeForTokens(authorizationCode).then((tokens) => {
       // Use the access and refresh tokens as needed
       console.log("Access Token:", tokens.accessToken);
       console.log("Refresh Token:", tokens.refreshToken);

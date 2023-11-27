@@ -1,3 +1,5 @@
+// import { setupPlayer } from "../js/main.js";
+
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
 
@@ -91,6 +93,7 @@ async function refreshAccessToken() {
         "token_expires_in",
         new Date().getTime() + tokenData.expires_in * 1000
       );
+      // setupPlayer();
       return tokenData.access_token;
     } else {
       throw new Error("Failed to refresh access token");

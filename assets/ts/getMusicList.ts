@@ -1,5 +1,6 @@
 import { getData } from "../js/get.js";
 import { playSong } from "../js/player.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 
 (async () => {
 function isPlaylistTrack(track: any): track is spotifyDataPlaylist {
@@ -14,7 +15,7 @@ function isAlbumTrack(track: any): track is spotifyDataAlbumList {
 const id = sessionStorage.getItem("id");
 const type = sessionStorage.getItem("type");
 
-//musiclist api
+//musiclist api  
 const newReleasesPromise:any = getData(
   "https://api.spotify.com/v1/" + type + "s/" + id
 );
@@ -319,3 +320,15 @@ newReleasesPromise.then((data:spotifyData) => {
   });
 });
 })();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })

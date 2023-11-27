@@ -7,8 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var _a, _b, _c;
 import { getData } from "../js/get.js";
 import { playSong } from "../js/player.js";
+import { changeIframeContent } from "../js/changeIframeContent.js";
 (() => __awaiter(void 0, void 0, void 0, function* () {
     function isPlaylistTrack(track) {
         return 'track' in track && typeof track.track.uri === 'string';
@@ -19,7 +21,7 @@ import { playSong } from "../js/player.js";
     //session storage search parameters
     const id = sessionStorage.getItem("id");
     const type = sessionStorage.getItem("type");
-    //musiclist api
+    //musiclist api  
     const newReleasesPromise = getData("https://api.spotify.com/v1/" + type + "s/" + id);
     //function to convert ms to min:sec format
     function timeConvertion(duration_ms) {
@@ -226,3 +228,12 @@ import { playSong } from "../js/player.js";
         });
     });
 }))();
+(_a = document.querySelector("#loginLink")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+    changeIframeContent("profile-1.html");
+});
+(_b = document.querySelector("#navHomeButton")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+    changeIframeContent("home-1.html");
+});
+(_c = document.querySelector("#navSearchButton")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
+    changeIframeContent("searchpage-1.html");
+});

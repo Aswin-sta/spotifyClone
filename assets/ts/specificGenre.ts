@@ -1,5 +1,6 @@
 import { getData } from '../js/get.js';
 import { specificGenreResponseType } from '../type/specificGenreResponse.js';
+import { changeIframeContent } from "../js/changeIframeContent.js";
 (async () => {
  
   const categoryId =  sessionStorage.getItem("id");
@@ -79,9 +80,23 @@ import { specificGenreResponseType } from '../type/specificGenreResponse.js';
       mainContainer.appendChild(playlistCard);
  
       playlistCard.onclick = () => {
-        window.location.href = `musiclist.html?id=${playlist.id}&type=${playlist.type}`;
+        document.location.href = "musiclist-1.html";
+        sessionStorage.setItem("id",playlist.id);
+        sessionStorage.setItem("type",playlist.type);
       };
     });
   }
 })();
+
+  document.querySelector("#loginLink")?.addEventListener('click',()=>{
+    changeIframeContent("profile-1.html")
+  })
+
+   document.querySelector("#navHomeButton")?.addEventListener('click',()=>{
+    changeIframeContent("home-1.html")
+  })
+
+  document.querySelector("#navSearchButton")?.addEventListener('click',()=>{
+    changeIframeContent("searchpage-1.html")
+  })
  

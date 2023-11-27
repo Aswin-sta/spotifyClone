@@ -1,14 +1,14 @@
-import { getData, refreshAccessToken } from "./get.js";
+import { getData } from "./get.js";
+import { playSong } from "../js/player.js";
 async function main() {
   try {
-    await refreshAccessToken(localStorage.getItem("refresh_token"));
-
-    const q = new URLSearchParams(window.location.search).get("q");
+    const q = sessionStorage.getItem("searchQuery");
     const searchResultPromise = getData(
       `https://api.spotify.com/v1/search?query=${q}&type=track&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`
     );
 
     const data = await searchResultPromise;
+    console.log(data);
     const searchList = document.getElementById("searchList");
 
     if (data.tracks && data.tracks.items.length > 0) {
@@ -23,9 +23,9 @@ async function main() {
     console.error("Error fetching search results:", error);
   }
 }
-
+let currentlyPlayingAudio = null;
 function createSongElement(track) {
-  const { album, name, artists, duration_ms } = track;
+  const { album, name, artists, duration_ms, preview_url } = track;
 
   const songContainer = document.createElement("div");
   songContainer.classList.add("song");
@@ -59,7 +59,36 @@ function createSongElement(track) {
   songContainer.appendChild(albumImage);
   songContainer.appendChild(songDetails);
 
+  // songContainer.addEventListener("mouseenter", () => {
+  //   playPreview(track.preview_url);
+  // });
+
+  songContainer.addEventListener("click", () => {
+    playSong(track.uri, name, artistNames, album.images[0].url || "");
+  });
+
+  // songContainer.addEventListener("mouseleave", () => {
+  //   if (currentlyPlayingAudio) {
+  //     currentlyPlayingAudio.pause();
+  //     currentlyPlayingAudio.currentTime = 0;
+  //     currentlyPlayingAudio = null;
+  //   }
+  // });
   return songContainer;
+}
+function playPreview(previewUrl) {
+  if (previewUrl) {
+    if (currentlyPlayingAudio && !currentlyPlayingAudio.paused) {
+      currentlyPlayingAudio.pause();
+      currentlyPlayingAudio.currentTime = 0;
+    }
+
+    const audio = new Audio(previewUrl);
+    audio.play();
+    currentlyPlayingAudio = audio;
+  } else {
+    console.log("No preview available for this track.");
+  }
 }
 
 function formatDuration(durationInMs) {
@@ -67,6 +96,15 @@ function formatDuration(durationInMs) {
   const seconds = ((durationInMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+document.querySelector("#loginLink")?.addEventListener("click", () => {
+  changeIframeContent("profile-1.html");
+});
 
+document.querySelector("#navHomeButton")?.addEventListener("click", () => {
+  changeIframeContent("home-1.html");
+});
 
+document.querySelector("#navSearchButton")?.addEventListener("click", () => {
+  changeIframeContent("searchpage-1.html");
+});
 main();

@@ -1,22 +1,22 @@
 @import url(./main.css);
 #searchList {
   width: 90%;
-  margin: 20px auto;
+  margin-inline: 20px;
   background-color: var(--spotify-grey-);
   padding: 20px;
   gap: 20px;
-  padding-top: 100px;
   cursor: pointer;
 }
 #searchList h1 {
+  padding-top: 40px;
   padding-bottom: 30px;
+  color: white;
 }
 .song {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  font-size: medium;
   border-radius: 5px;
 }
 
@@ -31,13 +31,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 .song:hover {
-  background-color: var(--spotify-light-grey);
+  background-color:#383737;
 }
 
 h3,
 p,
 span {
   margin: 0;
+  font-size: medium;
+
 }

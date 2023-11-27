@@ -35,40 +35,41 @@
       style="min-height: 100vh; max-height: 100vh"
     >
       <div class="row wrapper">
-        <nav class="navbar position-fixed sticky-top">
+        <nav class="navbar position-fixed sticky-top pt-3">
           <div>
-            <a
-              href="home.html"
+            <p
               id="navHomeButton"
               class="d-flex align-items-center d-md-none mx-3"
-            >
-              <!-- <img src="./assets/imgs/home.svg" alt="Search" /> -->
-            </a>
-            <a
-              href="searchpage.html"
-              id="navSearchButton"
-              class="d-flex align-items-center d-md-none mx-3"
-            >
-              <!-- <img src="./assets/imgs/search.svg" alt="Search" /> -->
-            </a>
+            ></p>
             <button id="leftArrow" class="d-none d-md-block"></button>
             <button id="rightArrow" class="d-none d-md-block"></button>
 
-            <div class="search">
+            <div class="search input-group d-none d-sm-inline-block pb-2">
               <input
                 type="text"
+                id="searchInput"
                 class="searchInput"
                 placeholder="What do you want to listen to?"
               />
             </div>
           </div>
-          <a id="loginLink" href="profile.html"
-            ><img src="./assets/imgs/user.png"
-          /></a>
+          <a id="loginLink"><img src="./assets/imgs/user.png" /></a>
         </nav>
         <section class="homeWrapper pt-6 pt-md-5">
-          <section class="searchDisplay">
-            <h1 class="text-white fw-bolder px-3 pb-3">Browse All</h1>
+          <section class="searchDisplay container-fluid py-3">
+            <h1 class="text-white text-center d-block d-md-none pb-2">
+              Search
+            </h1>
+            <div class="search d-block d-md-none pt-2">
+              <input
+                type="text"
+                id="searchInput"
+                class="searchInput w-100"
+                placeholder="What do you want to listen to?"
+              />
+            </div>
+            <h1 class="text-white fw-bold py-4">Browse All</h1>
+            <div class="row" id="searchList"></div>
           </section>
         </section>
         <div class="bottomBar">
