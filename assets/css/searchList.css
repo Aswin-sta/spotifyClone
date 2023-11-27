@@ -1,15 +1,12 @@
 @import url(./main.css);
 #searchList {
   width: 90%;
-  margin-inline: 20px;
-  background-color: var(--spotify-grey-);
-  padding: 20px;
+  margin-inline: 50px;
+  background-color: --spotify-grey-;
   gap: 20px;
   cursor: pointer;
 }
 #searchList h1 {
-  padding-top: 40px;
-  padding-bottom: 30px;
   color: white;
 }
 .song {
@@ -19,13 +16,11 @@
   padding: 10px;
   border-radius: 5px;
 }
-
 .song img {
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
-
 .songDetails {
   flex-grow: 1;
   display: flex;
@@ -36,11 +31,19 @@
 .song:hover {
   background-color:#383737;
 }
-
-h3,
-p,
-span {
+.song h3{
+  margin: 0;
+  font-size: large;
+}
+.song p,span {
   margin: 0;
   font-size: medium;
-
+  color: grey;
+}
+.duration{
+  padding-left: 10px;
+}
+.previewIcon:hover {
+  background-color: --spotify-grey-; /* Darker green color on hover */
+  transform: scale(1.15);
 }
