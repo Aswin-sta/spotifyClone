@@ -1,19 +1,14 @@
 const clientId = "3123b1eded6c47ab91bf1fd765a537b6";
 const clientSecret = "98598afa94de4a93b71b39e1efd13a80";
-const redirectUri = "https://spotify-clone-omega-flame.vercel.app/main.html";
+const redirectUri = "http://127.0.0.1:5500/main.html";
 const scope =
   "user-read-private user-read-email user-top-read user-library-read user-library-modify streaming playlist-read-private playlist-modify-public playlist-modify-private";
-
-const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
-window.location.href = authorizationUrl;
 
 function getAuthorizationCode() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("code");
 }
-
-// Function to exchange authorization code for access and refresh tokens
-async function exchangeCodeForTokens(authorizationCode) {
+function exchangeCodeForTokens(authorizationCode) {
   const tokenUrl = "https://accounts.spotify.com/api/token";
   const data = new URLSearchParams();
   data.append("grant_type", "authorization_code");
@@ -30,38 +25,49 @@ async function exchangeCodeForTokens(authorizationCode) {
       "Content-Type": "application/x-www-form-urlencoded",
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Token exchange failed with status: ${response.status}`
+        );
+      }
+      return response.json();
+    })
     .then((data) => {
       const accessToken = data.access_token;
       const refreshToken = data.refresh_token;
+      if (!accessToken || !refreshToken) {
+        throw new Error("Invalid response format from token endpoint");
+      }
       localStorage.setItem("access_token", accessToken);
       localStorage.setItem("refresh_token", refreshToken);
-      // You can now use the access and refresh tokens as needed.
       return { accessToken, refreshToken };
     })
     .catch((error) => {
       console.error("Error exchanging code for tokens:", error);
+      throw error; // Propagate the error
     });
 }
 
-// Entry point of your application
 async function main() {
   const authorizationCode = getAuthorizationCode();
 
-  if (authorizationCode) {
-    // You have the authorization code, proceed to exchange it for tokens
-    await exchangeCodeForTokens(authorizationCode).then((tokens) => {
-      // Use the access and refresh tokens as needed
+  if (!authorizationCode) {
+    const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
+    window.location.href = authorizationUrl;
+  } else {
+    try {
+      const tokens = await exchangeCodeForTokens(authorizationCode);
+      if (!tokens) {
+        throw new Error("Failed to get auth token");
+      }
       console.log("Access Token:", tokens.accessToken);
       console.log("Refresh Token:", tokens.refreshToken);
 
-      window.location.href = redirectUri;
-    });
-  } else {
-    // The user may have denied access or there was an error.
-    console.error("Authorization code not found.");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 }
 
-// Call the main function to start the process
 main();
