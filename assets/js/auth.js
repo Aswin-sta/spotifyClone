@@ -41,6 +41,7 @@ function exchangeCodeForTokens(authorizationCode) {
       }
       localStorage.setItem("access_token", accessToken);
       localStorage.setItem("refresh_token", refreshToken);
+      window.location.href = redirectUri;
       return { accessToken, refreshToken };
     })
     .catch((error) => {
@@ -63,7 +64,6 @@ async function main() {
       }
       console.log("Access Token:", tokens.accessToken);
       console.log("Refresh Token:", tokens.refreshToken);
-
     } catch (error) {
       console.error("Error:", error);
     }
